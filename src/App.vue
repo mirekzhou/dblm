@@ -7,9 +7,10 @@
 		    <keep-alive>
 		      	<router-view></router-view>
 		    </keep-alive>
-		</transition>
+		</transition> -->
 
-		<my-footer></my-footer> -->
+		<my-footer></my-footer>
+
 		<suspension></suspension>
 <!-- 		<login></login>
 		<register></register> -->
@@ -26,7 +27,7 @@
 	import notifier from 'cxlt-vue2-toastr/src/toastr/toastr';
 	import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css';
 	import header from './components/header/header';
-	import footer from './components/footer';
+	import footer from './components/footer/footer';
 
 	export default {
 		name: 'app',
