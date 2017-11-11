@@ -12,20 +12,17 @@
 
 				<span class="right-arrow"></span>
 			</div>
-
-			<page-naver></page-naver>
 		</div>
 	</div>
 </template>
 
 <script>
-	import pageNaver from './pageNaver';
 	import { swiper, swiperSlide } from 'vue-awesome-swiper';
 	import homeBanner from '../../assets/home-banner.png';
 
 	export default {
 		name: 'home-page',
-		
+
 		data: function () {
 			return {
 		        swiperOption: {
@@ -47,8 +44,7 @@
 
 		components: {
 			'swiper': swiper,
-			'swiper-slide': swiperSlide,
-			'page-naver' : pageNaver
+			'swiper-slide': swiperSlide
 		},
 
 		methods: {

@@ -1,18 +1,18 @@
 <template>
 	<div id="app">
 		<my-header></my-header>
-		<breaking-news></breaking-news>
-		
+<!-- 		<breaking-news></breaking-news>
+
 		<transition name="fade">
 		    <keep-alive>
 		      	<router-view></router-view>
 		    </keep-alive>
 		</transition>
-		
-		<my-footer></my-footer>
+
+		<my-footer></my-footer> -->
 		<suspension></suspension>
-		<login></login>
-		<register></register>
+<!-- 		<login></login>
+		<register></register> -->
 		<notifier :show="showToast" :toastr="toastr"></notifier>
 	</div>
 </template>
@@ -30,7 +30,7 @@
 
 	export default {
 		name: 'app',
-		
+
 		data: function () {
 			return {
 				showToast: true,
@@ -76,8 +76,7 @@
 	}
 
 	body {
-		background-color: #090c2d;
-		color: #FFF;
+		background-color: #FFF;
 	}
 
 	#app {
