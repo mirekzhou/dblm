@@ -35,6 +35,27 @@ export default new VueRouter({
 			component: function (resolve) {
 				require(['../components/register/register.vue'], resolve);
 			}
+		},
+		{
+			path: '/latest',
+			name: 'latest',
+			component: function (resolve) {
+				require(['../components/latest/latest.vue'], resolve);
+			}
+		},
+		{
+			path: '/help',
+			name: 'help',
+			component: function (resolve) {
+				require(['../components/help/help.vue'], resolve);
+			}
+		},
+		{
+			path: '/userCenter',
+			name: 'userCenter',
+			component: function (resolve) {
+				require(['../components/userCenter/userCenter.vue'], resolve);
+			}
 		}
 	]
 });

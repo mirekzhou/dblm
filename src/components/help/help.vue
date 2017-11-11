@@ -1,12 +1,12 @@
 <template>
-	<div class="page login">
-		登陆页面
+	<div class="page help">
+		帮助中心
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'login',
+		name: 'help',
 
 		props: [
 		],
@@ -22,7 +22,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.login {
+	.help {
 		color: #000;
 	}
 </style>

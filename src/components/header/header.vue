@@ -2,9 +2,9 @@
 	<div class="header">
 		<div class="section1">
 			<div class="wrapper">
-				<div class="text">个人中心</div>
-				<div class="text">注册</div>
-				<div class="text">你好,请登录</div>
+				<div class="text" v-on:click="redirectTo('/userCenter')">个人中心</div>
+				<div class="text" v-on:click="redirectTo('/register')">注册</div>
+				<div class="text" v-on:click="redirectTo('/login')">你好,请登录</div>
 				<div class="clear"></div>
 			</div>
 		</div>
@@ -65,6 +65,9 @@
 		},
 
 		methods: {
+			redirectTo: function (path) {
+				this.$router.push(path);
+			}
 		},
 
 		components: {
@@ -86,17 +89,6 @@
 	$wrapperWidth   : 1024px;
 	$section1Height : 36px;
 	$section2Height : 80px;
-
-	.router-link-active{
-        span {
-        	border-bottom: 2px solid #d263ee;
-        	color: #d263ee ;
-        	display: inline-block;
-        	height: 36px;
-        	line-height: 36px;
-        	vertical-align: middle;
-        }
-    }
 
 	.header {
 		width: 100%;

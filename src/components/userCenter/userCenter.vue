@@ -1,15 +1,12 @@
 <template>
-	<div class="page login">
-		登陆页面
+	<div class="page user-center">
+		个人中心
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'login',
-
-		props: [
-		],
+		name: 'user-center',
 
 		data: function () {
 			return {
@@ -22,7 +19,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.login {
+	.user-center {
 		color: #000;
 	}
 </style>

@@ -1,18 +1,6 @@
 <template>
 	<div class="page home-page">
-		<div class="page-wrapper home-page-wrapper">
-			<div class="swiper-zone">
-				<span class="left-arrow"></span>
-
-			    <swiper :options="swiperOption">
-			        <swiper-slide v-for="banner in banners" key="banner">
-			        	<img :src="banner" style="width:100% !important">
-			        </swiper-slide>
-			    </swiper>
-
-				<span class="right-arrow"></span>
-			</div>
-		</div>
+		首页
 	</div>
 </template>
 
@@ -57,6 +45,8 @@
 
 <style lang="scss" scoped>
 	.home-page {
+		color: #000;
+
 		.home-page-wrapper {
 			position: relative;
 

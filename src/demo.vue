@@ -1,12 +1,11 @@
 <template>
-	<div class="page login">
-		登陆页面
+	<div class="demo">
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'login',
+		name: 'demo',
 
 		props: [
 		],
@@ -22,7 +21,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.login {
+	.demo {
 		color: #000;
 	}
 </style>

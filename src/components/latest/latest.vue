@@ -1,13 +1,16 @@
 <template>
-	<div class="page user-center-page">
-		user-center-page
+	<div class="page latest">
+		最新开奖页面
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'user-center-page',
-		
+		name: 'latest',
+
+		props: [
+		],
+
 		data: function () {
 			return {
 			}
@@ -19,6 +22,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.user-center-page {
+	.latest {
+		color: #000;
 	}
 </style>
