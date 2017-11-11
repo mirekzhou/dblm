@@ -21,6 +21,20 @@ export default new VueRouter({
 			component: function (resolve) {
 				require(['../components/home/home.vue'], resolve);
 			}
+		},
+		{
+			path: '/login',
+			name: 'login',
+			component: function (resolve) {
+				require(['../components/login/login.vue'], resolve);
+			}
+		},
+		{
+			path: '/register',
+			name: 'register',
+			component: function (resolve) {
+				require(['../components/register/register.vue'], resolve);
+			}
 		}
 	]
 });
