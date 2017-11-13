@@ -48,8 +48,8 @@
 		},
 
 		mounted: function () {
-			this.$store.dispatch('getLoginStatus');
-			this.$store.dispatch('getRegisterConfig');
+			// this.$store.dispatch('getLoginStatus');
+			// this.$store.dispatch('getRegisterConfig');
 		},
 
 		methods: {

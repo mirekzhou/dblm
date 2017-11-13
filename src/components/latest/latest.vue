@@ -9,7 +9,7 @@
 		</div>
 
 		<div class="issues">
-			<issue-item v-for="item in list" :data="item"></issue-item>
+			<issue-item v-for="item in list" :data="item" key="item"></issue-item>
 		</div>
 	</div>
 </template>

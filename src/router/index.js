@@ -10,10 +10,7 @@ export default new VueRouter({
 	routes: [
 		{
 			path: '/',
-			name: '/',
-			component: function (resolve) {
-				require(['../components/home/home.vue'], resolve);
-			}
+			redirect: 'home'
 		},
 		{
 			path: '/home',
@@ -52,10 +49,39 @@ export default new VueRouter({
 		},
 		{
 			path: '/userCenter',
-			name: 'userCenter',
 			component: function (resolve) {
 				require(['../components/userCenter/userCenter.vue'], resolve);
-			}
+			},
+			children: [
+				{
+					path: '',
+					redeirect: 'guide'
+				},
+				{
+					path: 'guide',
+					comoponent: function (resolve) {
+						require(['../components/userCenter/guide/guide.vue'], resolve);
+					}
+				},
+				{
+					path: 'forget',
+					comoponent: function (resolve) {
+						require(['../components/userCenter/forget/forget.vue'], resolve);
+					}
+				},
+				{
+					path: 'message',
+					comoponent: function (resolve) {
+						require(['../components/userCenter/message/message.vue'], resolve);
+					}
+				},
+				{
+					path: 'bonus',
+					comoponent: function (resolve) {
+						require(['../components/userCenter/bonus/bonus.vue'], resolve);
+					}
+				},
+			]
 		}
 	]
 });
