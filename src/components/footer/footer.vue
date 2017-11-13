@@ -60,9 +60,6 @@
 		color: #FFF;
 		height: 200px;
 		width: 100%;
-		position: fixed;
-		left: 0;
-		bottom: 0;
 
 		.wrapper {
 			font-size: 12px;
