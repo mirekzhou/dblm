@@ -1,18 +1,22 @@
 <template>
 	<div class="page home-page">
-		<div class="nav">
-			首页 > 夺宝 > IPhone8 128G
+		<div class="wrapper">
+			<div class="nav">
+				首页 > 夺宝 > IPhone8 128G
+			</div>
+
+			<product></product>
+			<drawing-zone></drawing-zone>
+			<my-data></my-data>
+			<lucky-board></lucky-board>
+			<user-records></user-records>
 		</div>
 
-		<product></product>
-		<drawing-zone></drawing-zone>
-		<my-data></my-data>
-		<lucky-board></lucky-board>
-		<user-records></user-records>
 	</div>
 </template>
 
 <script>
+	import '../../scss/common.scss';
 	import Product         from './product';
 	import DrawingZone     from './drawingZone';
 	import MyData          from './myData';
@@ -38,7 +42,18 @@
 </script>
 
 <style lang="scss" scoped>
+	$wrapperWidth   : 1024px;
+
 	.home-page {
 		color: #000;
+
+		.wrapper {
+			width: 1024px;
+
+			.nav {
+				margin-top: 21px;
+
+			}
+		}
 	}
 </style>

@@ -6,11 +6,11 @@
 	float: right;
 }
 
-.clear {
-    clear:both; 
-    height: 0; 
-    line-height: 0; 
-    font-size: 0;
+.clear:after {
+    display: block;
+    content: '';
+    clear: both;
+    visibility: hidden;
 }
 
 body {
