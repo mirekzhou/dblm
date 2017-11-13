@@ -6,7 +6,7 @@ export default {
 
 	post: function ({state, dispatch, commit}, opt) {
 		var rs;
-		var qs = require('qs');
+		var qs     = require('qs');
 		var domain = 'wwww.baidu.com/';
 
 		opt.data = qs.stringify(opt.data);
