@@ -59,7 +59,7 @@ export default {
 				gameType: 'sport'
 			}
 		};
-		
+
 		Service.get(opt, function (data) {
 			commit('SET_SPORT_URL', {url: data});
 		});
@@ -87,7 +87,7 @@ export default {
 				gameType: 'casino'
 			}
 		};
-		
+
 		Service.get(opt, function (data) {
 			commit('SET_PHONE_BETTING_URL', {url: data});
 		});
@@ -138,7 +138,7 @@ export default {
 				pageIndex: 0
 			}
 		};
-		
+
 		callback = function (json) {
 			if (json.StatusCode && json.StatusCode != 0) {
 				alert(json.Message);
