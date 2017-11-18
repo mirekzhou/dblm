@@ -1,15 +1,18 @@
 <template>
 	<li class="issue-item">
 		<a>
-		<div class="flex-center-xy">
-		<div class="item-left"><img src="../../assets/kaijiang.jpg" alt=""></div>
+		<div class="flex-center-x">
+		<div class="item-left">
+			<div class="title-badge">第1001期</div>
+			<img src="../../assets/kaijiang.jpg" alt="">
+		</div>
 		<div class="flex flex-full flex-column item-right">
 		<h4>IPhone8 128G 夺宝联盟世界杯巴西队高级item-right定制版</h4>
 		<div class="item-price"><span class="desc">市场参考价</span><span class="price">￥19999</span></div>
-		<div class="item-qty">
-		<span class="desc">当前数量</span>
-		<span class="qty">34件</span>
-		<button>联盟夺宝</button>
+		<div class="flex item-qty">
+			<span class="desc">当前数量</span>
+			<span class="qty">34件</span>
+			<button class="btn-radius">联盟夺宝</button>
 		</div>
 		<div class="item-time">
 		<label>距离开奖结束还剩</label>
@@ -47,15 +50,16 @@
     $grey-base:#666;
     $grey-deep:#333;
     $grey-light:#999;
+    $grey-border:#ccc;
 	.issue-item {
 		color: #000;
 		border:1px solid #ccc;
 		a{
 		    width: 100%;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: .625rem;
+		    -moz-box-sizing: border-box;
+		    -webkit-box-sizing: border-box;
+		    box-sizing: border-box;
+   
 		}
 		&+li{
 		 margin-top:10px;
@@ -71,11 +75,23 @@
     flex-flow: column;
 }
 	.item-left{
+	  position: relative;
 	  min-width:400px;
-	  border-right:1px solid $grey-light;
+	  border-right:1px solid $grey-border;
 	  img{
-	  	width:400px;
-	  	height:400px;
+	  	width:320px;
+	  	height:280px;
+	  }
+	  .title-badge{
+		  position:absolute;
+		  top:0;
+		  left:0;
+		  width:100px;
+		  height:40px;
+		  background-color:red;
+		  text-align: center;
+	      color: #fff;
+	      line-height:40px;
 	  }
 	}
 	.item-right{
@@ -94,6 +110,7 @@
 	 .item-qty{
 	 	margin-top:15px;
 	    font-size:12px;
+	    position:relative;
 	   .qty{
 	     color:$grey-light;
 	     margin-left:15px;
@@ -105,9 +122,12 @@
 	 }
 	 button{
 	   background-color:red;
-	   padding:10px 30px;
+	   padding:5px 25px;
 	   color:#fff;
 	   border:none;
+	   position:absolute;
+	   right:30px;
+	   top:0
 	 }
 	}
 	.item-time{
