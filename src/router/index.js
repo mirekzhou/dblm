@@ -46,42 +46,6 @@ export default new VueRouter({
 			component: function (resolve) {
 				require(['../components/help/help.vue'], resolve);
 			}
-		},
-		{
-			path: '/userCenter',
-			component: function (resolve) {
-				require(['../components/userCenter/userCenter.vue'], resolve);
-			},
-			children: [
-				{
-					path: '',
-					redeirect: 'guide'
-				},
-				{
-					path: 'guide',
-					comoponent: function (resolve) {
-						require(['../components/userCenter/guide/guide.vue'], resolve);
-					}
-				},
-				{
-					path: 'forget',
-					comoponent: function (resolve) {
-						require(['../components/userCenter/forget/forget.vue'], resolve);
-					}
-				},
-				{
-					path: 'message',
-					comoponent: function (resolve) {
-						require(['../components/userCenter/message/message.vue'], resolve);
-					}
-				},
-				{
-					path: 'bonus',
-					comoponent: function (resolve) {
-						require(['../components/userCenter/bonus/bonus.vue'], resolve);
-					}
-				},
-			]
 		}
 	]
 });

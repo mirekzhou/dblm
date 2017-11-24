@@ -1,11 +1,11 @@
 <template>
-	<div class="guide">
+	<div class="progress">
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'guide',
+		name: 'progress',
 
 		props: [
 		],
@@ -21,7 +21,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.guide {
+	.progress {
 		color: #000;
 	}
 </style>

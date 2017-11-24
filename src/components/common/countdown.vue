@@ -1,11 +1,11 @@
 <template>
-	<div class="forget">
+	<div class="count-down">
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'forget',
+		name: 'count-down',
 
 		props: [
 		],
@@ -21,7 +21,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.forget {
+	.count-down {
 		color: #000;
 	}
 </style>
