@@ -41,6 +41,13 @@ export default new VueRouter({
 			}
 		},
 		{
+			path: '/winRecords',
+			name: 'winRecords',
+			component: function (resolve) {
+				require(['../components/winRecords/winRecords.vue'], resolve);
+			}
+		},
+		{
 			path: '/help',
 			name: 'help',
 			component: function (resolve) {

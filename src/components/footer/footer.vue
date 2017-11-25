@@ -39,18 +39,7 @@
 
 <script>
 	export default {
-		name: 'footer',
-
-		data: function () {
-			return {
-			}
-		},
-
-		components: {
-		},
-
-		methods: {
-		}
+		name: 'footer'
 	}
 </script>
 

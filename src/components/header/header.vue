@@ -3,8 +3,24 @@
 		<div class="section1">
 			<div class="wrapper">
 				<div class="text" v-on:click="redirectTo('/userCenter')">个人中心</div>
-				<div class="text" v-on:click="redirectTo('/register')">注册</div>
-				<div class="text" v-on:click="redirectTo('/login')">你好,请登录</div>
+
+				<div class="slash">/</div>
+
+				<div class="text" v-on:click="redirectTo('/winRecords')">
+					中奖信息({{winMessageCount}})
+				</div>
+
+				<div class="slash">/</div>
+
+				<div class="text" v-on:click="redirectTo('/register')">夺宝记录</div>
+
+				<div class="slash">/</div>
+
+				<div class="text" v-on:click="redirectTo('/login')">
+					<span>你好,夺宝</span>
+					<span class="red-highlight">请登录</span>
+				</div>
+
 				<div class="clear"></div>
 			</div>
 		</div>
@@ -60,7 +76,8 @@
 
 		data: function () {
 			return {
-				times: [9, 9, 9, 9, 9]
+				times: [9, 9, 9, 9, 9],
+				winMessageCount: 0
 			}
 		},
 
@@ -86,9 +103,9 @@
 </script>
 
 <style lang="scss" scoped>
-	$wrapperWidth   : 1024px;
-	$section1Height : 36px;
-	$section2Height : 80px;
+	$wrapperWidth   : 1200px;
+	$section1Height : 80px;
+	$section2Height : 40px;
 
 	.header {
 		width: 100%;
@@ -98,8 +115,8 @@
 		z-index: 3;
 
 		.section1 {
-			background-color: #1b191a;
-			color: #b8b8b8;
+			background-color: #FFF;
+			color: #666666;
 			font-size: 14px;
 			height: $section1Height;
 			line-height: $section1Height;
@@ -112,18 +129,22 @@
 				.text {
 					cursor: pointer;
 					float: right;
-					margin-left: 45px;
 
-					&:hover {
-						color: #FFF;
+					.red-highlight {
+						color: #d53328;
 					}
+				}
+
+				.slash {
+					float: right;
+					margin: 0 8px;
 				}
 			}
 		}
 
 		.section2 {
-			border-bottom: 1px solid #e1e1e1;
-			color: #2d1817;
+			background-color: #d53328;
+			color: #FFF;
 			font-size: 14px;
 			height: $section2Height;
 			width: 100%;
@@ -137,26 +158,26 @@
 					list-style: none;
 
 					.router-link-active{
-				        span {
-				        	color: #ee0b1f;
-				        }
+				        background: rgba(0, 0, 0, .1);
 				    }
 
 					li {
 						display: inline-block;
 						height: $section2Height;
 						line-height: $section2Height;
-						margin: 0  20px;
 
 						a {
 							text-decoration: none;
+							display: block;
+							height: 100%;
+							padding: 0 22px;
 
 							span {
-								color: #2d1817;
+								color: #FFF;
+							}
 
-								&:hover {
-									color: #ee0b1f;
-								}
+							&:hover {
+								background: rgba(0, 0, 0, .1);
 							}
 						}
 					}
