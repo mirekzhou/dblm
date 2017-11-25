@@ -6,7 +6,7 @@
 					<div class="name">新手指南</div>
 					<ul>
 						<li>用户协议</li>
-						<li>常见指南</li>
+						<li>常见问题</li>
 					</ul>
 				</li>
 
@@ -30,7 +30,7 @@
 				<div class="name">关于我们</div>
 
 				<p>
-					用户可以通过第三方账号登陆、使用本站账号登陆参与到联盟夺宝游戏中来，帮助好友获得幸运码，同一第三方账号或本站账号只能为同一夺宝商品获得幸运码一次用户可以通过第三方账号登陆、使用本站账号登陆参与到联盟夺宝游戏中来，帮助好友获得幸运码，同一第三方账号或本站账号只能为同一夺宝商品获得幸运码一为同一夺宝商品获得幸运码一次
+					轻松分享，创造快乐！夺宝联盟旨在传递快乐，帮助身边的每一位朋友挖掘社交圈的价值，扩大社交分享、增进社交粘性。通过夺宝联盟，身边的朋友随时都是一个联盟，紧密团结、不断扩大、众志成城、创造机遇。
 				</p>
 			</div>
 		</div>
@@ -56,16 +56,17 @@
 
 <style lang="scss" scoped>
 	.footer {
-		background-color: #1b191a;
+		background-color: #434343;
 		color: #FFF;
-		height: 200px;
+		height: 160px;
 		width: 100%;
 
 		.wrapper {
 			font-size: 12px;
 			height: 100px;
-			width: 1024px;
+			width: 1200px;
 			margin: 0 auto;
+			padding-top: 35px;
 
 			.left-part {
 				float: left;
@@ -74,22 +75,49 @@
 
 				li {
 					float: left;
-					margin-right: 50px;
-					width: 100px;
 
 					.name {
-						height: 60px;
-						line-height: 60px;
+						border-right: 1px solid #e6e6e6;
+						display: inline-block;
+						padding: 0 22px;
 					}
 
 					ul {
 						list-style: none;
+						margin-top: 14px;
 
 						li {
 							color: #7f7f7f;
 							cursor: pointer;
 							display: block;
-							line-height: 20px;
+							float: none;
+							line-height: 30px;
+							text-align: center;
+						}
+					}
+
+					&:first-child {
+						.name {
+							padding-left: 0;
+						}
+
+						ul {
+							li {
+								text-align: left;
+							}
+						}
+					}
+
+					&:last-child {
+						.name {
+							border-right: 0;
+							padding-right: 0;
+						}
+
+						ul {
+							li {
+								text-align: right;
+							}
 						}
 					}
 				}
@@ -99,14 +127,9 @@
 				float: right;
 				width: 50%;
 
-				.name {
-					height: 60px;
-					line-height: 60px;
-				}
-
 				p {
 					color: #7f7f7f;
-					line-height: 20px;
+					margin-top: 14px;
 				}
 			}
 		}
