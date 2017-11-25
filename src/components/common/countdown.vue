@@ -94,7 +94,7 @@
 				line-height:20px;
 				color:white;
 				text-align:center;
-				background-color:red;
+				background-color:#d43328;
 				font-size:12px;
 				over-flow:hidden;
 			}

@@ -53,7 +53,7 @@
 
 		.title {
 			text-align:center;
-			color:red;
+			color:#d43328;
 			width:100%;
 			display:block;
 			font-size:12px;
@@ -73,7 +73,7 @@
 				background-color:#E5E5E5;
 
 				.current {
-					background-color:red;
+					background-color:#d43328;
 					height: 100%;
 				}
 			}
