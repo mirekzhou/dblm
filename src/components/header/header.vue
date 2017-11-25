@@ -276,12 +276,12 @@
 						display: inline-block;
 						height: $section2Height;
 						line-height: $section2Height;
-						margin-left: 20px;
+						margin-left: 18px;
 
 						ul {
 							display: inline-block;
 							list-style: none;
-							margin-left: 10px;
+							margin-left: 18x;
 
 							li {
 								background: rgba(0, 0, 0, .2);
@@ -291,9 +291,13 @@
 								display: inline-block;
 								height: 25px;
 								line-height: 25px;
-								margin-left: 10px;
+								margin-left: 15px;
 								text-align: center;
-								width: 30px;
+								width: 25px;
+
+								&:first-child {
+									margin-left: 0;
+								}
 							}
 						}
 
