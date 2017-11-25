@@ -53,6 +53,14 @@ export default new VueRouter({
 			component: function (resolve) {
 				require(['../components/help/help.vue'], resolve);
 			}
+		},
+		{
+			path: '/draw',
+			name: 'draw',
+			component: function (resolve) {
+				require(['../components/draw/detail/page.vue'], resolve);
+			}
 		}
+
 	]
 });
