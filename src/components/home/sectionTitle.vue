@@ -1,6 +1,15 @@
 <template>
-	<div class="section-title">
-		{{title}}
+	<div class="section-title" :style="{borderLeft:sectionData.border}" v-if="sectionData">
+		<div class="icon-title">
+			<i :style="{width:sectionData.width+'px',height:sectionData.height+'px',
+							     backgroundPosition: sectionData.iconPosition}"></i>
+			<span  :style="{color:sectionData.color,}">{{title}}</span>
+		</div>
+
+		<div class="more" v-show="sectionData.isMore">
+			<i></i>
+			<span>更多</span>
+		</div>
 	</div>
 </template>
 
@@ -9,11 +18,13 @@
 		name: 'section-title',
 
 		props: [
-			'title'
+			'title',
+			'sectionData'
 		],
 
 		data: function () {
 			return {
+				border: '3px solid #d53328'  
 			}
 		},
 
@@ -24,6 +35,36 @@
 
 <style lang="scss" scoped>
 	.section-title {
-		color: #000;
+		height: 57px;
+		background: url("../../assets/sectionTitleBG.png") no-repeat;
+		padding-top: 15px;
+		position: relative;
+		
+		.icon-title {
+			width: 140px;
+			margin: 0 auto;
+
+			i {
+				display: inline-block;
+				background: url("../../assets/common-sprite.png");
+				vertical-align: top;
+				margin-right: 10px;
+			}
+		}
+
+		.more {
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translate(0,-50%);		
+
+			i {
+				width: 16px;
+				height: 16px;
+				display: inline-block;
+				background: url("../../assets/common-sprite.png") 0 -132px;
+				vertical-align: bottom;
+			}
+		}
 	}
 </style>

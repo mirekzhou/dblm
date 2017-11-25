@@ -1,5 +1,5 @@
 <template>
-	<div class="header">
+	<div class="header wrapper">
 		<div class="section1">
 			<div class="wrapper">
 				<div class="left-part">
