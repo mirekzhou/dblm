@@ -2,23 +2,57 @@
 	<div class="header">
 		<div class="section1">
 			<div class="wrapper">
-				<div class="text" v-on:click="redirectTo('/userCenter')">个人中心</div>
+				<div class="left-part">
+					<div class="logo">
+						<img src="../../assets/logo.png">
+					</div>
 
-				<div class="slash">/</div>
+					<ul>
+						<li>
+							<span class="icon-shield">免</span>
+							<span class="text">免费参与, 0元夺宝</span>
+						</li>
 
-				<div class="text" v-on:click="redirectTo('/winRecords')">
-					中奖信息({{winMessageCount}})
+						<li>
+							<span class="icon-shield">公</span>
+							<span class="text">开奖公开，中奖透明</span>
+						</li>
+
+						<li>
+							<span class="icon-shield">正</span>
+							<span class="text">采购正品，品质夺宝</span>
+						</li>
+
+						<div class="clear"></div>
+					</ul>
+
+					<div class="clear"></div>
 				</div>
 
-				<div class="slash">/</div>
+				<div class="right-part">
+					<div class="text" v-on:click="redirectTo('/userCenter')">
+						<span>个人中心</span>
+						<span class="down-arrow"></span>
+						<ul class="float-window">
+						</ul>
+					</div>
 
-				<div class="text" v-on:click="redirectTo('/register')">夺宝记录</div>
+					<div class="slash">/</div>
 
-				<div class="slash">/</div>
+					<div class="text" v-on:click="redirectTo('/winRecords')">
+						中奖信息({{winMessageCount}})
+					</div>
 
-				<div class="text" v-on:click="redirectTo('/login')">
-					<span>你好,夺宝</span>
-					<span class="red-highlight">请登录</span>
+					<div class="slash">/</div>
+
+					<div class="text" v-on:click="redirectTo('/register')">夺宝记录</div>
+
+					<div class="slash">/</div>
+
+					<div class="text" v-on:click="redirectTo('/login')">
+						<span>你好,夺宝</span>
+						<span class="red-highlight">请登录</span>
+					</div>
 				</div>
 
 				<div class="clear"></div>
@@ -123,21 +157,72 @@
 			width: 100%;
 
 			.wrapper {
+				height: 100%;
 				width: $wrapperWidth;
 				margin: 0 auto;
 
-				.text {
-					cursor: pointer;
-					float: right;
+				.left-part {
+					float: left;
+					height: 100%;
 
-					.red-highlight {
-						color: #d53328;
+					.logo {
+						float: left;
+						margin-top: 11px;
+						width: 158px;
+					}
+
+					ul {
+						display: inline-block;
+						float: left;
+						list-style: none;
+						margin-left: 28px;
+
+						li {
+							float: left;
+							height: $section1Height;
+							line-height: $section1Height;
+							margin-left: 12px;
+
+							.icon-shield {
+								background-image: url(../../assets/common-sprite.png);
+								background-position: 0 0;
+								color: #FFF;
+								cursor: pointer;
+								display: inline-block;
+								height: 36px;
+								line-height: 36px;
+								text-align: center;
+								vertical-align: middle;
+								width: 30px;
+							}
+
+							&:first-child {
+								margin-left: 0;
+							}
+						}
 					}
 				}
 
-				.slash {
+				.right-part {
 					float: right;
-					margin: 0 8px;
+
+					.text {
+						cursor: pointer;
+						float: right;
+
+						.red-highlight {
+							color: #d53328;
+						}
+
+						.down-arrow {
+
+						}
+					}
+
+					.slash {
+						float: right;
+						margin: 0 8px;
+					}
 				}
 			}
 		}

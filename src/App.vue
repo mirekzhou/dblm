@@ -1,7 +1,6 @@
 <template>
 	<div id="app">
 		<my-header></my-header>
-<!-- 		<breaking-news></breaking-news> -->
 
 		<transition name="fade">
 		    <keep-alive>
@@ -11,10 +10,11 @@
 
 		<my-footer></my-footer>
 
-		<suspension></suspension>
-<!-- 		<login></login>
-		<register></register> -->
-		<notifier :show="showToast" :toastr="toastr"></notifier>
+<!-- 		<suspension></suspension>
+		<breaking-news></breaking-news>
+		<login></login>
+		<register></register>
+		<notifier :show="showToast" :toastr="toastr"></notifier> -->
 	</div>
 </template>
 
