@@ -34,6 +34,8 @@
 						<span>个人中心</span>
 						<span class="down-arrow"></span>
 						<ul class="float-window">
+							<li>
+							</li>
 						</ul>
 					</div>
 
@@ -74,19 +76,17 @@
 					</li>
 					<li>
 						<router-link to="/help">
-							<span>帮助中心</span>
+							<span>夺宝指南</span>
 						</router-link>
 					</li>
 				</ul>
 
 				<ul class="right-part">
 					<li>
-						<span>夺宝记录</span>
+						<span>累计夺宝</span>
 					</li>
 
 					<li>
-						<span>累计参与</span>
-
 						<ul>
 							<li v-for="item in times">
 								<span>{{item}}</span>
@@ -273,7 +273,6 @@
 					list-style: none;
 
 					li {
-						color: #ee0b1f;
 						display: inline-block;
 						height: $section2Height;
 						line-height: $section2Height;
@@ -285,13 +284,13 @@
 							margin-left: 10px;
 
 							li {
-								background-color: #9d9d9d;
+								background: rgba(0, 0, 0, .2);
 								border: none;
 								border-radius: 4px;
 								color: #FFF;
 								display: inline-block;
-								height: 36px;
-								line-height: 36px;
+								height: 25px;
+								line-height: 25px;
 								margin-left: 10px;
 								text-align: center;
 								width: 30px;
