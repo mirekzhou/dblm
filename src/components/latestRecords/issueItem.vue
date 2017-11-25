@@ -2,20 +2,19 @@
 	<div class="issue-item">
 		<div class="left-part">
 			<img :src="item.imgSrc">
-			<div class="issue-date">
-				第{{item.issueDate}}期
-			</div>
 		</div>
 
 		<div class="middle-part">
-			<div class="description">
-				{{item.description}}
-			</div>
+			<div class="issue-date">第{{item.issueDate}}期</div>
+
+			<div class="description">{{item.description}}</div>
 
 			<div class="price">
 				<span>市场参考价</span>
 				<span class="red-highlight">{{item.price}}元</span>
 			</div>
+
+			<div class="deadline">截至时间：{{item.deadline}}</div>
 
 			<amount-progress :item="item.progressData"></amount-progress>
 		</div>
@@ -82,7 +81,7 @@
 
 <style lang="scss" scoped>
 	.issue-item {
-		$itemHeight  :  198px;
+		$itemHeight  :  258px;
 
 		color: #676767;
 		height: $itemHeight;
@@ -96,19 +95,6 @@
 			position: relative;
 			text-align: center;
 
-			.issue-date {
-				background-color: #d43328;
-				color: #FFF;
-				font-size: 12px;
-				height: 24px;
-				line-height: 24px;
-				width: 118px;
-				text-align: center;
-				position: absolute;
-				left: 0;
-				top: 0;
-			}
-
 			img {
 				height: 100%;
 			}
@@ -120,8 +106,22 @@
 			margin-left: 28px;
 			width: 550px;
 
+			.issue-date {
+				background-color: #d43328;
+				color: #FFF;
+				font-size: 12px;
+				height: 24px;
+				line-height: 24px;
+				width: 118px;
+				text-align: center;
+			}
+
+			.description {
+				margin-top: 17px;
+			}
+
 			.price {
-				margin-top: 16px;
+				margin-top: 17px;
 				width: 100%;
 
 				.red-highlight {
@@ -129,8 +129,12 @@
 				}
 			}
 
+			.deadline {
+				margin-top: 16px;
+			}
+
 			.amount-progress {
-				margin-top: 38px;
+				margin-top: 19px;
 			}
 		}
 

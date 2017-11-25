@@ -37,7 +37,7 @@ export default new VueRouter({
 			path: '/latest',
 			name: 'latest',
 			component: function (resolve) {
-				require(['../components/latest/latest.vue'], resolve);
+				require(['../components/latestRecords/latestRecords.vue'], resolve);
 			}
 		},
 		{

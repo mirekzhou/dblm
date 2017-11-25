@@ -1,18 +1,14 @@
 <template>
-	<div class="page issue-records">
+	<div class="page latest-records">
 		<div class="wrapper">
 			<div class="bar">
-				<div class="bar-title">
-					<div>夺宝记录</div>
-				</div>
-
-				<div class="filter">
-					<div class="text">状态:</div>
+				<div class="left-part">
+					<div class="text">开奖时间:</div>
 
 					<ul>
-						<li v-for="item in types"
-							v-bind:class="{'active': item.value == type}"
-							v-on:click="setCurrentType(item.value)">
+						<li v-for="item in timeOptions"
+							v-bind:class="{'active': item.value == time}"
+							v-on:click="setCurrentTime(item.value)">
 							{{item.name}}
 						</li>
 
@@ -20,6 +16,28 @@
 					</ul>
 
 					<div class="clear"></div>
+				</div>
+
+				<div class="middle-part">
+					<div class="text">开奖状态:</div>
+
+					<ul>
+						<li v-for="item in statusOptions"
+							v-bind:class="{'active': item.value == status}"
+							v-on:click="setCurrentStatus(item.value)">
+							{{item.name}}
+						</li>
+
+						<div class="clear"></div>
+					</ul>
+
+					<div class="clear"></div>
+				</div>
+
+				<div class="right-part">
+					<span class="text">商品名称：</span>
+					<input v-model="name" />
+					<span class="search">搜索</span>
 				</div>
 			</div>
 
@@ -37,23 +55,29 @@
 	import IssueItem  from './issueItem';
 
 	export default {
-		name: 'issue-records',
+		name: 'latest-records',
 
 		props: [
 		],
 
 		data: function () {
 			return {
-				types: [
-					{name: '全部',     value: '0'},
-					{name: '夺宝中',   value: '1'},
-					{name: '开奖失败', value: '2'},
-					{name: '等待开奖', value: '3'},
-					{name: '中奖',     value: '4'},
-					{name: '未中奖',   value: '5'}
+				timeOptions: [
+					{name: '全部',      value: '0'},
+					{name: '最近1天',   value: '1'},
+					{name: '最近3天',   value: '2'},
+					{name: '最近1个月', value: '3'}
 				],
 
-				type : '0',
+				statusOptions:  [
+					{name: '全部',      value: '0'},
+					{name: '开奖失败',  value: '1'},
+					{name: '已开奖',    value: '2'}
+				],
+
+				time : '0',
+				status: '0',
+				name: '',
 
 				records: [
 					{
@@ -62,6 +86,7 @@
 						'price': '6388',
 						'drawStatus': 1,
 						'imgSrc': watchImage,
+						'deadline': '09:03:23 2017-12-19',
 						'progressData': {
 							'total': 220,
 							'current': 120
@@ -84,6 +109,7 @@
 						'price': '6388',
 						'drawStatus': 3,
 						'imgSrc': watchImage,
+						'deadline': '09:03:23 2017-12-19',
 						'progressData': {
 							'total': 220,
 							'current': 120
@@ -95,6 +121,7 @@
 						'price': '6388',
 						'drawStatus': 4,
 						'imgSrc': watchImage,
+						'deadline': '09:03:23 2017-12-19',
 						'progressData': {
 							'total': 220,
 							'current': 120
@@ -106,6 +133,7 @@
 						'price': '6388',
 						'drawStatus': 5,
 						'imgSrc': watchImage,
+						'deadline': '09:03:23 2017-12-19',
 						'progressData': {
 							'total': 220,
 							'current': 120
@@ -120,18 +148,21 @@
 		},
 
 		methods: {
-			setCurrentType: function (value) {
-				this.type = value;
+			setCurrentTime: function (value) {
+				this.time = value;
+			},
+
+			setCurrentStatus: function (value) {
+				this.status = value;
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.issue-records {
+	.latest-records {
 		$wrapperWidth   : 1200px;
-		$barTitleHeight : 32px;
-		$filterHeight   : 54px;
+		$barHeight      : 78px;
 
 		.wrapper {
 			height: 100%;
@@ -141,34 +172,24 @@
 			padding-bottom: 20px;
 
 			.bar {
+				border: 1px solid #dedede;
+				color: #676767;
 				font-size: 13px;
+				height: $barHeight;
+				padding-left: 20px;
+				padding-right: 38px;
 				width: 100%;
 
-				.bar-title {
-					border-bottom : 1px solid #d43328;
-					width: 100%;
-
-					div {
-						background-color: #d43328;
-						color: #FFF;
-						height: $barTitleHeight;
-						line-height: $barTitleHeight;
-						text-align: center;
-						width: 94px;
-					}
-				}
-
-				.filter {
-					border: 1px solid #dedede;
-					height: $filterHeight;
-					width: 100%;
+				.left-part {
+					float: left;
+					width: 390px;
 
 					.text {
 						color: #676767;
 						float: left;
-						height: $filterHeight;
-						line-height: $filterHeight;
-						width: 60px;
+						height: $barHeight;
+						line-height: $barHeight;
+						width: 80px;
 						text-align: center;
 					}
 
@@ -180,14 +201,73 @@
 							color: #676767;
 							cursor: pointer;
 							float: left;
-							height: $filterHeight;
-							line-height: $filterHeight;
+							height: $barHeight;
+							line-height: $barHeight;
 							padding: 0 10px;
 						}
 
 						.active {
 							color: #d43328;
 						}
+					}
+				}
+
+				.middle-part {
+					float: left;
+					width: 350px;
+
+					.text {
+						color: #676767;
+						float: left;
+						height: $barHeight;
+						line-height: $barHeight;
+						width: 80px;
+						text-align: center;
+					}
+
+					ul {
+						float: left;
+						list-style: none;
+
+						li {
+							color: #676767;
+							cursor: pointer;
+							float: left;
+							height: $barHeight;
+							line-height: $barHeight;
+							padding: 0 10px;
+						}
+
+						.active {
+							color: #d43328;
+						}
+					}
+				}
+
+				.right-part {
+					float: right;
+					height: $barHeight;
+					line-height: $barHeight;
+					width: 400px;
+					text-align: right;
+
+					input {
+						height: 22px;
+						text-indent: 10px;
+						width: 220px;
+					}
+
+					.search {
+						background-color: #d43328;
+						color: #FFF;
+						cursor: pointer;
+						display: inline-block;
+						font-size: 12px;
+						height: 28px;
+						line-height: 28px;
+						margin-left: 18px;
+						text-align: center;
+						width: 60px;
 					}
 				}
 			}
