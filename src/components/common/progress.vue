@@ -74,6 +74,7 @@
 			.percent{
 				position:absolute;
 				right:0;
+				top:0;
 			}
 		}
 		
