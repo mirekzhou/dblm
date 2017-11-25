@@ -41,6 +41,11 @@
 
 				<div class="lose" v-if="item.drawStatus == 5">
 				</div>
+
+				<div class="group-failed" v-if="item.drawStatus == 6">
+					<span class="group-failed-icon"></span>
+					<p class="text">未达到参数要求</p>
+				</div>
 			</div>
 		</div>
 
@@ -203,6 +208,22 @@
 					margin-top: 56px;
 					vertical-align: middle;
 					width: 160px;
+				}
+
+				.group-failed {
+					.group-failed-icon {
+						background-image: url(../../assets/draw-status-sprite.png);
+						background-position: -152px -92px;
+						height: 90px;
+						display: inline-block;
+						margin-top: 56px;
+						vertical-align: middle;
+						width: 114px;
+					}
+
+					.text {
+						color: #707070;
+					}
 				}
 			}
 		}

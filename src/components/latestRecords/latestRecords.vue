@@ -84,7 +84,7 @@
 						'issueDate': '20170203112',
 						'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
 						'price': '6388',
-						'drawStatus': 1,
+						'drawStatus': 6,
 						'imgSrc': watchImage,
 						'deadline': '09:03:23 2017-12-19',
 						'progressData': {
