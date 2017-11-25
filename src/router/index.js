@@ -67,7 +67,13 @@ export default new VueRouter({
 			component: function (resolve) {
 				require(['../components/draw/detail/page.vue'], resolve);
 			}
+		},
+		{
+			path: '/stationMessage',
+			name: 'stationMessage',
+			component: function (resolve) {
+				require(['../components/stationMessage/stationMessage.vue'], resolve);
+			}
 		}
-
 	]
 });
