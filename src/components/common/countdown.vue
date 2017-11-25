@@ -1,12 +1,17 @@
 <template>
 	<div class="count-down">
-		<span>{{formatTimeString(getTime.days)}}天</span>
-		<i>：</i>
-		<span>{{formatTimeString(getTime.hours)}}</span>
-		<i>：</i>
-		<span>{{formatTimeString(getTime.minutes)}}</span>
-		<i>：</i>
-		<span>{{formatTimeString(getTime.seconds)}}</span>
+		<div class="content">
+			<label>距离结束</label>
+			<span>{{getTime.days}}天</span>
+			<i>：</i>
+			<span>{{formatTimeString(getTime.hours)}}</span>
+			<i>：</i>
+			<span>{{formatTimeString(getTime.minutes)}}</span>
+			<i>：</i>
+			<span>{{formatTimeString(getTime.seconds)}}</span>
+		</div>
+		<div class="desc">{{desc}}</div>
+		
 	</div>
 </template>
 
@@ -15,7 +20,8 @@
 		name: 'count-down',
 
 		props: {
-			seconds:Number 
+			seconds:Number,
+			desc:String
 		},
 
 		data: function () {
@@ -72,24 +78,41 @@
 <style lang="scss" scoped>
 	.count-down {
 		color: #000;
-		span {
-			display:inline-block;
-			width:20px;
-			height:20px;
-			line-height:20px;
-			color:white;
-			text-align:center;
-			background-color:red;
-			font-size:12px;
-			over-flow:hidden;
+		border:1px solid #F0F0F0;
+		width:550px;
+		padding:10px 50px 5px 50px;
+
+		.content {
+			label {
+				margin-right:5px;
+			}
+
+			span {
+				display:inline-block;
+				width:20px;
+				height:20px;
+				line-height:20px;
+				color:white;
+				text-align:center;
+				background-color:red;
+				font-size:12px;
+				over-flow:hidden;
+			}
+
+			i {
+				display:inline-block;
+				width:20px;
+				height:20px;
+				line-height:20px;
+				color:red;
+				font-style: normal;
+			}
 		}
-		i {
-			display:inline-block;
-			width:20px;
-			height:20px;
-			line-height:20px;
-			color:red;
-			font-style: normal;
+		
+		.desc {
+			margin-top:10px;
+			font-size:12px;
+			color:#707070;
 		}
 	}
 </style>

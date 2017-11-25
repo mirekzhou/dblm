@@ -1,14 +1,14 @@
 p<template>
     <div class="page latest">
     <div class="wrapper">
-        <progres :data="datas"></progres>
-        <countDown  :seconds="seconds"></countDown>
+        <progres :item="datas"></progres>
+        <countDown  :seconds="seconds" :desc="desc"></countDown>
     </div>
     </div>
 </template>
 
 <script>
-    import progres    from '../../common/progress';
+    import progres    from '../../common/amountProgress';
     import countDown    from '../../common/countdown';
     export default {
         name: 'latest',
@@ -27,7 +27,8 @@ p<template>
                     total:100,
                     current:50
                 },
-                seconds:(new Date('2017-11-30')-new Date())
+                seconds:(new Date('2017-11-30')-new Date()),
+                desc:'倒计时结束时参与人数达到或超过总需人数，则随机抽取1人获得该商品'
             }
         },
         components: {
