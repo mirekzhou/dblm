@@ -47,7 +47,7 @@
 
 					<div class="slash">/</div>
 
-					<div class="text" v-on:click="redirectTo('/register')">夺宝记录</div>
+					<div class="text" v-on:click="redirectTo('/issueRecords')">夺宝记录</div>
 
 					<div class="slash">/</div>
 

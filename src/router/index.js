@@ -48,6 +48,13 @@ export default new VueRouter({
 			}
 		},
 		{
+			path: '/issueRecords',
+			name: 'issueRecords',
+			component: function (resolve) {
+				require(['../components/issueRecords/issueRecords.vue'], resolve);
+			}
+		},
+		{
 			path: '/help',
 			name: 'help',
 			component: function (resolve) {
