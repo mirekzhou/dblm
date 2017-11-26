@@ -1,5 +1,5 @@
 <template>
-	<div class="treasure">
+	<div class="treasure clear">
 			<div class="treasure-inner" v-for="item in treasureData">
 				<div class="cycle">
 					<p>{{item.cycle}}</p>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+	import '../../scss/common.scss';
 	export default {
 		name: 'treasure',
 
@@ -58,6 +59,7 @@
 	$boxWidth		: 	 510px;
 	$imgHeight		:	 275px;
 	.treasure {
+		margin-top: 20px;
 		color: #6e6e6e;
 
 		.treasure-inner {
@@ -71,7 +73,6 @@
 			&:nth-child(2n) {
 				float: right;
 			}
-
 
 			.cycle {
 				background: #d53328;
