@@ -1,7 +1,7 @@
 <template>
     <div class="rank">
         <div class="left-part">
-            <div class="left-header">幸运码排行榜</div>
+            <div class="left-header"><i class="rank-icon"></i><span>幸运码排行榜</span></div>
             <ul>
                 <li class="flex flex-center-y" v-for="item in rankList">
                     <div class="left"><img :src="item.img"></div>
@@ -133,10 +133,20 @@
 
             .left-header {
                 background-color:#d43328;
-                height:40px;
-                line-height:40px;
+                padding:9px 0;
                 text-align:center;
                 color:#fff;
+                .rank-icon {
+                    width: 25px;
+                    height: 22px;
+                    color: #ffffff;
+                    display:inline-block;
+                    margin-right:15px;
+                    background-image: url(../../../assets/common-sprite.png);
+                    background-position:-40px -190px;
+                    background-repeat: no-repeat;
+                    vertical-align: top;
+                }
             }
 
             li{

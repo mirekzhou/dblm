@@ -2,9 +2,13 @@
     <div class="award">
         <div class="title">夺宝联盟开奖区</div>
         <div class="content">
-            <div class="user">
-                <strong>中奖用户：139****1234</strong> <strong>中奖号码：8485743897594375</strong>
-                <p>共获得幸运码200个</p>
+            <div class="user flex flex-center-xy">
+                <div class="user-header"></div>
+                <div class="prize-info">
+                    <strong>中奖用户：139****1234</strong> <strong>中奖号码：8485743897594375</strong>
+                    <p>共获得幸运码200个</p>
+                </div>
+                
             </div>
             <div class="separate-line">
                 <span class="detail-title">计算详情</span>
@@ -21,7 +25,7 @@
 </template>
 
 <script>
-
+    import userImg from '../../../assets/header.png';
     export default {
         name: 'page',
 
@@ -34,7 +38,8 @@
                     {title:'werjiewr',price:1214},
                     {title:'werjiewr',price:1214},
                     {title:'werjiewr',price:1214}
-                ]
+                ],
+                userImg:userImg
             }
         },
 
@@ -63,17 +68,30 @@
                 padding:45px 0;
                 height:125px;
                 text-align: center;
-                strong {
-                    font-size:16px;
-                    color:#d43328;
-                    +strong{
-                        margin-left:10px;
+                .user-header{
+                    width: 60px;
+                    height: 60px;
+                    margin-right:15px;
+                    background-image: url(../../../assets/prize_info_header.png);
+                    background-repeat: no-repeat;
+                    vertical-align: top;
+                }
+                .prize-info {
+                    text-align:left;
+                    strong {
+                        font-size:16px;
+                        color:#d43328;
+                        +strong{
+                            margin-left:10px;
+                        }
                     }
+                    p{
+                        color:#666;;
+                        font-size:12px;
+                    }
+
                 }
-                p{
-                    color:#707070;;
-                    font-size:12px;
-                }
+                
             }
 
             .separate-line{
