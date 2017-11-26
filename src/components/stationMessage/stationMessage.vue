@@ -1,11 +1,11 @@
 <template>
-	<div class="progress">
+	<div class="station-message">
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'progress',
+		name: 'station-message',
 
 		props: [
 		],
@@ -21,7 +21,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.progress {
+	.station-message {
 		color: #000;
 	}
 </style>

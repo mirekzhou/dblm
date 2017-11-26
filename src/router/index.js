@@ -37,7 +37,7 @@ export default new VueRouter({
 			path: '/latest',
 			name: 'latest',
 			component: function (resolve) {
-				require(['../components/latest/latest.vue'], resolve);
+				require(['../components/latestRecords/latestRecords.vue'], resolve);
 			}
 		},
 		{
@@ -48,10 +48,31 @@ export default new VueRouter({
 			}
 		},
 		{
+			path: '/issueRecords',
+			name: 'issueRecords',
+			component: function (resolve) {
+				require(['../components/issueRecords/issueRecords.vue'], resolve);
+			}
+		},
+		{
 			path: '/help',
 			name: 'help',
 			component: function (resolve) {
 				require(['../components/help/help.vue'], resolve);
+			}
+		},
+		{
+			path: '/draw',
+			name: 'draw',
+			component: function (resolve) {
+				require(['../components/draw/detail/page.vue'], resolve);
+			}
+		},
+		{
+			path: '/stationMessage',
+			name: 'stationMessage',
+			component: function (resolve) {
+				require(['../components/stationMessage/stationMessage.vue'], resolve);
 			}
 		}
 	]
