@@ -86,10 +86,11 @@
 			}
 
 			.wrapper {
-				margin: 0 auto;
 				height: 100%;
-				position: absolute;
-				top: 0;
+				width: 1200px;
+				margin: 0 auto;
+				position: relative;
+				top: -100%;
 			}
 		}
 	}

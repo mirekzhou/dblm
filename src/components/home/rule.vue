@@ -72,7 +72,7 @@
 		padding: 15px 0 0 12px;
 		margin-top: 6px;
 		font-size: 12px;
-		background: rgba(255,255,255,0.7);
+		background: #f6f2ed;
 
 		.rule-wrap {
 			margin: 0 auto;

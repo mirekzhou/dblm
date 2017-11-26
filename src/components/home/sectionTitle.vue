@@ -9,13 +9,17 @@
 		</div>
 
 		<div class="more" v-show="sectionData.isMore">
-			<i></i>
-			<span>更多</span>
+			<router-link to="/latest">
+				<i></i>
+				<span>更多</span>
+			</router-link>
+
 		</div>
 	</div>
 </template>
 
 <script>
+	import '../../scss/common.scss';
 	export default {
 		name: 'section-title',
 
@@ -58,14 +62,21 @@
 			margin-right: 10px;
 			right: 0;
 			top: 50%;
-			transform: translate(0,-50%);		
+			transform: translate(0,-50%);	
+			cursor: pointer;	
 
-			i {
-				width: 16px;
-				height: 16px;
-				display: inline-block;
-				background: url("../../assets/common-sprite.png") 0 -132px;
-				vertical-align: bottom;
+			a {
+				text-decoration: none;
+				color: #484848;
+				
+				i {
+					width: 16px;
+					height: 16px;
+					display: inline-block;
+					background: url("../../assets/common-sprite.png") 0 -132px;
+					vertical-align: middle;
+					margin: -2px 2px 0 0;
+				}
 			}
 		}
 	}
