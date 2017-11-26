@@ -29,7 +29,7 @@
 					isMore: true,
 					width: 25,
 					height: 25,
-					border: '3px solid #d53328'
+					border: '8px solid #d53328'
 				}
 			}
 		},

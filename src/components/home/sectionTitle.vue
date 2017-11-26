@@ -24,7 +24,6 @@
 
 		data: function () {
 			return {
-				border: '3px solid #d53328'  
 			}
 		},
 

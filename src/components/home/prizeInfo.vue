@@ -18,6 +18,12 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="pagination">
+			<span class="active"></span>
+			<span></span>
+			<span></span>
+		</div>
 	</div>
 </template>
 
@@ -67,11 +73,16 @@
 <style lang="scss" scoped>
 	$infoWidth		:	384px;
 	.prize-info {
+		margin-top: 20px;
+		position: relative;
+
 		.box {
 			position: relative;
 			height: 339px;
 			float: left;
 			margin-right: 5px;
+			border-radius: 8px;
+			overflow: hidden;
 
 			img {
 				width: $infoWidth;
@@ -89,7 +100,7 @@
 				.info-inner {
 					width: 272px;
 					height: 54px;
-					margin: 20px 0px 0 50px;
+					margin: 23px 0px 0 50px;
 
 					i {
 						display: inline-block;
@@ -124,5 +135,30 @@
 			}
 		}
 
+
+		.pagination {
+			position: absolute;
+			width: 14px;
+			height: 74px;
+			top: 0;
+			right: 0;
+
+			span {
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				border: 1px solid #d53328;
+				border-radius: 50%;
+				margin-top: 10px;
+
+				&:first-child {
+					margin-top: 0;
+				}
+
+				&.active {
+					background: #d53328;
+				}
+			}
+		}
 	}
 </style>

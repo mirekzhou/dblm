@@ -5,9 +5,6 @@
 			</section-title>
 			<treasure></treasure>
 		</div>
-
-
-	
 	</div>
 </template>
 
@@ -31,7 +28,7 @@
 					isMore: false,
 					width: 29,
 					height: 25,
-					border: '3px solid #d55528'
+					border: '8px solid #d55528'
 				}
 			}
 		},
