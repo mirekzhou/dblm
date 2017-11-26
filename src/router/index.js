@@ -55,6 +55,13 @@ export default new VueRouter({
 			}
 		},
 		{
+			path: '/treasureDetail',
+			name: 'treasureDetail',
+			component: function (resolve) {
+				require(['../components/treasureDetail/treasureDetail.vue'], resolve);
+			}
+		},
+		{
 			path: '/help',
 			name: 'help',
 			component: function (resolve) {
