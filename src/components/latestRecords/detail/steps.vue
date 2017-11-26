@@ -3,29 +3,29 @@
         <div class="title">夺宝流程</div>
         <div class="content">
             <ul class="flex steps-list">
-                <li class="flex flex-full steps-item">
-                    <div><i class="first"></i></div>
-                    <div class="flex-full extra-page">
+                <li class="flex flex-center-y steps-item first">
+                    <i></i>
+                    <div class="flex-full item-desc">
                         <p class="item-title">参与夺宝</p>
                         <div class="item-text">选择商品参与夺宝</div>
                     </div>
-                    <div class="flex-full"></div>
+                    <div class="flex-full separate-arrow" ></div>
                 </li>
-                <li class="flex flex-full steps-item">
-                    <div><i class="second"></i></div>
-                    <div class="flex-full extra-page">
+                <li class="flex flex-full flex-center-y steps-item second">
+                    <i class="second"></i>
+                    <div class="flex-full">
                         <p class="item-title">分享夺宝链接</p>
                         <div class="item-text">选择商品参与夺宝选择商品参与夺宝选择商品参与夺宝</div>
                     </div>
-                    <div class="flex-full"></div>
+                    <div class="flex-full separate-arrow" ></div>
                 </li>
-                <li class="flex flex-full steps-item">
-                    <div><i class="last"></i></div>
+                <li class="flex flex-full flex-center-y steps-item last">
+                    <i></i>
                     <div class="flex-full">
                         <p class="item-title">查看是否中奖</p>
                         <div class="item-text">选择商品参与夺宝选择商品参与夺宝选择商品参与夺宝选择商品参与夺宝</div>
                     </div>
-                    <div class="flex-full"></div>
+                    
                 </li>
             </ul>
         </div>
@@ -87,19 +87,24 @@
                         background-image: url(../../../assets/common-sprite.png);
                         background-size: auto;
                         background-repeat: no-repeat;
+                    } 
+
+                    .separate-arrow {
+                        height:30px;
+                        width:40px;
+                        max-width: 40px;
+                        margin:0 30px;
+                        background-image: url(../../../assets/common-sprite.png);
+                        background-max-size: auto;
+                        background-position:-35px -132px;
+                        background-repeat: no-repeat;
                     }
 
-                    .first {
-                        background-position:-73px -58px;
-                    }
+                    
 
-                    .second {
-                        background-position:-73px -26px;
-                    }
+                    
 
-                    .last {
-                        background-position:-72px 5px;
-                    }
+                    
 
                     .item-title {
                         font-size:14px;
@@ -110,6 +115,31 @@
                     .item-text {
                         font-size:12px;
                         color:#707070;
+                    }
+                }
+
+                .first {
+
+                    i {
+                        background-position:-73px -58px;
+                    }
+
+                    .item-desc {
+                        width:100px;
+                        max-width:100px;
+                    }
+                }
+
+                .second {
+                    i {
+                        background-position:-73px -26px;
+                    }
+                    
+                }
+
+                .last {
+                    i {
+                        background-position:-72px 5px;
                     }
                 }
             }
