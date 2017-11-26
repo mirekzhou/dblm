@@ -3,17 +3,18 @@
 		<div class="wrapper">
 			<section-title title="最新开奖" :sectionData="sectionData">
 			</section-title>
-			<prize-info></prize-info>
+			<prize-info :prizeInfoData='prizeInfoData'></prize-info>
 		</div>
-
-
 	</div>
 </template>
 
 <script>
-	import SectionTitle  from './sectionTitle';
-	import PrizeInfo from './prizeInfo';
+	import SectionTitle 	 from './sectionTitle';
+	import PrizeInfo 		 from './prizeInfo';
+	import prize_info_1		 from '../../assets/prize_info_1.jpg';
+	import prize_info_2		 from '../../assets/prize_info_2.jpg';
 	import '../../scss/common.scss';
+
 
 	export default {
 		name: 'new-prize',
@@ -30,7 +31,33 @@
 					width: 25,
 					height: 25,
 					border: '8px solid #d53328'
-				}
+				},
+
+				prizeInfoData: [
+					{
+						imgUrl: prize_info_1,
+						title: '品尝芳醇的桂花之魄',
+						cycle: '第20170923993期',
+						phoneNumber: '13657221474',
+						winNumber: '12000',
+
+					},
+					{
+						imgUrl: prize_info_2,
+						title: '品尝芳醇的桂花之魄',
+						cycle: '第20170923993期',
+						phoneNumber: '13657221474',
+						winNumber: '12000'
+
+					},
+					{
+						imgUrl: prize_info_1,
+						title: '品尝芳醇的桂花之魄',
+						cycle: '第20170923993期',
+						phoneNumber: '13657221474',
+						winNumber: '12000'
+					}
+				]
 			}
 		},
 

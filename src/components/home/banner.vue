@@ -1,6 +1,6 @@
 <template>
 	<div class="banner">
-		<div class="banner-wraper wrapper">
+		<div class="banner-wraper">
 			<swiper :options="swiperOption"  ref="mySwiper">  
 				<swiper-slide v-for="item in banners" :key="item">  
 					<img :src="item" style="width:100% !important">
@@ -8,16 +8,18 @@
 				<div class="swiper-pagination" slot="pagination"></div>  
 			</swiper>  
 
-			<rule></rule>
+			<div class="wrapper">
+				<rule></rule>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 	require('swiper/dist/css/swiper.css');
-	import Rule from './rule'
-	import { swiper, swiperSlide } from 'vue-awesome-swiper';
-	import homeBanner from '../../assets/banner.png';
+	import Rule 					 from	 './rule';
+	import homeBanner  			  	 from 	 '../../assets/banner.jpg';
+	import { swiper, swiperSlide } 	 from 	 'vue-awesome-swiper';
 	import '../../scss/common.scss';
 
 	export default {
@@ -42,8 +44,6 @@
 					homeBanner,
 					homeBanner
 				],
-
-	
 			}
 		},
 
@@ -64,17 +64,14 @@
 	$countdownTop           : 12px;
 
 	.banner {
-		margin-top: 120px;
 		width: 100%;
 		height: 424px;
 		float: left;
 		background-color: #eae0d4;
 
 		.banner-wraper {
-			margin: 0 auto;
 			height: 100%;
 			position: relative;
-
 
 			.swiper-container {
 				height: 100%;
@@ -86,6 +83,13 @@
 						height: 100%;
 					}
 				}
+			}
+
+			.wrapper {
+				margin: 0 auto;
+				height: 100%;
+				position: absolute;
+				top: 0;
 			}
 		}
 	}

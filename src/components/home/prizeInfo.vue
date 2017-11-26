@@ -1,7 +1,7 @@
 <template>
 	<div class="prize-info clear">
 		<div class="box" v-for="item in prizeInfoData">
-			<img src="../../assets/prize_info_1.jpg" alt="">
+			<img :src="item.imgUrl" alt="">
 
 			<div class="shade">
 				<p>{{item.title}}</p>
@@ -33,35 +33,12 @@
 		name: 'prize-info',
 
 		props: [
+			'prizeInfoData'
 		],
 
 		data: function () {
 			return {
-				prizeInfoData: [
-					{
-						imgUrl: '../../assets/prize_info_1.jpg',
-						title: '品尝芳醇的桂花之魄',
-						cycle: '第20170923993期',
-						phoneNumber: '13657221474',
-						winNumber: '12000'
-
-					},
-					{
-						imgUrl: '../../assets/prize_info_1.jpg',
-						title: '品尝芳醇的桂花之魄',
-						cycle: '第20170923993期',
-						phoneNumber: '13657221474',
-						winNumber: '12000'
-
-					},
-					{
-						imgUrl: '../../assets/prize_info_1.jpg',
-						title: '品尝芳醇的桂花之魄',
-						cycle: '第20170923993期',
-						phoneNumber: '13657221474',
-						winNumber: '12000'
-					}
-				]
+				
 			}
 		},
 

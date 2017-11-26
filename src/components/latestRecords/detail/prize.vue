@@ -1,17 +1,20 @@
 <template>
     <div class="prize">
         <div class="left-part">
-            <div class="img-list">
-                <ul>
-                    <li class="img-item" v-for="item in imgList">
-                        <img :src="item.url">
-                    </li>
-                </ul>
-                <div></div>
+            <div class=left-column>
+                <div class="img-list">
+                    <ul class="progress-list"  v-bind:style="{ top: -100*moveCount + 'px' }" ref="move">
+                        <li class="img-item" v-for="item in imgList">
+                            <img :src="item.url">
+                        </li>
+                    </ul>
+                </div>
+                <div class="move-up" v-on:click="moveUp()"></div>
             </div>
             <div class="img-box">
                 <img :src="image">
             </div>
+            
         </div>
         <div class="right-part">
             <div class='item-title'>[低至14382]低至低至低至低至低至低至低至低至</div>
@@ -31,9 +34,12 @@
     import awardImage from '../../../assets/1.jpg';
     import imgItem1 from '../../../assets/2.jpg';
     import imgItem2 from '../../../assets/3.jpg';
+    import arrow from '../../../assets/page-left-arrow.png';
+   
     
     import progres    from '../../common/amountProgress';
     import countDown    from '../../common/countdown';
+    var count=0;
     export default {
         name: 'page',
 
@@ -70,8 +76,14 @@
                     {
                         id:'2',
                         url:imgItem2
+                    },
+                    {
+                        id:'2',
+                        url:imgItem2
                     }
-                ]
+                ],
+                moveCount:count,
+                arrowImg:arrow
             }
         },
 
@@ -81,6 +93,13 @@
         },
 
         methods: {
+            moveUp:function(){
+                var len=this.$refs.move.children.length
+                if(len-4>this.moveCount){
+                    ++this.moveCount;
+                }
+                
+            }
         }
     }
 </script>
@@ -88,23 +107,40 @@
 <style lang="scss" scoped>
     .prize   {
         margin-top:30px;
-        height:380px;
-        .left-part{
-            width:474px;
+        height:450px;
+
+        .left-part {
+            position:relative;
+            width:532px;
             height:100%;
             float:left;
 
+            .left-column {
+                position:relative;
+                float:left;
+                height:100%;
+            }
+
             .img-list {
                 float:left;
-                width:70px;
-                height:320px;
+                width:80px;
+                height:410px;
+                overflow:hidden;
+                position:relative;
+
+                .progress-list {
+                    position:absolute;
+                }
+
                 .img-item{
+
                     + .img-item {
                         margin-top:20px;
                     }
-                    img{
-                        width:70px;
-                        height:70px;
+
+                    img {
+                        width:80px;
+                        height:80px;
                     }
                 } 
             }
@@ -112,21 +148,41 @@
             .img-box {
                 float:left;
                 img{
-                    width:350px;
-                    height:380px;
+                    width:450px;
+                    height:450px;
                     border:1px solid #F0F0F0;
+                }
+            }
+            .move-up {
+                position:relative;
+                height:30px;
+                width:100%;
+                float:left;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    bottom:10px;
+                    left: 35px;
+                    display: block;
+                    width: 8px;
+                    height: 8px;
+                    margin-top: -5px;
+                    border-bottom: 2px solid;
+                    border-right: 2px solid;
+                    border-color: #afafaf;
+                    -webkit-transform: rotate(45deg);
+                    -moz-transform: rotate(45deg);
+                    -o-transform: rotate(45deg);
+                    transform: rotate(45deg);
                 }
             }
         }
 
-        .right-part{
+        .right-part {
             width:550px;
             height:100%;
             float:left;
-            .item-title {
-
-
-            }
+            margin-left:90px;
 
             .item-desc {
                 font-size:12px;
@@ -134,7 +190,7 @@
                 margin:5px 0;
             }
 
-            .item-no{
+            .item-no {
                 position:relative;
                 background-color: #d43328;
                 color: #FFF;

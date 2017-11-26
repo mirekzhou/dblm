@@ -39,7 +39,8 @@
 </template>
 
 <script>
-    import userImg from '../../../assets/3.jpg';
+    import userImg from '../../../assets/header.png';
+    import prizeHeader from '../../../assets/prize_info_header.png';
     export default {
         name: 'page',
 
@@ -51,17 +52,17 @@
                 userImg:userImg,
                 rankList:[
                     {
-                        img:userImg,
+                        img:prizeHeader,
                         phone:'139****1234',
                         luckyQty:200
                     },
                     {
-                        img:userImg,
+                        img:prizeHeader,
                         phone:'139****1234',
                         luckyQty:200
                     },
                     {
-                        img:userImg,
+                        img:prizeHeader,
                         phone:'139****1234',
                         luckyQty:200
                     }
@@ -153,7 +154,7 @@
         }
 
         .right-part {
-            width:760px;
+            width:940px;
             height:100%;
             float:left;
             text-align:center;

@@ -1,8 +1,10 @@
 <template>
 	<div class="section-title" :style="{borderLeft:sectionData.border}" v-if="sectionData">
 		<div class="icon-title">
-			<i :style="{width:sectionData.width+'px',height:sectionData.height+'px',
-							     backgroundPosition: sectionData.iconPosition}"></i>
+			<i :style="{ width:sectionData.width+'px', 
+						 height:sectionData.height+'px',
+				         backgroundPosition: sectionData.iconPosition}">
+	        </i>
 			<span  :style="{color:sectionData.color,}">{{title}}</span>
 		</div>
 
@@ -53,6 +55,7 @@
 
 		.more {
 			position: absolute;
+			margin-right: 10px;
 			right: 0;
 			top: 50%;
 			transform: translate(0,-50%);		
