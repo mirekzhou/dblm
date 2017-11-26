@@ -9,7 +9,7 @@
             <div class='item-no'>第142141241期</div>
             <div class="item-price">参考价格：<span class="price">3432432元</span></div>
             <div class="item-progress"><progres :item="datas"></progres></div>
-            <countDown  :seconds="seconds" :desc="desc"></countDown>
+            <countDown :secs="seconds" :desc="desc"></countDown>
             <div class="item-button">
                 <button class="btn-radius">分享夺宝</button>
             </div>
@@ -72,12 +72,12 @@
             width:550px;
             height:100%;
             float:left;
-            .item-title { 
+            .item-title {
 
 
             }
 
-            .item-desc { 
+            .item-desc {
                 font-size:12px;
                 color:#707070;
                 margin:5px 0;
@@ -138,6 +138,6 @@
         }
 
     }
-    
-    
+
+
 </style>
