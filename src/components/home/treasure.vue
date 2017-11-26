@@ -58,6 +58,7 @@
 <style lang="scss" scoped>
 	$boxWidth		: 	 510px;
 	$imgHeight		:	 275px;
+	
 	.treasure {
 		margin-top: 20px;
 		color: #6e6e6e;
