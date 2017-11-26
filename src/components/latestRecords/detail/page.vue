@@ -1,19 +1,27 @@
 p<template>
-    <div class="page latest">
-    <div class="wrapper">
-        <prize></prize>
-        <steps></steps>
-        <award></award>
-        <rank></rank>
-    </div>
+    <div class="page draw-list">
+        <div class="wrapper">
+            <prize></prize>
+            <joinFlow></joinFlow>
+            <drawZone></drawZone>
+            <div class="bottom-content">
+                <div class="left-part">
+                    <luckyBoard></luckyBoard>
+                </div>
+                <div class="right-part">
+                    <lastList></lastList>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    import steps    from './steps';
-    import award    from './awardRegion';
     import prize    from './prize';
-    import rank    from './rank';
+    import lastList    from '../../common/detailParts/last50';
+    import joinFlow    from '../../common/detailParts/joinFlow';
+    import luckyBoard    from '../../common/detailParts/luckyBoard';
+    import drawZone    from '../../common/detailParts/drawZone';
     
     export default {
         name: 'latest',
@@ -31,10 +39,11 @@ p<template>
             }
         },
         components: {
-            'steps':steps,
-            'award':award,
+            'joinFlow':joinFlow,
+            'drawZone':drawZone,
             'prize':prize,
-            'rank':rank
+            'luckyBoard':luckyBoard,
+            'lastList':lastList
         },
 
         methods: {
@@ -43,43 +52,20 @@ p<template>
 </script>
 
 <style lang="scss" scoped>
-    .latest {
-        color: #000;
-        .line-with-square{
-            position: relative;
-            height: 2px;
-            margin: 15px 0;
-            background-color: #e0e0e0;
-
-            &:after{
-                content:"";
-                position:absolute;
-                top:50%;
-                width:2px;
-                height:2px;
-                border:2px solid #ccc;
-                -webkit-transform: rotate(45deg);
-                -moz-transform: rotate(45deg);
-                -o-transform: rotate(45deg);
-                transform: rotate(45deg);
+    .draw-list{
+        color:#000;
+        .bottom-content {
+            float:left;
+            width:100%;
+            margin-top:30px;
+            margin-bottom:50px;
+            .left-part {
+                float:left;
             }
-
+            .right-part{
+                float:right;
+            }
         }
-        .square-right{
-          &:after{
-          right:0;
-          }
-        }
-        .square-left{
-          &:before{
-          left:0;}
-           
-        }
+        
     }
-
-    h3{
-    margin:0 20px;
-    }
-    
-    
 </style>
