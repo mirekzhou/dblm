@@ -21,7 +21,7 @@
 
 		<div class="right-part">
 			<div class="button-zone">
-				<div class="button" v-on:click="redirectTo('/draw')">查看详情</div>
+				<div class="button" v-on:click="redirectTo('/drawDetail')">查看详情</div>
 			</div>
 
 			<div class="post-zone">

@@ -11,9 +11,9 @@
 					<p class="price">市场参考价：<span>{{item.price}}</span></p>
 						<home-progress :item="item.progressData"></home-progress>
 				</div>
-				
+
 				<div class="treasure-bottom">
-					
+
 					<div class="countdown">
 						<timer :secs="seconds"></timer>
 					</div>
@@ -71,7 +71,7 @@
 <style lang="scss" scoped>
 	$boxWidth		: 	 557px;
 	$imgHeight		:	 275px;
-	
+
 	.treasure {
 		margin-top: 20px;
 		color: #6e6e6e;
@@ -98,12 +98,12 @@
 				height: 34px;
 				color: #fff;
 				font-size: 12px;
-				padding-top: 10px; 
+				padding-top: 10px;
 			}
 
 			.box {
 				width: $boxWidth;
-				margin: 0 auto; 
+				margin: 0 auto;
 				text-align: left;
 
 				img {
@@ -156,7 +156,7 @@
 						background-color: #d53328;
 						overflow: hidden;
 
-						p {	
+						p {
 							margin-top: 12px;
 						}
 					}

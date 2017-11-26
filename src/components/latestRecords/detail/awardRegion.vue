@@ -8,7 +8,7 @@
                     <strong>中奖用户：139****1234</strong> <strong>中奖号码：8485743897594375</strong>
                     <p>共获得幸运码200个</p>
                 </div>
-                
+
             </div>
             <div class="separate-line">
                 <span class="detail-title">计算详情</span>
@@ -19,8 +19,8 @@
                 <p>B=最近一期XXX彩开奖结果=<span class="red">00000（第XXX1期）</span>参与人数=19999人</p>
             </div>
         </div>
-        
-        
+
+
     </div>
 </template>
 
@@ -91,7 +91,7 @@
                     }
 
                 }
-                
+
             }
 
             .separate-line{
@@ -120,7 +120,7 @@
                     }
 
                 }
-                
+
             }
 
             .detail {
@@ -141,6 +141,6 @@
         }
 
     }
-    
-    
+
+
 </style>

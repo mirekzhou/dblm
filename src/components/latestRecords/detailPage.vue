@@ -1,12 +1,11 @@
 <template>
-	<div class="page treasure-detail">
-		宝贝详情区
+	<div class="detail-page">
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'treasure-detail',
+		name: 'detail-page',
 
 		props: [
 		],
@@ -22,6 +21,7 @@
 </script>
 
 <style lang="scss" scoped>
-	.treasure-detail {
+	.detail-page {
+		color: #000;
 	}
 </style>

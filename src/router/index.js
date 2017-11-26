@@ -54,13 +54,13 @@ export default new VueRouter({
 				require(['../components/issueRecords/issueRecords.vue'], resolve);
 			}
 		},
-		{
-			path: '/treasureDetail',
-			name: 'treasureDetail',
-			component: function (resolve) {
-				require(['../components/treasureDetail/treasureDetail.vue'], resolve);
-			}
-		},
+		// {
+		// 	path: '/treasureDetail',
+		// 	name: 'treasureDetail',
+		// 	component: function (resolve) {
+		// 		require(['../components/treasureDetail/treasureDetail.vue'], resolve);
+		// 	}
+		// },
 		{
 			path: '/help',
 			name: 'help',
