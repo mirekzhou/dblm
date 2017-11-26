@@ -7,7 +7,7 @@
 			</div>
 
 			<div class="win-user left" v-for="item in winUserData">
-				<img src="../../assets/header.png" class="left">
+				<img :src="item.imgUrl" class="left">
 				<div class="user-data left">
 					<span>{{item.number}}</span>
 					<span class="prize">{{item.prize}}</span>
@@ -19,6 +19,7 @@
 
 <script>
 	import '../../scss/common.scss';
+	import headerImg from '../../assets/header.png';
 
 	export default {
 		name: 'win-info',
@@ -32,17 +33,17 @@
 					{
 						number: '13257422145',
 						prize: '康师傅来一桶酸菜牛肉24盒装',
-						imgUrl: '../../assets/header.png'
+						imgUrl: headerImg
 					},
 					{
 						number: '13257422145',
 						prize: 'IPHONE8 128G',
-						imgUrl: '../../assets/header.png'
+						imgUrl: headerImg
 					},
 					{
 						number: '13257422145',
 						prize: 'IPHONE8 128G',
-						imgUrl: '../../assets/header.png'
+						imgUrl: headerImg
 					},
 				],
 			}

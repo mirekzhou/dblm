@@ -1,21 +1,20 @@
 <template>
-	<div class="home-page">
-			<banner></banner>
-			<win-info></win-info>
-			<new-prize></new-prize>
-			<snatch-treasure></snatch-treasure>
-			<user-records></user-records>
-
+	<div class="home-page clear">
+		<banner></banner>
+		<win-info></win-info>
+		<new-prize></new-prize>
+		<snatch-treasure></snatch-treasure>
+		<user-records></user-records>
 	</div>
 </template>
 
 <script>
 	import '../../scss/common.scss';
-	import Banner         from './banner';
-	import WinInfo     from './winInfo';
+	import Banner            from './banner';
+	import WinInfo    		 from './winInfo';
 	import newPrize          from './newPrize';
-	import SnatchTreasure      from './snatchTreasure';
-	import UserRecords     from './userRecords';
+	import SnatchTreasure    from './snatchTreasure';
+	import UserRecords       from './userRecords';
 
 	export default {
 		name: 'home-page',
@@ -40,5 +39,6 @@
 
 	.home-page {
 		color: #000;
+		margin-top: 120px;
 	}
 </style>

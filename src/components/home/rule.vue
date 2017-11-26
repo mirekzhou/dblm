@@ -58,11 +58,12 @@
 <style lang="scss" scoped>
 	$ruleInnerWidth			: 228px;
 	$lineWidth 				: 253px;
+
 	.rule {
 		position: absolute;
 		right: 0;
 		top: 0;
-		z-index: 99;
+		z-index: 1;
 		width: 274px;
 		height: 410px;
 		text-align: center;

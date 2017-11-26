@@ -4,50 +4,63 @@
 				<div class="cycle">
 					<p>{{item.cycle}}</p>
 				</div>
+
 				<div class="box">
-					<img src="../../assets/kaijiang.jpg" alt="">
+					<img :src="item.imgUrl" alt="">
 					<p class="prize">{{item.prize}}</p>
 					<p class="price">市场参考价：<span>{{item.price}}</span></p>
-
-					<div class="progress"></div>
+						<home-progress :item="item.progressData"></home-progress>
 				</div>
+				
+				<div class="treasure-bottom">
+					
+					<div class="countdown">
+						<timer :secs="seconds"></timer>
+					</div>
 
-				<div class="countdown"></div>
+					<div class="drawLottery">
+						<div class="draw" v-show="item.drawLotteryStatus === 1">
+							<p>参与夺宝</p>
+						</div>
+
+						<div class="share" v-show="item.drawLotteryStatus === 2">
+							<p>分享夺宝</p>
+						</div>
+
+						<div class="already" v-show="item.drawLotteryStatus === 3">
+							<p>已开奖</p>
+						</div>
+
+						<div class="will-start" v-show="item.drawLotteryStatus === 4">
+							<p>即将开始</p>
+						</div>
+					</div>
+				</div>
 			</div>
-			
 	</div>
 </template>
 
 <script>
+	import HomeProgress 	from './homeProgress';
+	import Timer  			from './timer';
 	import '../../scss/common.scss';
+
 	export default {
 		name: 'treasure',
 
 		data: function () {
 			return {
-				treasureData: [
-					{
-						cycle: '125545121212期',
-						prize: 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
-						price: '8999'
-					},
-					{
-						cycle: '125545121212期',
-						prize: 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
-						price: '8999'
-					},
-					{
-						cycle: '125545121212期',
-						prize: 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
-						price: '8999'
-					},
-					{
-						cycle: '125545121212期',
-						prize: 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
-						price: '8999'
-					},
-				]
+				seconds:(new Date('2017-11-30')-new Date()),
 			}
+		},
+
+		props: [
+		'treasureData'
+		],
+
+		components: {
+			'home-progress' : HomeProgress,
+			'timer'			: Timer
 		},
 
 		methods: {
@@ -56,7 +69,7 @@
 </script>
 
 <style lang="scss" scoped>
-	$boxWidth		: 	 510px;
+	$boxWidth		: 	 557px;
 	$imgHeight		:	 275px;
 	
 	.treasure {
@@ -70,6 +83,7 @@
 			text-align: center;
 			position: relative;
 			border: 1px solid #ececec;
+			margin-top: 6px;
 
 			&:nth-child(2n) {
 				float: right;
@@ -98,30 +112,86 @@
 				}
 
 				.prize {
+					margin-top: 5px;
 					line-height: 26px;
 				}
 
 				.price {
 					color: #b7b7b7;
+					margin-top: 6px;
 
 					span {
 						color: #d63328;
 					}
 				}
-
-				.progress {
-					height: 47px;
-					margin-top: 12px;
-					background: green;
-				}
 			}
- 
-			.countdown {
-				background: #ececec;
+
+			.treasure-bottom {
 				width: 100%;
 				height: 74px;
 				position: absolute;
 				bottom: 0;
+				background: #ececec;
+
+
+				.countdown {
+					width: 557px;
+					margin: 0 auto;
+				}
+
+				.drawLottery {
+					width: 119px;
+					height: 36px;
+					border-radius: 5px;
+					position: absolute;
+					top: 50%;
+					right: 25px;
+					transform: translate(0,-50%);
+					color: #fff;
+					font-size: 12px;
+					overflow: hidden;
+
+					.draw {
+						height: 100%;
+						background-color: #d53328;
+						overflow: hidden;
+
+						p {	
+							margin-top: 12px;
+						}
+					}
+
+					.share {
+						height: 100%;
+						background-color: #d55528;
+						overflow: hidden;
+
+						p {
+							margin-top: 12px;
+						}
+					}
+
+					.already {
+						height: 100%;
+						background-color: #c2c2c2;
+						overflow: hidden;
+
+						p {
+							margin-top: 12px;
+						}
+					}
+
+					.will-start {
+						height: 100%;
+						background-color: #e08f8a;
+						overflow: hidden;
+
+						p {
+							margin-top: 12px;
+						}
+					}
+
+				}
 			}
 		}
 	}
