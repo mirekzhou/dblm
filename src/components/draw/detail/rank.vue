@@ -3,46 +3,34 @@
         <div class="left-part">
             <div class="left-header">幸运码排行榜</div>
             <ul>
-                <li class="flex flex-center-y">
-                    <div class="left"><img :src="userImg"></div>
-                    <div class="right-content flex-full flex-column flex-center-xy">
-                        <p>139****1234</p>
-                        <p>共获得幸运码<span class="red">20个</span></p>
-                    </div>
-                </li>
-                <li class="fle flex-center-y">
-                    <div class="left"><img :src="userImg"></div>
-                    <div class="right-content flex-full flex-column flex-center-xy">
-                        <p>139****1234</p>
-                        <p>共获得幸运码<span class="red">20个</span></p>
-                    </div>
-                </li>
-                <li class="flex flex-center-y">
-                    <div class="left"><img :src="userImg"></div>
-                    <div class="right-content flex-full flex-column flex-center-xy">
-                        <p>139****1234</p>
-                        <p>共获得幸运码<span class="red">200个</span></p>
+                <li class="flex flex-center-y" v-for="item in rankList">
+                    <div class="left"><img :src="item.img"></div>
+                    <div class="right-content flex-full flex-column flex-center-x">
+                        <p>{{item.phone}}</p>
+                        <p>共获得幸运码<span class="red">{{item.luckyQty}}个</span></p>
                     </div>
                 </li>
             </ul>
         </div>
         <div class="right-part">
             <div class="right-header">最后50名用户参与记录</div>
-            <ul>
-                <li class="flex flex-center-y">
-                    <div class="left"><img :src="userImg"></div>
+            <ul class="half-box">
+                <li class="flex flex-center-y" v-for="item in joinList">
+                    <div class="left"><img :src="item.img"></div>
                     <div class="right-content flex-full">
-                        <span>139****1234</span>
-                        <span>2017-09-03 17:30:23.586</span>
-                        <span>173294832984958</span>
+                        <span>{{item.phone}}</span>
+                        <span>{{item.date}}</span>
+                        <span>{{item.no}}</span>
                     </div>
                 </li>
-                <li class="fle flex-center-y">
-                    <div class="left"><img :src="userImg"></div>
+            </ul>
+            <ul class="half-box">
+                <li class="flex flex-center-y" v-for="item in joinList">
+                    <div class="left"><img :src="item.img"></div>
                     <div class="right-content flex-full">
-                        <span>139****1234</span>
-                        <span>2017-09-03 17:30:23.586</span>
-                        <span>173294832984958</span>
+                        <span>{{item.phone}}</span>
+                        <span>{{item.date}}</span>
+                        <span>{{item.no}}</span>
                     </div>
                 </li>
             </ul>
@@ -60,7 +48,69 @@
 
         data: function () {
             return {
-                userImg:userImg
+                userImg:userImg,
+                rankList:[
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        luckyQty:200
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        luckyQty:200
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        luckyQty:200
+                    }
+                ],
+                joinList:[
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    }
+                ]
+
             }
         },
 
@@ -105,10 +155,11 @@
         .right-part {
             width:760px;
             height:100%;
-            float:left;text-align:center;
+            float:left;
+            text-align:center;
             margin-left:10px;
             border:1px solid #F0F0F0;
-
+            overflow:hidden;
             .right-header {
                 background-color:#F7F7F7;
                 height:40px;
@@ -116,11 +167,22 @@
                 text-align:center;
             }
 
+            .half-box {
+                width:50%;
+                font-size:12px;
+                color:#707070;
+                text-align: left;
+                float:left;
+                li{
+                    height:76px;
+                }
+            }
+
             .left {
                 margin:0 15px;
                 img {
-                    width:60px;
-                    height:60px;
+                    width:40px;
+                    height:40px;
                 }
             }
         }
