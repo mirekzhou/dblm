@@ -1,7 +1,17 @@
 <template>
     <div class="prize">
         <div class="left-part">
-            <img :src="image">
+            <div class="img-list">
+                <ul>
+                    <li class="img-item" v-for="item in imgList">
+                        <img :src="item.url">
+                    </li>
+                </ul>
+                <div></div>
+            </div>
+            <div class="img-box">
+                <img :src="image">
+            </div>
         </div>
         <div class="right-part">
             <div class='item-title'>[低至14382]低至低至低至低至低至低至低至低至</div>
@@ -19,6 +29,9 @@
 
 <script>
     import awardImage from '../../../assets/1.jpg';
+    import imgItem1 from '../../../assets/2.jpg';
+    import imgItem2 from '../../../assets/3.jpg';
+    
     import progres    from '../../common/amountProgress';
     import countDown    from '../../common/countdown';
     export default {
@@ -40,7 +53,25 @@
                     current:50
                 },
                 seconds:(new Date('2017-11-30')-new Date()),
-                desc:'倒计时结束时参与人数达到或超过总需人数，则随机抽取1人获得该商品'
+                desc:'倒计时结束时参与人数达到或超过总需人数，则随机抽取1人获得该商品',
+                imgList:[
+                    {
+                        id:'1',
+                        url:imgItem1
+                    },
+                    {
+                        id:'2',
+                        url:imgItem2
+                    },
+                    {
+                        id:'2',
+                        url:imgItem1
+                    },
+                    {
+                        id:'2',
+                        url:imgItem2
+                    }
+                ]
             }
         },
 
@@ -57,14 +88,34 @@
 <style lang="scss" scoped>
     .prize   {
         margin-top:30px;
-        height:415px;
+        height:380px;
         .left-part{
             width:474px;
             height:100%;
             float:left;
-            img{
-                width:415px;
-                height:415px;
+
+            .img-list {
+                float:left;
+                width:70px;
+                height:320px;
+                .img-item{
+                    + .img-item {
+                        margin-top:20px;
+                    }
+                    img{
+                        width:70px;
+                        height:70px;
+                    }
+                } 
+            }
+
+            .img-box {
+                float:left;
+                img{
+                    width:350px;
+                    height:380px;
+                    border:1px solid #F0F0F0;
+                }
             }
         }
 
