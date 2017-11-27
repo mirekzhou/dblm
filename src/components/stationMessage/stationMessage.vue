@@ -6,11 +6,36 @@
 					<div>系统通知</div>
 				</div>
 			</div>
+
+			<div class="content">
+				<div class="section1">
+					<span class="seclect-all">全选</span>
+					<span class="cancel-all">反选</span>
+				</div>
+
+				<div class="section2">
+					<message-item v-for="item in messages" :item="item" key="item">
+					</message-item>
+				</div>
+
+				<div class="section3">
+					<div class="left-part">
+						<button>标记已读</button>
+						<button>全部已读</button>
+						<button>删除选中</button>
+					</div>
+
+					<div class="right-part">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import messageItem from './messageItem';
+
 	export default {
 		name: 'station-message',
 
@@ -19,7 +44,33 @@
 
 		data: function () {
 			return {
+				messages: [
+					{
+						'status': '0',
+						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
+						'datetime': '2017-09-08 17:23:43'
+					},
+					{
+						'status': '0',
+						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
+						'datetime': '2017-09-08 17:23:43'
+					},
+					{
+						'status': '0',
+						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
+						'datetime': '2017-09-08 17:23:43'
+					},
+					{
+						'status': '0',
+						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
+						'datetime': '2017-09-08 17:23:43'
+					}
+				]
 			}
+		},
+
+		components: {
+			'message-item' : messageItem
 		},
 
 		methods: {
@@ -31,9 +82,9 @@
 	.station-message {
 		$wrapperWidth   : 1200px;
 		$barTitleHeight : 32px;
-		$filterHeight   : 54px;
 
 		.wrapper {
+			color: #414141;
 			height: 100%;
 			width: $wrapperWidth;
 			margin: 0 auto;
@@ -59,15 +110,50 @@
 				}
 			}
 
-			.records {
-				list-style: none;
-				margin-top: 40px;
+			.content {
+				border: 1px solid #e5e5e5;
+				border-top: 0;
+				height: 432px;
 				width: 100%;
+				padding: 15px 18px 24px 18px;
 
-				.records-item {
-					border-bottom: 1px solid #e6e6e6;
-					padding-bottom: 36px;
-					margin-bottom: 36px;
+				.section1 {
+					color: #000;
+					cursor: pointer;
+					font-size: 16px;
+					padding-left: 10px;
+
+					.cancel-all {
+						margin-left: 32px;
+					}
+				}
+
+				.section3 {
+					padding-left: 10px;
+					margin-top: 20px;
+
+					.left-part {
+						float: left;
+						height: 80px;
+						line-height: 80px;
+						width: 450px;
+
+						button {
+							cursor: pointer;
+							margin-left: 32px;
+
+							&:first-child {
+								margin-left: 0;
+							}
+						}
+					}
+
+					.right-part {
+						float: right;
+						height: 80px;
+						line-height: 80px;
+						width: 600px;
+					}
 				}
 			}
 		}
