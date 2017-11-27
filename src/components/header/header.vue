@@ -30,11 +30,25 @@
 				</div>
 
 				<div class="right-part">
-					<div class="text" v-on:click="redirectTo('/stationMessage')">
+					<div class="text user-center">
 						<span>个人中心</span>
+
 						<span class="down-arrow"></span>
+
 						<ul class="float-window">
 							<li>
+								<span>修改密码</span>
+							</li>
+							<li>
+								<span v-on:click="redirectTo('/stationMessage')">
+									系统通知({{notificationCount}})
+								</span>
+							</li>
+							<li>
+								<span v-on:click="redirectTo('/receiveInfo')">收货地址</span>
+							</li>
+							<li>
+								<span>退出账号</span>
 							</li>
 						</ul>
 					</div>
@@ -111,7 +125,8 @@
 		data: function () {
 			return {
 				times: [9, 9, 9, 9, 9],
-				winMessageCount: 0
+				winMessageCount   : 0,
+				notificationCount : 0
 			}
 		},
 
@@ -222,6 +237,38 @@
 					.slash {
 						float: right;
 						margin: 0 8px;
+					}
+
+					.user-center {
+						position: relative;
+
+						.float-window {
+							background-color: #f5f5f5;
+							color: #797979;
+							display: none;
+							height: 140px;
+							width: 90px;
+							position: absolute;
+							right: 0;
+							top: 60px;
+
+							li {
+								height: 35px;
+								line-height: 35px;
+								width: 100%;
+								text-align: center;
+							}
+
+							&:hover {
+								display: block;
+							}
+						}
+
+						&:hover {
+							.float-window {
+								display: block;
+							}
+						}
 					}
 				}
 			}

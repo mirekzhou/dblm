@@ -81,6 +81,13 @@ export default new VueRouter({
 			component: function (resolve) {
 				require(['../components/stationMessage/stationMessage.vue'], resolve);
 			}
+		},
+		{
+			path: '/receiveInfo',
+			name: 'receiveInfo',
+			component: function (resolve) {
+				require(['../components/receiveInfo/receiveInfo.vue'], resolve);
+			}
 		}
 	]
 });
