@@ -72,7 +72,7 @@ export default new VueRouter({
 			path: '/drawDetail',
 			name: 'drawDetail',
 			component: function (resolve) {
-				require(['../components/latestRecords/detail/page.vue'], resolve);
+				require(['../components/latestRecords/detailPage.vue'], resolve);
 			}
 		},
 		{
