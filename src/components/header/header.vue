@@ -30,7 +30,7 @@
 				</div>
 
 				<div class="right-part">
-					<div class="text" v-on:click="redirectTo('/userCenter')">
+					<div class="text" v-on:click="redirectTo('/stationMessage')">
 						<span>个人中心</span>
 						<span class="down-arrow"></span>
 						<ul class="float-window">

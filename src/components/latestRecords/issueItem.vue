@@ -158,6 +158,7 @@
 					background-color: #d43328;
 					color: #FFF;
 					cursor: pointer;
+					font-size: 12px;
 					height: 32px;
 					line-height: 32px;
 					text-align: center;
