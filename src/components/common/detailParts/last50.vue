@@ -25,61 +25,16 @@
 </template>
 
 <script>
-    import userImg from '../../../assets/header.png';
-    import prizeHeader from '../../../assets/prize_info_header.png';
+    
     export default {
         name: 'page',
 
-        props: [
-        ],
+        props: {
+            joinList:Array
+        },
 
-        data: function () {
+        data:function () {
             return {
-            
-                joinList:[
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    }
-                ]
 
             }
         },

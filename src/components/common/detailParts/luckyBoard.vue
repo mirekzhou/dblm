@@ -19,29 +19,13 @@
     export default {
         name: 'page',
 
-        props: [
-        ],
+        props: {
+            rankList:Array
+        },
 
         data: function () {
             return {
-                userImg:userImg,
-                rankList:[
-                    {
-                        img:prizeHeader,
-                        phone:'139****1234',
-                        luckyQty:200
-                    },
-                    {
-                        img:prizeHeader,
-                        phone:'139****1234',
-                        luckyQty:200
-                    },
-                    {
-                        img:prizeHeader,
-                        phone:'139****1234',
-                        luckyQty:200
-                    }
-                ]
+                
 
             }
         },

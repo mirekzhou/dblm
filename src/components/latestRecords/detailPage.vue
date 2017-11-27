@@ -6,10 +6,10 @@
             <drawZone></drawZone>
             <div class="bottom-content">
                 <div class="left-part">
-                    <luckyBoard></luckyBoard>
+                    <luckyBoard :rankList='rankList'></luckyBoard>
                 </div>
                 <div class="right-part">
-                    <lastList></lastList>
+                    <lastList :joinList='joinList'></lastList>
                 </div>
             </div>
         </div>
@@ -22,7 +22,8 @@
     import joinFlow    from '../common/detailParts/joinFlow';
     import luckyBoard    from '../common/detailParts/luckyBoard';
     import drawZone    from '../common/detailParts/drawZone';
-    
+    import userImg from '../../assets/header.png';
+    import prizeHeader from '../../assets/prize_info_header.png';
     export default {
         name: 'latest',
 
@@ -35,6 +36,67 @@
                     {title:'werjiewr',price:1214},
                     {title:'werjiewr',price:1214},
                     {title:'werjiewr',price:1214}
+                ],
+                rankList:[
+                    {
+                        img:prizeHeader,
+                        phone:'139****1234',
+                        luckyQty:200
+                    },
+                    {
+                        img:prizeHeader,
+                        phone:'139****1234',
+                        luckyQty:200
+                    },
+                    {
+                        img:prizeHeader,
+                        phone:'139****1234',
+                        luckyQty:200
+                    }
+                ],
+                joinList:[
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    },
+                    {
+                        img:userImg,
+                        phone:'139****1234',
+                        date:'2017-09-03 17:30:23.586',
+                        no:173294832
+                    }
                 ]
             }
         },
