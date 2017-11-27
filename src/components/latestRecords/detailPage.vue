@@ -1,27 +1,71 @@
 <template>
-	<div class="detail-page">
+	<div class="page detail-page">
+		<div class="wrapper">
+            <product></product>
+            <joinFlow></joinFlow>
+            <drawZone></drawZone>
+            <div class="bottom-content">
+                <div class="left-part">
+                    <luckyBoard></luckyBoard>
+                </div>
+                <div class="right-part">
+                    <lastList></lastList>
+                </div>
+            </div>
+        </div>
 	</div>
 </template>
 
 <script>
-	export default {
-		name: 'detail-page',
+    import product    from '../common/detailParts/product';
+    import lastList    from '../common/detailParts/last50';
+    import joinFlow    from '../common/detailParts/joinFlow';
+    import luckyBoard    from '../common/detailParts/luckyBoard';
+    import drawZone    from '../common/detailParts/drawZone';
+    
+    export default {
+        name: 'latest',
 
-		props: [
-		],
+        props: [
+        ],
 
-		data: function () {
-			return {
-			}
-		},
+        data: function () {
+            return {
+                list : [
+                    {title:'werjiewr',price:1214},
+                    {title:'werjiewr',price:1214},
+                    {title:'werjiewr',price:1214}
+                ]
+            }
+        },
+        components: {
+            'joinFlow':joinFlow,
+            'drawZone':drawZone,
+            'product':product,
+            'luckyBoard':luckyBoard,
+            'lastList':lastList
+        },
 
-		methods: {
-		}
-	}
+        methods: {
+        }
+    }
 </script>
 
 <style lang="scss" scoped>
-	.detail-page {
-		color: #000;
-	}
+    .detail-page {
+        color:#000;
+        .bottom-content {
+            float:left;
+            width:100%;
+            margin-top:30px;
+            margin-bottom:50px;
+            .left-part {
+                float:left;
+            }
+            .right-part{
+                float:right;
+            }
+        }
+        
+    }
 </style>
