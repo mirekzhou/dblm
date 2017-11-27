@@ -23,7 +23,7 @@
 							<p>参与夺宝</p>
 						</div>
 
-						<div class="share" v-show="item.drawLotteryStatus === 2">
+						<div class="share" v-show="item.drawLotteryStatus === 2" v-on:click="showShareDialog">
 							<p>分享夺宝</p>
 						</div>
 
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+	import { mapState } 	from 'vuex';
 	import HomeProgress 	from './homeProgress';
 	import Timer  			from './timer';
 	import '../../scss/common.scss';
@@ -55,7 +56,8 @@
 		},
 
 		props: [
-		'treasureData'
+			'treasureData',
+			"shareDialogStatus"
 		],
 
 		components: {
@@ -64,6 +66,9 @@
 		},
 
 		methods: {
+			showShareDialog: function () {
+				this.$store.dispatch('setShareDialogStatus', {status: true});
+			}
 		}
 	}
 </script>
@@ -133,7 +138,6 @@
 				bottom: 0;
 				background: #ececec;
 
-
 				.countdown {
 					width: 557px;
 					margin: 0 auto;
@@ -155,6 +159,7 @@
 						height: 100%;
 						background-color: #d53328;
 						overflow: hidden;
+						cursor: pointer;
 
 						p {
 							margin-top: 12px;
@@ -165,6 +170,7 @@
 						height: 100%;
 						background-color: #d55528;
 						overflow: hidden;
+						cursor: pointer;
 
 						p {
 							margin-top: 12px;
@@ -175,6 +181,7 @@
 						height: 100%;
 						background-color: #c2c2c2;
 						overflow: hidden;
+						cursor: pointer;
 
 						p {
 							margin-top: 12px;
@@ -185,6 +192,7 @@
 						height: 100%;
 						background-color: #e08f8a;
 						overflow: hidden;
+						cursor: pointer;
 
 						p {
 							margin-top: 12px;

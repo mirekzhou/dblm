@@ -9,10 +9,11 @@
 </template>
 
 <script>
+
 	import '../../scss/common.scss';
 	import Banner            from './banner';
 	import WinInfo    		 from './winInfo';
-	import newPrize          from './newPrize';
+	import NewPrize          from './newPrize';
 	import SnatchTreasure    from './snatchTreasure';
 	import UserRecords       from './userRecords';
 
@@ -25,12 +26,12 @@
 		},
 
 		components: {
-			'banner'        :  Banner,
-			'win-info'   :  WinInfo,
-			'new-prize'        :  newPrize,
+			'banner'       		 :  Banner,
+			'win-info'   		 :  WinInfo,
+			'new-prize'          :  NewPrize,
 			'snatch-treasure'    :  SnatchTreasure,
-			'user-records'   :  UserRecords
-		}
+			'user-records'       :  UserRecords,
+		},
 	}
 </script>
 

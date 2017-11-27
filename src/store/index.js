@@ -13,7 +13,8 @@ const state = {
 
 	showLoginDialog        :   false,
 	showRegisterDialog     :   false,
-	showAlert              :   false
+	showAlert              :   false,
+	shareDialogStatus 	   :   false
 };
 
 export default new Vuex.Store({

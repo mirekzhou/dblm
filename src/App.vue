@@ -10,6 +10,8 @@
 
 		<my-footer></my-footer>
 
+		<share-dialog v-show="showDialog"></share-dialog>
+
 <!-- 		<suspension></suspension>
 		<breaking-news></breaking-news>
 		<login></login>
@@ -20,6 +22,7 @@
 
 <script>
 	import { mapActions } from 'vuex';
+	import { mapState } 	 from 'vuex';
 	import login from './components/login';
 	import register from './components/register';
 	import suspension from './components/suspension';
@@ -28,6 +31,7 @@
 	import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css';
 	import header from './components/header/header';
 	import footer from './components/footer/footer';
+	import ShareDialog       from './components/common/ShareDialog';
 
 	export default {
 		name: 'app',
@@ -55,6 +59,12 @@
 		methods: {
 		},
 
+		computed: mapState({
+			showDialog: function (state) {
+				return state.shareDialogStatus;
+			}
+		}),
+
 		components: {
 			'my-header'     :  header,
 			'my-footer'     :  footer,
@@ -62,7 +72,8 @@
 			'register'      :  register,
 			'suspension'    :  suspension,
 			'breaking-news' :  breakingNews,
-			'notifier'      :  notifier
+			'notifier'      :  notifier,
+			'share-dialog'  :  ShareDialog
 		}
 	}
 </script>
