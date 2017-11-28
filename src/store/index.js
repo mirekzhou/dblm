@@ -8,7 +8,8 @@ Vue.use(Vuex);
 const state = {
 	postDict: {},
 
-	loginStatus            :   '',      //登录状态
+	loginStatus            :   false,      //登录状态
+	userName               :   'Kris',
 	loginUserInfo          :   '',      //已登录用户信息
 
 	showLoginDialog        :   false,

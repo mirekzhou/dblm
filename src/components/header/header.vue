@@ -48,7 +48,7 @@
 								<span v-on:click="redirectTo('/receiveInfo')">收货地址</span>
 							</li>
 							<li>
-								<span>退出账号</span>
+								<span v-on:click="logout">退出账号</span>
 							</li>
 						</ul>
 					</div>
@@ -66,8 +66,10 @@
 					<div class="slash">/</div>
 
 					<div class="text" v-on:click="redirectTo('/login')">
-						<span>你好,夺宝</span>
-						<span class="red-highlight">请登录</span>
+						<span>你好</span>
+						<span v-show="loginStatus">{{userName}}</span>
+						<span v-show="!loginStatus">,夺宝</span>
+						<span v-show="!loginStatus" class="red-highlight" v-on:click="login">请登录</span>
 					</div>
 				</div>
 
@@ -133,6 +135,15 @@
 		methods: {
 			redirectTo: function (path) {
 				this.$router.push(path);
+			},
+
+			login: function () {
+				this.$store.dispatch('setLoginStatus', true);
+			},
+
+			logout: function () {
+				this.$store.dispatch('setLoginStatus', false);
+				this.$router.push('/home');
 			}
 		},
 
@@ -144,8 +155,8 @@
 	  			return state.loginStatus;
 	  		},
 
-	  		loginUserInfo: function (state) {
-	  			return state.loginUserInfo;
+	  		userName: function (state) {
+	  			return state.userName;
 	  		}
 	  	})
 	}

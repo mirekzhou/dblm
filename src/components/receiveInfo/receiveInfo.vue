@@ -63,11 +63,11 @@
 							<div class="td td4">{{item.phone}}</div>
 
 							<div class="td td5">
-								<span class="action">删除</span>
+								<span class="action" v-on:click="deleteAddress(item)">删除</span>
 								<span class="gap">|</span>
-								<span class="action">修改</span>
+								<span class="action" v-on:click="modifyAddress(item)">修改</span>
 								<span class="gap">|</span>
-								<span class="action">设为默认</span>
+								<span class="action" v-on:click="setDefaultAddress(item)">设为默认</span>
 							</div>
 						</div>
 					</div>
@@ -151,8 +151,19 @@
 
 			onSelectAddress: function (data) {
 				this.area = data.province.value + data.city.value + data.area.value;
-				console.log(this.area);
-			}
+			},
+
+			deleteAddress: function (data) {
+				alert('删除地址：' + JSON.stringify(data));
+			},
+
+			modifyAddress: function (data) {
+				alert('修改地址：' + JSON.stringify(data));
+			},
+
+			setDefaultAddress: function (data) {
+				alert('设为默认地址：' + JSON.stringify(data));
+			},
 		}
 	}
 </script>
