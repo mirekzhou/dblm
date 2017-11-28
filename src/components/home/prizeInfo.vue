@@ -48,8 +48,26 @@
 			return {
 				swiperOption: {
 					pagination: '.swiper-pagination',
+					paginationType: 'custom',
 					paginationClickable: true,
 					direction : 'vertical',
+					paginationCustomRender: function (swiper, current, total) {
+				        const activeColor = '#d53328';
+				        const normalColor = 'transparent';
+				        let color = '';
+				        let paginationStyle = '';
+				        let html = '';
+				        for (let i = 1; i <= total; i++) {
+				        	if (i === current) {
+				            	color = activeColor;
+				        	} else {
+				            	color = normalColor;
+				        	}
+				        		paginationStyle = `background:${color};opacity:1;border-width:1px;border-style:solid;border-color:#d53328;`
+				        		html += `<span class="swiper-pagination-bullet" style=${paginationStyle}></span>`
+				        }
+				        return html
+			        }
 				},
 
 				formatPrizeInfoData: []
@@ -78,7 +96,7 @@
 					}
 				}
 			}
-		}
+		},
 	}
 </script>
 
@@ -156,8 +174,9 @@
 				position: absolute;
 				width: 14px;
 				height: 74px;
-				top: 33px;
+				top: -6px;
 				right: 0;
+				left: inherit;
 
 				span {
 					display: inline-block;
