@@ -26,6 +26,9 @@
 					</div>
 
 					<div class="right-part">
+						<pager 	:pageIndex="pageIndex"
+								:totalPage="totalPage"
+								v-on:pageIndexChanged="pageIndexChanged"></pager>
 					</div>
 				</div>
 			</div>
@@ -35,6 +38,7 @@
 
 <script>
 	import messageItem from './messageItem';
+	import pager       from './pager';
 
 	export default {
 		name: 'station-message',
@@ -44,6 +48,9 @@
 
 		data: function () {
 			return {
+				pageIndex: 1,
+				totalPage: 7,
+
 				messages: [
 					{
 						'status': '0',
@@ -70,10 +77,14 @@
 		},
 
 		components: {
-			'message-item' : messageItem
+			'message-item' : messageItem,
+			'pager' : pager
 		},
 
 		methods: {
+			pageIndexChanged: function (value) {
+				this.pageIndex = value;
+			}
 		}
 	}
 </script>
@@ -152,7 +163,7 @@
 						float: right;
 						height: 80px;
 						line-height: 80px;
-						width: 600px;
+						width: 700px;
 					}
 				}
 			}
