@@ -9,8 +9,8 @@
 
 			<div class="content">
 				<div class="section1">
-					<span class="seclect-all">全选</span>
-					<span class="cancel-all">反选</span>
+					<span class="seclect-all" v-on:click="selectAll">全选</span>
+					<span class="cancel-all" v-on:click="cancelAll">反选</span>
 				</div>
 
 				<div class="section2">
@@ -54,21 +54,25 @@
 				messages: [
 					{
 						'status': '0',
+						'checked': false,
 						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
 						'datetime': '2017-09-08 17:23:43'
 					},
 					{
 						'status': '0',
+						'checked': false,
 						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
 						'datetime': '2017-09-08 17:23:43'
 					},
 					{
 						'status': '0',
+						'checked': false,
 						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
 						'datetime': '2017-09-08 17:23:43'
 					},
 					{
 						'status': '0',
+						'checked': false,
 						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
 						'datetime': '2017-09-08 17:23:43'
 					}
@@ -84,7 +88,23 @@
 		methods: {
 			pageIndexChanged: function (value) {
 				this.pageIndex = value;
-			}
+			},
+
+			selectAll: function () {
+				var i;
+
+				for (i = 0; i < this.messages.length; i++) {
+					this.messages[i].checked = 'checked';
+				}
+			},
+
+			cancelAll: function () {
+				var i;
+
+				for (i = 0; i < this.messages.length; i++) {
+					this.messages[i].checked = false;
+				}
+			},
 		}
 	}
 </script>
@@ -133,6 +153,12 @@
 					cursor: pointer;
 					font-size: 16px;
 					padding-left: 10px;
+
+					span {
+						&:hover {
+							color: #888888;
+						}
+					}
 
 					.cancel-all {
 						margin-left: 32px;

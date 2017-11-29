@@ -1,7 +1,7 @@
 <template>
 	<div class="message-item">
 		<div class="part1">
-			<input type="checkbox" />
+			<input type="checkbox" :checked="item.checked" />
 		</div>
 
 		<div class="part2">
