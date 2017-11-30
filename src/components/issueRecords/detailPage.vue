@@ -103,11 +103,11 @@
         },
 
         components: {
-            'joinFlow':joinFlow,
-            'drawZone':drawZone,
-            'product':product,
-            'luckyBoard':luckyBoard,
-            'lastList':lastList
+        	'product'        : product,
+            'joinFlow'       : joinFlow,
+            'drawZone'       : drawZone,
+            'luckyBoard'     : luckyBoard,
+            'lastList'       : lastList
         },
 
 		methods: {
