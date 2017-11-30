@@ -3,65 +3,59 @@
 		<div class="title">我的幸运码：{{luckyNumber}}</div>
 
 		<div class="content">
-			<div class="left-part">
-				<div class="wrapper">
-					<div class="table">
-						<div class="thead">
-							<div class="tr">
-								<div class="td td1">助攻好友</div>
-								<div class="td td2">日期</div>
-								<div class="td td3">夺宝助攻获得号码</div>
-								<div class="clear"></div>
-							</div>
+			<div class="table">
+				<div class="thead">
+					<div class="tr">
+						<div class="left-part">
+							<div class="td td1">助攻好友</div>
+							<div class="td td2">日期</div>
+							<div class="td td3">夺宝助攻获得号码</div>
+							<div class="clear"></div>
 						</div>
 
-						<div class="tbody">
-							<div class="tr" v-for="item in leftList">
-								<div class="td td1">
-									<span class="head-icon"></span>
-									<span class="text">{{item.phone}}</span>
-								</div>
-								<div class="td td2">{{item.date}}</div>
-								<div class="td td3">
-									<span>{{item.number}}</span>
-								</div>
-								<div class="clear"></div>
-							</div>
+						<div class="right-part">
+							<div class="td td1">助攻好友</div>
+							<div class="td td2">日期</div>
+							<div class="td td3">夺宝助攻获得号码</div>
+							<div class="clear"></div>
 						</div>
+
+						<div class="clear"></div>
 					</div>
 				</div>
-			</div>
 
-			<div class="right-part">
-				<div class="wrapper">
-					<div class="table">
-						<div class="thead">
-							<div class="tr">
-								<div class="td td1">助攻好友</div>
-								<div class="td td2">日期</div>
-								<div class="td td3">夺宝助攻获得号码</div>
-								<div class="clear"></div>
+				<div class="tbody">
+					<div class="tr" v-for="i in len">
+						<div class="left-part">
+							<div class="td td1">
+								<span class="head-icon"></span>
+								<span class="text">{{leftList[i-1].phone}}</span>
 							</div>
+							<div class="td td2">{{leftList[i-1].date}}</div>
+							<div class="td td3">
+								<span>{{leftList[i-1].number}}</span>
+							</div>
+							<div class="clear"></div>
 						</div>
 
-						<div class="tbody">
-							<div class="tr" v-for="item in rightList">
-								<div class="td td1">
-									<span class="head-icon"></span>
-									<span class="text">{{item.phone}}</span>
-								</div>
-								<div class="td td2">{{item.date}}</div>
-								<div class="td td3">
-									<span>{{item.number}}</span>
-								</div>
-								<div class="clear"></div>
+						<div class="right-part" v-if="rightList[i-1]">
+							<div class="td td1">
+								<span class="head-icon"></span>
+								<span class="text">{{rightList[i-1].phone}}</span>
 							</div>
+							<div class="td td2">{{rightList[i-1].date}}</div>
+							<div class="td td3">
+								<span>{{rightList[i-1].number}}</span>
+							</div>
+							<div class="clear"></div>
 						</div>
+
+						<div class="clear"></div>
 					</div>
 				</div>
-			</div>
 
-			<div class="clear"></div>
+				<div class="line"></div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -77,15 +71,21 @@
 			return {
 				luckyNumber: '10101010',
 
-				leftList: [
+				list: [
 					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
 					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
 					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
 					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'}
-				],
-
-				rightList: [
+					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
+					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
+					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
+					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
+					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
+					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
+					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
+					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
+					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
+					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
 					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
 					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
 					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
@@ -95,7 +95,36 @@
 			}
 		},
 
-		methods: {
+		computed: {
+			leftList: function () {
+				var i;
+				var arr = [];
+
+				for (i = 0; i < this.list.length; i++) {
+					if (i % 2 == 0) {
+						arr.push(this.list[i]);
+					}
+				}
+
+				return arr;
+			},
+
+			rightList: function () {
+				var i;
+				var arr = [];
+
+				for (i = 0; i < this.list.length; i++) {
+					if (i % 2 == 1) {
+						arr.push(this.list[i]);
+					}
+				}
+
+				return arr;
+			},
+
+			len: function () {
+				return this.leftList.length;
+			}
 		}
 	}
 </script>
@@ -118,40 +147,25 @@
 			border-top: 0;
 			height: 500px;
 
-			.left-part {
-				float: left;
-				height: 100%;
-				padding: 15px 0 18px 35px;
-				width: 50%;
-
-				.wrapper {
-					border-right: 1px solid #F0F0F0;
-					height: 100%;
-					padding-right: 18px;
-					width: 100%;
-				}
-			}
-
-			.right-part {
-				float: right;
-				height: 100%;
-				padding: 15px 19px 0 35px;
-				width: 50%;
-
-				.wrapper {
-					height: 100%;
-					padding-right: 18px;
-					width: 100%;
-				}
-			}
-
 			.table {
+				padding: 15px 18px 18px 35px;
+				position: relative;
+
 				.tr {
 					width: 100%;
 
+					.left-part {
+						float: left;
+					}
+
+					.right-part {
+						float: right;
+					}
+
 					.td {
-						height: 46px;
-						line-height: 46px;
+						border-bottom: 1px solid #F0F0F0;
+						height: 82px;
+						line-height: 82px;
 						float: left;
 						text-align: center;
 					}
@@ -166,6 +180,7 @@
 							height: 46px;
 							line-height: 46px;
 							margin-right: 20px;
+							vertical-align: middle;
 						}
 
 						.text {
@@ -189,10 +204,17 @@
 				}
 
 				.tbody {
-					.tr {
-						border-bottom: 1px solid #F0F0F0;
-						padding: 18px 0;
-					}
+					height: 410px;
+					overflow-y: auto;
+				}
+
+				.line {
+					height: 445px;
+					width: 1px;
+					border-right: 1px solid #F0F0F0;
+					position: absolute;
+					top: 30px;
+					left: 50%;
 				}
 			}
 		}
