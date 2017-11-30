@@ -2,7 +2,7 @@
 	<div class="my-lucky-board">
 		<div class="title">我的幸运码：{{luckyNumber}}</div>
 
-		<div class="content">
+		<div class="content" v-bind:style="{height: len > 3? '500px' : '310px'}">
 			<div class="table">
 				<div class="thead">
 					<div class="tr">
@@ -24,7 +24,7 @@
 					</div>
 				</div>
 
-				<div class="tbody">
+				<div class="tbody" v-bind:style="{height: len > 3? '476px' : '285px'}">
 					<div class="tr" v-for="i in len">
 						<div class="left-part">
 							<div class="td td1">
@@ -54,7 +54,7 @@
 					</div>
 				</div>
 
-				<div class="line"></div>
+				<div class="line" v-bind:style="{height: len > 3? '470px' : '280px'}"></div>
 			</div>
 		</div>
 	</div>
@@ -83,14 +83,6 @@
 					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
 					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
 					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'}
 				]
 			}
 		},
@@ -148,7 +140,7 @@
 			height: 500px;
 
 			.table {
-				padding: 15px 18px 18px 35px;
+				padding: 0 18px 0 35px;
 				position: relative;
 
 				.tr {
@@ -163,9 +155,6 @@
 					}
 
 					.td {
-						border-bottom: 1px solid #F0F0F0;
-						height: 82px;
-						line-height: 82px;
 						float: left;
 						text-align: center;
 					}
@@ -203,9 +192,38 @@
 					}
 				}
 
+				.thead {
+					.tr {
+						height: 25px;
+						margin-top: 10px;
+
+						.td {
+							height: 25px;
+							line-height: 25px;
+						}
+					}
+				}
+
 				.tbody {
-					height: 410px;
 					overflow-y: auto;
+
+					.tr {
+						.td {
+							border-bottom: 1px solid #F0F0F0;
+							height: 95px;
+							line-height: 95px;
+						}
+
+						&:first-child {
+							margin-top: -10px;
+						}
+
+						&:last-child {
+							.td {
+								border-bottom: 0;
+							}
+						}
+					}
 				}
 
 				.line {
@@ -213,7 +231,7 @@
 					width: 1px;
 					border-right: 1px solid #F0F0F0;
 					position: absolute;
-					top: 30px;
+					top: 5px;
 					left: 50%;
 				}
 			}
