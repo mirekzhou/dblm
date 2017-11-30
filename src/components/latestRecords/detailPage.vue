@@ -100,6 +100,7 @@
                 ]
             }
         },
+
         components: {
             'joinFlow':joinFlow,
             'drawZone':drawZone,

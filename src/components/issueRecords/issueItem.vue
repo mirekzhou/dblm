@@ -22,7 +22,7 @@
 
 		<div class="right-part">
 			<div class="button-zone">
-				<div class="button">查看详情</div>
+				<div class="button" v-on:click="redirectTo('/issueRecordDetail')">查看详情</div>
 			</div>
 
 			<div class="post-zone">
@@ -76,6 +76,9 @@
 		},
 
 		methods: {
+			redirectTo: function (path) {
+				this.$router.push(path);
+			}
 		}
 	}
 </script>
