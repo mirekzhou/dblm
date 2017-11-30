@@ -6,10 +6,10 @@
 				</div>
 
 				<div class="box">
-					<img :src="item.imgUrl" alt="">
+					<img :src="item.imgUrl" v-on:click="redirectTo('/issueDetail')">
 					<p class="prize">{{item.prize}}</p>
 					<p class="price">市场参考价：<span>{{item.price}}</span></p>
-						<home-progress :item="item.progressData"></home-progress>
+					<home-progress :item="item.progressData"></home-progress>
 				</div>
 
 				<div class="treasure-bottom">
@@ -68,6 +68,10 @@
 		methods: {
 			showShareDialog: function () {
 				this.$store.dispatch('setShareDialogStatus', {status: true});
+			},
+
+			redirectTo: function (path) {
+				this.$router.push(path);
 			}
 		}
 	}
@@ -112,6 +116,7 @@
 				text-align: left;
 
 				img {
+					cursor: pointer;
 					width: 100%;
 					height: $imgHeight;
 				}
