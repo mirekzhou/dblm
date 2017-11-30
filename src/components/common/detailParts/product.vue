@@ -23,7 +23,7 @@
             <div class="item-progress"><progres :item="datas"></progres></div>
             <countDown :secs="seconds" :desc="desc"></countDown>
             <div class="item-button">
-                <button class="btn-radius">分享夺宝</button>
+                <button class="btn-radius" v-on:click="share">分享夺宝</button>
             </div>
         </div>
     </div>
@@ -34,8 +34,8 @@
     import imgItem1 from '../../../assets/2.jpg';
     import imgItem2 from '../../../assets/3.jpg';
     import arrow from '../../../assets/page-left-arrow.png';
-   
-    
+
+
     import progres    from '../../common/amountProgress';
     import countDown    from '../../common/countdown';
     var count=0;
@@ -97,7 +97,10 @@
                 if(len-4>this.moveCount){
                     ++this.moveCount;
                 }
-                
+            },
+
+            share: function () {
+                this.$store.dispatch('setShareDialogStatus', {status: true});
             }
         }
     }
@@ -141,7 +144,7 @@
                         width:80px;
                         height:80px;
                     }
-                } 
+                }
             }
 
             .img-box {
@@ -229,7 +232,9 @@
                 position:relative;
                 margin-top:30px;
                 width:100%;
+
                 button{
+                    cursor: pointer;
                     position: absolute;
                     left: 200px;
                     height:30px;
