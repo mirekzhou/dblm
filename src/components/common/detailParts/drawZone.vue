@@ -8,6 +8,8 @@
         </div>
 
         <div class="win" v-if="status == 1">
+            <span class="win-icon"></span>
+
             <div class="user flex flex-center-xy">
                 <div class="user-header"></div>
                 <div class="prize-info">
@@ -51,7 +53,7 @@
 
         data: function () {
             return {
-                list : [
+                list :[
                     {title:'werjiewr',price:1214},
                     {title:'werjiewr',price:1214},
                     {title:'werjiewr',price:1214}
@@ -87,11 +89,32 @@
             line-height: 168px;
             text-align: center;
             color: #d43328;
+
+            .waiting-icon {
+                background-image: url("../../../assets/draw-status-sprite2.png");
+                background-position: 0 0;
+                display: inline-block;
+                width: 26px;
+                height: 34px;
+                vertical-align: -9px;
+            }
         }
 
         .win {
             height:250px;
             padding:0 20px;
+            position: relative;
+
+            .win-icon {
+                background-image: url("../../../assets/draw-status-sprite2.png");
+                background-position: 0 -136px;
+                display: inline-block;
+                height: 98px;
+                width: 98px;
+                position: absolute;
+                left: 90px;
+                top: 14px;
+            }
 
             .user {
                 padding:45px 0;
@@ -120,10 +143,9 @@
                     }
 
                 }
-
             }
 
-            .separate-line{
+            .separate-line {
                 position:relative;
                 height:12px;
                 line-height:12px;
@@ -149,7 +171,6 @@
                     }
 
                 }
-
             }
 
             .detail {
@@ -165,7 +186,6 @@
                         color:#d43328;
                     }
                 }
-
             }
         }
 
@@ -178,7 +198,8 @@
             text-align: center;
 
             .sad-face {
-                background-color: #cccccc;
+                background-image: url("../../../assets/draw-status-sprite2.png");
+                background-position: 0 -37px;
                 height: 96px;
                 width: 96px;
                 margin: 0 auto;
