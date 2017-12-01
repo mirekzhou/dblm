@@ -2,8 +2,8 @@
     <div class="lucky-board">
         <div class="header"><i class="icon"></i><span>幸运码排行榜</span></div>
         <ul>
-            <li class="flex flex-center-y" v-for="item in rankList">
-                <div class="left"><img :src="item.img"></div>
+            <li class="flex flex-center-y item-rank" v-for="item in rankList">
+                <div class="left"><i class="icon-rank"></i><img :src="item.img"></div>
                 <div class="right-content flex-full flex-column flex-center-x">
                     <p>{{item.phone}}</p>
                     <p>共获得幸运码<span class="red">{{item.luckyQty}}个</span></p>
@@ -64,12 +64,40 @@
 
             .left {
                 margin:0 15px;
+                position:relative;
                 img {
                     width:60px;
                     height:60px;
                 }
+                .icon-rank{
+                    position:absolute;
+                    width:30px;
+                    height:30px;
+                    background-image: url(../../../assets/common-sprite.png);
+                    background-repeat: no-repeat;
+                    top: -10px;
+                    left: -10px;
+                }
             }
         
+        }
+
+        .item-rank:first-child{
+            .icon-rank{
+                background-position: -75px -90px;
+            }
+        }
+
+        .item-rank:nth-child(2){
+            .icon-rank{
+                background-position: -75px -120px;
+            }
+        }
+
+        .item-rank:last-child{
+            .icon-rank{
+                background-position: -75px -150px;
+            }
         }
 
         .red {

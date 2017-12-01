@@ -1,6 +1,7 @@
 <template>
 	<div class="count-down">
-		<div class="content">
+		<div class="content flex-center-y">
+			<i class="icon-sand-glass"></i>
 			<label>距离结束</label>
 			<span>{{getTime.days}}天</span>
 			<i>：</i>
@@ -115,6 +116,14 @@
 		padding:10px 50px 5px 50px;
 
 		.content {
+			.icon-sand-glass {
+			    margin-right:10px;
+			    display: inline-block;
+			    background: url(../../assets/common-sprite.png) -43px 0;
+			    width: 19px;
+			    height: 20px;
+			}
+
 			label {
 				margin-right:5px;
 			}

@@ -4,7 +4,7 @@
         <div class="content">
             <ul class="flex flow-list">
                 <li class="flex flex-center-y flow-item first">
-                    <i></i>
+                    <div class="item-icon"><i></i></div>
                     <div class="flex-full">
                         <p class="item-title">参与夺宝</p>
                         <div class="item-text">选择商品参与夺宝</div>
@@ -12,18 +12,18 @@
                     <div class="flex-full separate-arrow" ></div>
                 </li>
                 <li class="flex flex-full flex-center-y flow-item second">
-                    <i class="second"></i>
-                    <div class="flex-full">
+                    <div class="item-icon"><i></i></div>
+                    <div class="flex-full middle-content">
                         <p class="item-title">分享夺宝链接</p>
-                        <div class="item-text">选择商品参与夺宝选择商品参与夺宝选择商品参与夺宝</div>
+                        <div class="item-text">分享夺宝商品链接，好友访问链接即可获得幸运码，更多幸运码意味更大中奖概率</div>
                     </div>
                     <div class="flex-full separate-arrow" ></div>
                 </li>
                 <li class="flex flex-full flex-center-y flow-item last">
-                    <i></i>
+                    <div class="item-icon"><i></i></div>
                     <div class="flex-full">
                         <p class="item-title">查看是否中奖</p>
-                        <div class="item-text">选择商品参与夺宝选择商品参与夺宝选择商品参与夺宝选择商品参与夺宝</div>
+                        <div class="item-text">等待开奖时间，查看是否中奖，如中奖请在顶部右上方【中奖信息】填写收货地址，然后等待奖品到家</div>
                     </div>
                 </li>
             </ul>
@@ -65,25 +65,32 @@
             margin:40px 15px;
             .flow-list {
                 height:50px;
-                .flow-item{
-                    i{
-                        width: 35px;
-                        height: 35px;
+
+                .flow-item {
+
+                    .item-icon {
+                        padding:10px;
                         color: #ffffff;
                         border-radius: 50%;
                         background-color:red;
-                        display:block;
                         margin-right:15px;
-                        background-image: url(../../../assets/common-sprite.png);
-                        background-size: auto;
-                        background-repeat: no-repeat;
+                        i{
+                            width: 30px;
+                            height: 30px;
+                            color: #ffffff;
+                            background-color:red;
+                            display:block;
+                            background-image: url(../../../assets/common-sprite.png);
+                            background-size: auto;
+                            background-repeat: no-repeat;
+                        }
                     } 
 
                     .separate-arrow {
                         height:30px;
                         width:40px;
                         max-width: 40px;
-                        margin:0 30px;
+                        margin:0 45px;
                         background-image: url(../../../assets/common-sprite.png);
                         background-max-size: auto;
                         background-position:-35px -132px;
@@ -105,7 +112,7 @@
                 .first {
 
                     i {
-                        background-position:-73px -58px;
+                        background-position:-75px -58px;
                     }
 
                     .item-desc {
@@ -115,15 +122,19 @@
                 }
 
                 .second {
+                    .middle-content {
+                        max-width:220px;
+                    }
+
                     i {
-                        background-position:-73px -26px;
+                        background-position:-75px -28px;
                     }
                     
                 }
 
                 .last {
                     i {
-                        background-position:-72px 5px;
+                        background-position:-75px 2px;
                     }
                 }
             }
