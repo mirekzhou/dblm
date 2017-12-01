@@ -30,12 +30,17 @@
 				</div>
 
 				<div class="right-part">
-					<div class="text user-center">
-						<span>个人中心</span>
+					<div class="text user-center"
+						 v-on:mouseover="ucMouseOver"
+						 v-on:mouseout="ucMouseOut">
 
+						<span>个人中心</span>
 						<span class="down-arrow"></span>
 
-						<ul class="float-window">
+						<ul class="float-window"
+							v-show="showFloatWindow"
+							v-on:mouseover="floatWindowMouseOver"
+							v-on:mouseout="floatWindowMouseOut">
 							<li>
 								<span>修改密码</span>
 							</li>
@@ -126,15 +131,17 @@
 
 		data: function () {
 			return {
-				times: [9, 9, 9, 9, 9],
+				times             : [9, 9, 9, 9, 9],
 				winMessageCount   : 0,
-				notificationCount : 0
+				notificationCount : 0,
+				showFloatWindow   : false
 			}
 		},
 
 		methods: {
 			redirectTo: function (path) {
 				this.$router.push(path);
+				this.showFloatWindow = false;
 			},
 
 			login: function () {
@@ -144,7 +151,23 @@
 			logout: function () {
 				this.$store.dispatch('setLoginStatus', false);
 				this.$router.push('/home');
-			}
+			},
+
+			ucMouseOver: function () {
+				this.showFloatWindow = true;
+			},
+
+			ucMouseOut: function () {
+				this.showFloatWindow = false;
+			},
+
+			floatWindowMouseOver: function () {
+				this.showFloatWindow = true;
+			},
+
+			floatWindowMouseOut: function () {
+				this.showFloatWindow = false;
+			},
 		},
 
 		components: {
@@ -256,7 +279,6 @@
 						.float-window {
 							background-color: #f5f5f5;
 							color: #797979;
-							display: none;
 							height: 140px;
 							width: 90px;
 							position: absolute;
@@ -268,16 +290,6 @@
 								line-height: 35px;
 								width: 100%;
 								text-align: center;
-							}
-
-							&:hover {
-								display: block;
-							}
-						}
-
-						&:hover {
-							.float-window {
-								display: block;
 							}
 						}
 					}
