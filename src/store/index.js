@@ -15,7 +15,9 @@ const state = {
 	showLoginDialog        :   false,
 	showRegisterDialog     :   false,
 	showAlert              :   false,
-	shareDialogStatus 	   :   false
+
+	showShareDialog 	   :   false,
+	showAddressDialog      :   false,
 };
 
 export default new Vuex.Store({

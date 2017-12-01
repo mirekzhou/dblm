@@ -34,7 +34,7 @@
 			</div>
 
 			<div class="row">
-				<div class="save">保存</div>
+				<div class="save" v-on:click="save">保存</div>
 			</div>
 
 			<div class="table-zone">
@@ -164,6 +164,10 @@
 			setDefaultAddress: function (data) {
 				alert('设为默认地址：' + JSON.stringify(data));
 			},
+
+			save: function () {
+				this.$store.dispatch('showAddressDialog');
+			}
 		}
 	}
 </script>

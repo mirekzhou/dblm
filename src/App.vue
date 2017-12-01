@@ -10,7 +10,8 @@
 
 		<my-footer></my-footer>
 
-		<share-dialog v-show="showDialog"></share-dialog>
+		<share-dialog   v-show="showShareDialog"></share-dialog>
+		<address-dialog v-show="showAddressDialog"></address-dialog>
 
 <!-- 		<suspension></suspension>
 		<breaking-news></breaking-news>
@@ -22,16 +23,17 @@
 
 <script>
 	import { mapActions } from 'vuex';
-	import { mapState } 	 from 'vuex';
-	import login from './components/login';
-	import register from './components/register';
-	import suspension from './components/suspension';
-	import breakingNews from './components/breakingNews';
-	import notifier from 'cxlt-vue2-toastr/src/toastr/toastr';
+	import { mapState }   from 'vuex';
+	import login          from './components/login';
+	import register       from './components/register';
+	import suspension     from './components/suspension';
+	import breakingNews   from './components/breakingNews';
+	import notifier       from 'cxlt-vue2-toastr/src/toastr/toastr';
 	import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css';
-	import header from './components/header/header';
-	import footer from './components/footer/footer';
-	import ShareDialog       from './components/common/ShareDialog';
+	import header         from './components/header/header';
+	import footer         from './components/footer/footer';
+	import ShareDialog    from './components/common/ShareDialog';
+	import addressDialog  from './components/common/addressDialog';
 
 	export default {
 		name: 'app',
@@ -60,8 +62,12 @@
 		},
 
 		computed: mapState({
-			showDialog: function (state) {
-				return state.shareDialogStatus;
+			showShareDialog: function (state) {
+				return state.showShareDialog;
+			},
+
+			showAddressDialog: function (state) {
+				return state.showAddressDialog;
 			}
 		}),
 
@@ -73,7 +79,8 @@
 			'suspension'    :  suspension,
 			'breaking-news' :  breakingNews,
 			'notifier'      :  notifier,
-			'share-dialog'  :  ShareDialog
+			'share-dialog'  :  ShareDialog,
+			'address-dialog':  addressDialog
 		}
 	}
 </script>

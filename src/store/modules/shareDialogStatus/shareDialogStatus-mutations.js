@@ -5,6 +5,6 @@
 
 export default {
 	SET_SHAREDIALOG_STATUS: function (state, opt) {
-		state.shareDialogStatus = opt.status;
+		state.showShareDialog = opt.status;
 	}
 };
