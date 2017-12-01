@@ -189,7 +189,7 @@
             .item-desc {
                 font-size:12px;
                 color:#707070;
-                margin:5px 0;
+                margin:10px 0;
             }
 
             .item-no {
@@ -215,7 +215,7 @@
             }
 
             .item-price {
-                margin:5px 0;
+                margin:10px 0;
                 font-size:12px;
                 color:#707070;
                 .price{

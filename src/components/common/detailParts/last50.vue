@@ -1,26 +1,29 @@
 <template>
     <div class="last-list">
         <div class="header">最后50名用户参与记录</div>
-        <ul class="half-box">
-            <li class="flex flex-center-y" v-for="item in joinList">
-                <div class="left"><img :src="item.img"></div>
-                <div class="right-content flex-full">
-                    <span>{{item.phone}}</span>
-                    <span>{{item.date}}</span>
-                    <span>{{item.no}}</span>
-                </div>
-            </li>
-        </ul>
-        <ul class="half-box">
-            <li class="flex flex-center-y" v-for="item in joinList">
-                <div class="left"><img :src="item.img"></div>
-                <div class="right-content flex-full">
-                    <span>{{item.phone}}</span>
-                    <span>{{item.date}}</span>
-                    <span>{{item.no}}</span>
-                </div>
-            </li>
-        </ul>
+        <div class="flex">
+            <ul class="half-box flex-full">
+                <li class="flex flex-center-y" v-for="item in joinList">
+                    <div class="left"><img :src="item.img"></div>
+                    <div class="right-content flex-full">
+                        <span>{{item.phone}}</span>
+                        <span>{{item.date}}</span>
+                        <span>{{item.no}}</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="line-middle"></div>
+            <ul class="half-box flex-full">
+                <li class="flex flex-center-y" v-for="item in joinList">
+                    <div class="left"><img :src="item.img"></div>
+                    <div class="right-content flex-full">
+                        <span>{{item.phone}}</span>
+                        <span>{{item.date}}</span>
+                        <span>{{item.no}}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -58,9 +61,14 @@
             line-height:40px;
             text-align:center;
         }
+        .line-middle {
+            margin-top:30px;
+            margin-right:15px;
+            max-height:330px;
+            border-right:1px solid #F0F0F0;
+        }
 
         .half-box {
-            width:50%;
             font-size:12px;
             color:#707070;
             text-align: left;
