@@ -105,8 +105,7 @@
 	.prize-info {
 		margin-top: 20px;
 		position: relative;
-
-
+		cursor: pointer;
 
 		.swiper-container  {
 			height: 350px;
