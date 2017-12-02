@@ -166,7 +166,6 @@
 			},
 
 			save: function () {
-				this.$store.dispatch('showAddressDialog');
 			}
 		}
 	}

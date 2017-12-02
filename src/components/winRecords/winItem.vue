@@ -27,7 +27,7 @@
 		<div class="part3">
 			<div class="title">收货地址及联系方式</div>
 
-			<div class="add-address" v-if="item.receiveStatus == 0">
+			<div class="add-address" v-if="item.receiveStatus == 0" v-on:click="showAddressDialog">
 				+添加
 			</div>
 
@@ -43,7 +43,7 @@
 				</div>
 
 				<div class="modify-address" v-if="item.receiveStatus == 1">
-					<span>修改地址</span>
+					<span v-on:click="showAddressDialog">修改地址</span>
 				</div>
 
 				<div class="clear" v-if="item.receiveStatus == 1"></div>
@@ -89,6 +89,9 @@
 		},
 
 		methods: {
+			showAddressDialog: function () {
+				this.$store.dispatch('showAddressDialog');
+			}
 		}
 	}
 </script>
