@@ -7,7 +7,7 @@
                     <div class="left"><img :src="item.img"></div>
                     <div class="right-content flex-full">
                         <span>{{item.phone}}</span>
-                        <span>{{item.date}}</span>
+                        <span class="date">{{item.date}}</span>
                         <span>{{item.no}}</span>
                     </div>
                 </li>
@@ -18,7 +18,7 @@
                     <div class="left"><img :src="item.img"></div>
                     <div class="right-content flex-full">
                         <span>{{item.phone}}</span>
-                        <span>{{item.date}}</span>
+                        <span class="date">{{item.date}}</span>
                         <span>{{item.no}}</span>
                     </div>
                 </li>
@@ -114,6 +114,20 @@
             float:left;
             li{
                 height:69px;
+                .right-content .date {
+                    &:after{
+                        display: inline-block;
+                        content: '';
+                        width: 25px;
+                        height: 10px;
+                        background-image: url(../../../assets/common-sprite.png);
+                        background-size: auto;
+                        background-repeat: no-repeat;
+                        background-position: -110px -80px;
+                        margin: 0 5px;
+                    }
+
+                }
             }
         }
 
