@@ -3,13 +3,15 @@
         <div class="left-part">
             <div class=left-column>
                 <div class="img-list">
-                    <ul class="progress-list"  v-bind:style="{ top: -100*moveCount + 'px' }" ref="move">
-                        <li  class="img-item" v-for="item in imgList">
+                     <swiper :options="swiperOption">
+                        <swiper-slide  class="img-item" v-for="item in imgList" :key="item.id" @click="changeImg(item.imgDetail)">
                             <img :src="item.url" @click="changeImg(item.imgDetail)">
-                        </li>
-                    </ul>
+                        </swiper-slide>
+                        <div class="swiper-pagination" slot="pagination"></div>
+                        <div class="swiper-button-prev" slot="button-prev"></div>
+                        <div class="swiper-button-next move-up" slot="button-next"></div>
+                      </swiper>
                 </div>
-                <div class="move-up" v-on:click="moveUp()"></div>
             </div>
             <div class="img-box">
                 <img :src="detailUrl">
@@ -36,7 +38,7 @@
     import arrow from '../../../assets/page-left-arrow.png';
     import  detailImg1 from '../../../assets/prize_info_2.jpg';
     import  detailImg2 from '../../../assets/prize_info_1.jpg';
-
+    import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
     import progres    from '../../common/amountProgress';
     import countDown    from '../../common/countdown';
@@ -76,21 +78,37 @@
                         imgDetail:detailImg1
                     },
                     {
-                        id:'2',
+                        id:'3',
                         url:imgItem1,
                         imgDetail:detailImg2
                     },
                     {
-                        id:'2',
+                        id:'4',
                         url:imgItem2,
                         imgDetail:detailImg1
                     },
                     {
-                        id:'2',
+                        id:'5',
                         url:imgItem2,
                         imgDetail:awardImage
                     }
                 ],
+                swiperOption: {
+                  direction: 'vertical',
+                  slidesPerView: 4,
+                  centeredSlides: true,
+                  spaceBetween:10,
+                  height:360,
+                  loop : true,
+                  pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true
+                  },
+                  navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev'
+                  }
+                },
                 moveCount:count,
                 arrowImg:arrow
             }
@@ -99,6 +117,8 @@
         components:{
             'progres': progres,
             'countDown':countDown,
+            swiper,
+            swiperSlide
         },
 
         methods: {
@@ -140,20 +160,14 @@
             .img-list {
                 float:left;
                 width:80px;
-                height:380px;
+                height:415px;
                 overflow:hidden;
                 position:relative;
-
                 .progress-list {
                     position:absolute;
                 }
 
                 .img-item{
-
-                    + .img-item {
-                        margin-top:15px;
-                    }
-
                     img {
                         width:80px;
                         height:80px;
@@ -169,28 +183,38 @@
                     border:1px solid #F0F0F0;
                 }
             }
-            .move-up {
-                position:relative;
-                height:30px;
-                width:100%;
-                float:left;
-                &:after {
-                    content: "";
-                    position: absolute;
-                    bottom:10px;
-                    left: 35px;
-                    display: block;
-                    width: 8px;
-                    height: 8px;
-                    margin-top: -5px;
-                    border-bottom: 2px solid;
-                    border-right: 2px solid;
-                    border-color: #afafaf;
-                    -webkit-transform: rotate(45deg);
-                    -moz-transform: rotate(45deg);
-                    -o-transform: rotate(45deg);
-                    transform: rotate(45deg);
-                }
+            .swiper-button-prev {
+                position: absolute;
+                top:10px;
+                left:35px;
+                content:'';
+                display: block;
+                width: 15px;
+                height: 15px;
+                border-bottom: 2px solid;
+                border-right: 2px solid;
+                border-color: #afafaf;
+                -webkit-transform: rotate(-135deg);
+                -moz-transform: rotate(-135deg);
+                -o-transform: rotate(-135deg);
+                transform: rotate(-135deg);
+            }
+
+            .swiper-button-next {
+                position: absolute;
+                bottom:10px;
+                left:35px;
+                content:'';
+                display: block;
+                width: 15px;
+                height: 15px;
+                border-bottom: 2px solid;
+                border-right: 2px solid;
+                border-color: #afafaf;
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                transform: rotate(45deg);
             }
         }
 
