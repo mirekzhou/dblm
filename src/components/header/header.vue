@@ -29,7 +29,7 @@
 					<div class="clear"></div>
 				</div>
 
-				<div class="right-part">
+				<div class="right-part" v-if="$route.path != '/register'">
 					<div class="text user-center"
 						 v-on:mouseover="ucMouseOver"
 						 v-on:mouseout="ucMouseOut">
@@ -76,6 +76,11 @@
 						<span v-show="!loginStatus">,夺宝</span>
 						<span v-show="!loginStatus" class="red-highlight" v-on:click="login">请登录</span>
 					</div>
+				</div>
+
+				<div class="right-part" v-if="$route.path == '/register'">
+					<span>已有账号？</span>
+					<span class="red-highlight" v-on:click="login">前往登录</span>
 				</div>
 
 				<div class="clear"></div>
@@ -255,13 +260,14 @@
 				.right-part {
 					float: right;
 
+					.red-highlight {
+						cursor: pointer;
+						color: #d53328;
+					}
+
 					.text {
 						cursor: pointer;
 						float: right;
-
-						.red-highlight {
-							color: #d53328;
-						}
 
 						.down-arrow {
 
