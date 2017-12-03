@@ -24,10 +24,16 @@
                 </li>
             </ul>
         </div>
+        <pager 
+            :page-index="currentPage" 
+            :total="count" 
+            :page-size="pageSize" 
+            @change="pageChange"></pager>
     </div>
 </template>
 
 <script>
+    import pager      from '../../common/pager';
     
     export default {
         name: 'page',
@@ -38,12 +44,40 @@
 
         data:function () {
             return {
-
+                pageSize : 50 , //每页显示20条数据
+                currentPage : 1, //当前页码
+                count : 400, //总记录数
             }
+        },
+        components:{
+            'pager': pager,
         },
 
         methods: {
-        }
+            //获取数据
+            getList () {
+                //模拟
+                //let url = `/api/list/?pageSize=${this.pageSize}&currentPage=${this.currentPage}`
+                //this.$http.get(url)
+                //.then(({body}) => {
+
+                    //子组件监听到count变化会自动更新DOM
+                    //this.count = body.count
+                    //this.items = body.list
+                //})
+                this.count = 400
+                
+            },
+            //从page组件传递过来的当前page
+            pageChange (page) {
+                this.currentPage = page
+                this.getList()
+            }
+        },
+        mounted() {
+            //请求第一页数据
+            this.getList()
+        } 
     }
 </script>
 
@@ -67,6 +101,11 @@
             max-height:330px;
             border-right:1px solid #F0F0F0;
         }
+        ul{
+            height:345px;
+            max-height:345px;
+            overflow:hidden;
+        }
 
         .half-box {
             font-size:12px;
@@ -74,7 +113,7 @@
             text-align: left;
             float:left;
             li{
-                height:76px;
+                height:69px;
             }
         }
 

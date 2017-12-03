@@ -4,15 +4,15 @@
             <div class=left-column>
                 <div class="img-list">
                     <ul class="progress-list"  v-bind:style="{ top: -100*moveCount + 'px' }" ref="move">
-                        <li class="img-item" v-for="item in imgList">
-                            <img :src="item.url">
+                        <li    class="img-item" v-for="item in imgList">
+                            <img :src="item.url" @click="changeImg(item.imgDetail)">
                         </li>
                     </ul>
                 </div>
                 <div class="move-up" v-on:click="moveUp()"></div>
             </div>
             <div class="img-box">
-                <img :src="image">
+                <img :src="detailUrl">
             </div>
         </div>
         <div class="right-part">
@@ -34,6 +34,8 @@
     import imgItem1 from '../../../assets/2.jpg';
     import imgItem2 from '../../../assets/3.jpg';
     import arrow from '../../../assets/page-left-arrow.png';
+    import  detailImg1 from '../../../assets/prize_info_2.jpg';
+    import  detailImg2 from '../../../assets/prize_info_1.jpg';
 
 
     import progres    from '../../common/amountProgress';
@@ -47,7 +49,7 @@
 
         data: function () {
             return {
-                image:awardImage,
+                detailUrl:awardImage,
                 list : [
                     {title:'werjiewr',price:1214},
                     {title:'werjiewr',price:1214},
@@ -62,23 +64,28 @@
                 imgList:[
                     {
                         id:'1',
-                        url:imgItem1
+                        url:imgItem1,
+                        imgDetail:awardImage
                     },
                     {
                         id:'2',
-                        url:imgItem2
+                        url:imgItem2,
+                        imgDetail:detailImg1
                     },
                     {
                         id:'2',
-                        url:imgItem1
+                        url:imgItem1,
+                        imgDetail:detailImg2
                     },
                     {
                         id:'2',
-                        url:imgItem2
+                        url:imgItem2,
+                        imgDetail:detailImg1
                     },
                     {
                         id:'2',
-                        url:imgItem2
+                        url:imgItem2,
+                        imgDetail:awardImage
                     }
                 ],
                 moveCount:count,
@@ -101,6 +108,10 @@
 
             share: function () {
                 this.$store.dispatch('setShareDialogStatus', {status: true});
+            },
+
+            changeImg(url){
+                this.detailUrl=url
             }
         }
     }
