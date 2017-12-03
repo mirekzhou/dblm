@@ -4,7 +4,7 @@
             <div class=left-column>
                 <div class="img-list">
                     <ul class="progress-list"  v-bind:style="{ top: -100*moveCount + 'px' }" ref="move">
-                        <li    class="img-item" v-for="item in imgList">
+                        <li  class="img-item" v-for="item in imgList">
                             <img :src="item.url" @click="changeImg(item.imgDetail)">
                         </li>
                     </ul>
@@ -16,12 +16,12 @@
             </div>
         </div>
         <div class="right-part">
-            <div class='item-title'>[低至14382]低至低至低至低至低至低至低至低至</div>
-            <div class='item-desc'>低至低至低至低至低至低至低至低至</div>
-            <div class='item-no'>第142141241期</div>
-            <div class="item-price">参考价格：<span class="price">3432432元</span></div>
-            <div class="item-progress"><progres :item="datas"></progres></div>
-            <countDown :secs="seconds" :desc="desc"></countDown>
+            <div class='item-title'>{{productInfo.title}}</div>
+            <div class='item-desc'>{{productInfo.desc}}</div>
+            <div class='item-no'>第{{productInfo.no}}期</div>
+            <div class="item-price">参考价格：<span class="price">{{productInfo.price}}元</span></div>
+            <div class="item-progress"><progres :item="progressData"></progres></div>
+            <countDown :secs="countdownData.seconds" :desc="countdownData.desc"></countDown>
             <div class="item-button">
                 <button class="btn-radius" v-on:click="share">分享夺宝</button>
             </div>
@@ -50,17 +50,20 @@
         data: function () {
             return {
                 detailUrl:awardImage,
-                list : [
-                    {title:'werjiewr',price:1214},
-                    {title:'werjiewr',price:1214},
-                    {title:'werjiewr',price:1214}
-                ],
-                datas:{
+                productInfo:{
+                    title:'[低至14382]低至低至低至低至低至低至低至低至',
+                    desc:'低至低至低至低至低至低至低至低至',
+                    no:142141241,
+                    price:3432432
+                },
+                progressData:{
                     total:100,
                     current:50
                 },
-                seconds:(new Date('2017-11-30')-new Date()),
-                desc:'倒计时结束时参与人数达到或超过总需人数，则随机抽取1人获得该商品',
+                countdownData:{
+                    seconds:(new Date('2017-11-30')-new Date()),
+                    desc:'倒计时结束时参与人数达到或超过总需人数，则随机抽取1人获得该商品'
+                },
                 imgList:[
                     {
                         id:'1',
@@ -124,7 +127,7 @@
 
         .left-part {
             position:relative;
-            width:532px;
+            width:500px;
             height:100%;
             float:left;
 
@@ -137,7 +140,7 @@
             .img-list {
                 float:left;
                 width:80px;
-                height:410px;
+                height:380px;
                 overflow:hidden;
                 position:relative;
 
@@ -148,7 +151,7 @@
                 .img-item{
 
                     + .img-item {
-                        margin-top:20px;
+                        margin-top:15px;
                     }
 
                     img {
@@ -161,8 +164,8 @@
             .img-box {
                 float:left;
                 img{
-                    width:450px;
-                    height:450px;
+                    width:415px;
+                    height:415px;
                     border:1px solid #F0F0F0;
                 }
             }
@@ -195,12 +198,12 @@
             width:550px;
             height:100%;
             float:left;
-            margin-left:90px;
+            margin-left:80px;
 
             .item-desc {
                 font-size:12px;
                 color:#707070;
-                margin:10px 0;
+                margin:12px 0;
             }
 
             .item-no {
@@ -226,7 +229,7 @@
             }
 
             .item-price {
-                margin:10px 0;
+                margin:10px 0 15px 0;
                 font-size:12px;
                 color:#707070;
                 .price{
@@ -236,7 +239,7 @@
             }
 
             .item-progress {
-                margin-bottom:30px;
+                margin-bottom:35px;
             }
 
             .item-button {
@@ -248,8 +251,8 @@
                     cursor: pointer;
                     position: absolute;
                     left: 200px;
-                    height:30px;
-                    line-height:30px;
+                    height:35px;
+                    line-height:35px;
                     width:150px;
                     text-align:center;
                     background-color:#d43328;
