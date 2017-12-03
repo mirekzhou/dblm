@@ -3,8 +3,6 @@
 		<div class="wrapper">
             <product></product>
             <joinFlow></joinFlow>
-            <my-data></my-data>
-            <my-lucky-board></my-lucky-board>
 
             <div class="bottom-content">
                 <div class="left-part">
@@ -23,8 +21,6 @@
     import product      from '../common/detailParts/product';
     import joinFlow     from '../common/detailParts/joinFlow';
     import luckyBoard   from '../common/detailParts/luckyBoard';
-    import myData       from '../common/detailParts/myData';
-    import myLuckyBoard from '../common/detailParts/myLuckyBoard';
     import lastList     from '../common/detailParts/last50';
     import userImg      from '../../assets/header.png';
     import prizeHeader  from '../../assets/prize_info_header.png';
@@ -111,8 +107,6 @@
         components: {
             'joinFlow'       : joinFlow,
             'product'        : product,
-            'my-data'        : myData,
-            'my-lucky-board' : myLuckyBoard,
             'luckyBoard'     : luckyBoard,
             'lastList'       : lastList
         },

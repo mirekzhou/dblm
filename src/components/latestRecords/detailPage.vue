@@ -4,6 +4,7 @@
             <product></product>
             <joinFlow></joinFlow>
             <drawZone></drawZone>
+
             <div class="bottom-content">
                 <div class="left-part">
                     <luckyBoard :rankList='rankList'></luckyBoard>
