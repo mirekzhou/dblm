@@ -18,6 +18,11 @@ const state = {
 
 	showShareDialog 	   :   false,
 	showAddressDialog      :   false,
+
+	showAlert              :   false,
+	alertData              :   '',
+	showWinAlert           :   false,
+	winAlertData           :   '',
 };
 
 export default new Vuex.Store({

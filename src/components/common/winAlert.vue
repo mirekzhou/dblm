@@ -1,19 +1,25 @@
 <template>
-    <div class="alert" v-show="showAlert">
+    <div class="win-alert" v-show="showWinAlert">
 	    <div class="wrapper">
           	<div class="title">
-            	{{alertData.title || '温馨提示'}}
+            	夺宝成功
             	<span class="close" v-on:click="hide">✕</span>
          	</div>
 
           	<div class="content">
-            	{{alertData.message}}
+            	<div class="section1">
+            		恭喜您获得第
+            		<span>{{winAlertData.issueDate}}期</span>
+            	</div>
+            	<div class="section2">
+            		幸运码：
+            		<span>{{winAlertData.luckyCode}}</span>
+            	</div>
+            	<div class="section3">夺宝助攻链接已产生，赶快分享让好友为你助攻</div>
           	</div>
 
           	<div class="buttons">
-            	<button v-for="item in alertData.buttons" v-on:click="buttonClicked(item)">
-            		{{item.name}}
-            	</button>
+            	<button v-on:click="hide">知道了</button>
           	</div>
 	    </div>
     </div>
@@ -23,38 +29,30 @@
 	import { mapState } from 'vuex';
 
 	export default {
-		name: 'alert',
+		name: 'win-alert',
 
 		props: [],
 
 		methods: {
-			buttonClicked: function (item) {
-				if (item.callback && typeof item.callback === 'function') {
-					item.callback();
-				} else {
-					this.hide();
-				}
-			},
-
 			hide: function () {
-				this.$store.dispatch('hideAlert');
+				this.$store.dispatch('hideWinAlert');
 			}
 		},
 
 		computed: mapState({
-			showAlert: function (state) {
-				return state.showAlert;
+			showWinAlert: function (state) {
+				return state.showWinAlert;
 			},
 
-			alertData: function (state) {
-				return state.alertData;
+			winAlertData: function (state) {
+				return state.winAlertData;
 			}
 		}),
 	}
 </script>
 
 <style lang="scss" scoped>
-	.alert {
+	.win-alert {
 		width: 100%;
 		height: 100%;
 		position: fixed;
@@ -95,9 +93,31 @@
 			}
 
 			.content {
-				height: 80px;
-				line-height: 80px;
-				text-align: center;
+				margin-top: 15px;
+
+				.section1 {
+					font-size: 16px;
+					text-align: center;
+
+					span {
+						color: #d43328;
+					}
+				}
+
+				.section2 {
+					font-size: 16px;
+					text-align: center;
+
+					span {
+						color: #d43328;
+					}
+				}
+
+				.section3 {
+					font-size: 12px;
+					margin-top: 12px;
+					text-align: center;
+				}
 			}
 
 			.buttons {
@@ -117,10 +137,6 @@
 					text-align: center;
 					outline: none;
 					width: 100px;
-
-					&:last-child {
-						margin-left: 10px;
-					}
 				}
 			}
 		}

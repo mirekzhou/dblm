@@ -12,6 +12,8 @@
 
 		<share-dialog   v-show="showShareDialog"></share-dialog>
 		<address-dialog v-show="showAddressDialog"></address-dialog>
+		<win-alert></win-alert>
+		<alert v-show="showAlert"></alert>
 
 <!-- 		<suspension></suspension>
 		<breaking-news></breaking-news>
@@ -22,8 +24,8 @@
 </template>
 
 <script>
-	import { mapActions } from 'vuex';
 	import { mapState }   from 'vuex';
+
 	import login          from './components/login';
 	import register       from './components/register';
 	import suspension     from './components/suspension';
@@ -34,6 +36,8 @@
 	import footer         from './components/footer/footer';
 	import ShareDialog    from './components/common/ShareDialog';
 	import addressDialog  from './components/common/addressDialog';
+	import winAlert       from './components/common/winAlert';
+	import alert          from './plugins/alert';
 
 	export default {
 		name: 'app',
@@ -54,14 +58,34 @@
 		},
 
 		mounted: function () {
-			// this.$store.dispatch('getLoginStatus');
-			// this.$store.dispatch('getRegisterConfig');
+			this.$store.dispatch('showWinAlert', {
+				issueDate: '20170304113',
+				luckyCode: '10000012'
+			});
+			// var that = this;
+
+			// this.$store.dispatch('showAlert', {
+			// 	title: '夺宝失败',
+			// 	message: '本期夺宝已截止，下期请早',
+			// 	buttons: [
+			// 		{
+			// 			name: '知道了',
+			// 			callback: function () {
+			// 				that.$store.dispatch('hideAlert');
+			// 			}
+			// 		}
+			// 	]
+			// });
 		},
 
 		methods: {
 		},
 
 		computed: mapState({
+			showAlert: function (state) {
+				return state.showAlert;
+			},
+
 			showShareDialog: function (state) {
 				return state.showShareDialog;
 			},
@@ -80,7 +104,9 @@
 			'breaking-news' :  breakingNews,
 			'notifier'      :  notifier,
 			'share-dialog'  :  ShareDialog,
-			'address-dialog':  addressDialog
+			'address-dialog':  addressDialog,
+			'alert'         :  alert,
+			'win-alert'     :  winAlert,
 		}
 	}
 </script>

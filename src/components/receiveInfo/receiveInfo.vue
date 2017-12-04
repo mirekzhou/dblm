@@ -154,7 +154,22 @@
 			},
 
 			deleteAddress: function (data) {
-				alert('删除地址：' + JSON.stringify(data));
+				var that = this;
+
+				this.$store.dispatch('showAlert', {
+					message: '将删除本条收货地址，无法找回',
+					buttons: [
+						{
+							name: '删除',
+							callback: function () {
+								that.$store.dispatch('hideAlert');
+							}
+						},
+						{
+							name: '取消'
+						},
+					]
+				});
 			},
 
 			modifyAddress: function (data) {
@@ -166,6 +181,16 @@
 			},
 
 			save: function () {
+				var that = this;
+
+				this.$store.dispatch('showAlert', {
+					message: '最多只能保存15条收获地址',
+					buttons: [
+						{
+							name: '知道了'
+						},
+					]
+				});
 			}
 		}
 	}
