@@ -1,7 +1,13 @@
 <template>
 	<div class="page win-records">
 		<div class="wrapper">
-			<win-item v-for="item in records" :item="item" key="item"></win-item>
+			<win-item v-for="item in records" :item="item" key="item" v-show="records.length > 0">
+			</win-item>
+
+			<div class="no-data" v-show="records.length == 0">
+				<span class="hand-shake"></span>
+				<span class="text">您暂未中奖，请多多参与</span>
+			</div>
 		</div>
 	</div>
 </template>
@@ -107,6 +113,32 @@
 			margin: 0 auto;
 			padding-top: 8px;
 			padding-bottom: 20px;
+
+			.no-data {
+				color: #414141;
+				border-top: 0;
+				border-bottom: 1px solid #e5e5e5;
+				font-size: 14px;
+				height: 500px;
+				text-align: center;
+				width: 100%;
+
+				.hand-shake {
+					background-image: url("../../assets/no-data-sprite.png");
+					background-position: 0 -110px;
+					display: inline-block;
+					height: 50px;
+					margin-top: 196px;
+					width: 65px;
+				}
+
+				.text {
+					display: inline-block;
+					text-align: center;
+					line-height: 30px;
+					width: 100%;
+				}
+			}
 		}
 	}
 </style>

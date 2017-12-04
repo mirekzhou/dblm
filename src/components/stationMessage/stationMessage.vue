@@ -7,7 +7,7 @@
 				</div>
 			</div>
 
-			<div class="content">
+			<div class="content" v-show="messages.length > 0">
 				<div class="section1">
 					<span class="seclect-all" v-on:click="selectAll">全选</span>
 					<span class="cancel-all" v-on:click="cancelAll">反选</span>
@@ -31,6 +31,11 @@
 								v-on:pageIndexChanged="pageIndexChanged"></pager>
 					</div>
 				</div>
+			</div>
+
+			<div class="no-data" v-show="messages.length == 0">
+				<span class="speaker"></span>
+				<span class="text">当前没有任何通知</span>
 			</div>
 		</div>
 	</div>
@@ -191,6 +196,31 @@
 						line-height: 80px;
 						width: 700px;
 					}
+				}
+			}
+
+			.no-data {
+				border: 1px solid #e5e5e5;
+				border-top: 0;
+				font-size: 14px;
+				height: 432px;
+				text-align: center;
+				width: 100%;
+
+				.speaker {
+					background-image: url("../../assets/no-data-sprite.png");
+					background-position: 0 -51px;
+					display: inline-block;
+					height: 54px;
+					margin-top: 196px;
+					width: 63px;
+				}
+
+				.text {
+					display: inline-block;
+					text-align: center;
+					line-height: 30px;
+					width: 100%;
 				}
 			}
 		}
