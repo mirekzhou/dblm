@@ -8,8 +8,7 @@
                             <img :src="item.url" @click="changeImg(item.imgDetail)">
                         </swiper-slide>
                         <div class="swiper-pagination" slot="pagination"></div>
-                        <div class="swiper-button-prev" slot="button-prev"></div>
-                        <div class="swiper-button-next move-up" slot="button-next"></div>
+                        <div class="swiper-button-next" slot="button-next"></div>
                       </swiper>
                 </div>
             </div>
@@ -95,19 +94,17 @@
                 ],
                 swiperOption: {
                   direction: 'vertical',
-                  slidesPerView: 4,
+                  slidesPerView: 5,
                   centeredSlides: true,
-                  spaceBetween:10,
-                  height:360,
+                  
+                  height:400,
                   loop : true,
                   pagination: {
                     el: '.swiper-pagination',
                     clickable: true
                   },
-                  navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev'
-                  }
+                  nextButton:'.swiper-button-next',
+                  prevButton:'null'
                 },
                 moveCount:count,
                 arrowImg:arrow
@@ -143,7 +140,7 @@
 <style lang="scss" scoped>
     .product {
         margin-top:30px;
-        height:450px;
+        height:415px;
 
         .left-part {
             position:relative;
