@@ -1,7 +1,7 @@
 <template>
 	<div class="register">
 		<div class="register-wrap">
-			<div class="register-header">
+			<div class="register-header" v-show="registerStatus < 4">
 				<div class="register-header-inner">
 					<div class="register-title1">
 						<span class="circle active">1</span>
@@ -19,7 +19,7 @@
 				</div>
 			</div>
 
-			<div class="register-content">
+			<div class="register-content" v-show="registerStatus < 4">
 				<div class="headline">
 					<p>创建夺宝联盟账号</p>
 				</div>
@@ -47,6 +47,9 @@
 					<div class="register-step2" v-show="registerStatus===2">
 						<div class="code-input-box">
 							<input type="text" placeholder="请输入短信验证码">
+							<div class="code-btn" v-on:click="getCode">
+								<span>获取验证码</span>
+							</div>
 						</div>
 						<error-tip errorText="输入验证码无效"></error-tip>
 						<div class="pre-btn" v-on:click="preStep">
@@ -55,16 +58,59 @@
 					</div>
 
 					<div class="register-step3" v-show="registerStatus===3">
-						第三步
+						<div class="password-box">
+							<p>设置登录密码</p>
+							<input type="text" placeholder="密码为6-20位字符组成,不能是9位以下的纯字">
+							<error-tip errorText="密码为6-20位字符组成,不能是9位以下的纯字"></error-tip>
+						</div>
+
+						<div class="password-box">
+							<p>重复密码</p>
+							<input type="text" placeholder="密码为6-20位字符组成,不能是9位以下的纯字">
+							<error-tip errorText="请确认密码"></error-tip>
+						</div>
 					</div>
 
 					<div class="bottom-btn">
 						<p v-on:click="nextStep" v-show="registerStatus!==3">下一步</p>
-						<p v-on:click="nextStep" v-show="registerStatus===3">完成注册</p>
+						<p v-on:click="finishRegister" v-show="registerStatus===3">完成注册</p>
 					</div>
 				</div>
+			</div>
 
+			<div class="register-success" v-show="registerStatus >= 4">
+				<div class="icon-success"></div>
+				<p>恭喜账号注册成功,现在<span v-on:click="finish">马上去夺宝</span></p>
+			</div>
 
+			<div class="process clear" v-show="registerStatus >= 4">
+				<p>夺宝流程</p>
+				<div class="flow-chart">
+					<div class="duobao">
+						<i class="icon-duobao"></i>
+					</div>
+					<div class="line-wrap">
+						<span>参与夺宝</span>
+						<i class="line"></i>
+					</div>
+
+					<div class="share">
+						<i class="icon-share"></i>
+					</div>
+					<div class="line-wrap">
+						<span>分享给好友,邀请好友来助攻</span>
+						<i class="line"></i>
+					</div>
+
+					<div class="success">
+						<i class="icon-success"></i>
+					</div>
+
+					<div class="line-wrap">
+						<p>助攻成功获得幸运码，等待中奖</p>
+						<p class="red">好友助攻越多，幸运码越多，中奖概率越大</p>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -72,7 +118,8 @@
 </template>
 
 <script>
-	import ErrorTip from '../../plugins/error-tip'
+	import ErrorTip from '../../plugins/error-tip';
+	import '../../scss/common.scss';
 	export default {
 		name: 'register',
 
@@ -92,7 +139,19 @@
 
 			preStep: function () {
 				this.registerStatus--;
-			}
+			},
+			getCode: function () {
+				console.log('222')
+			},
+
+			finishRegister: function () {
+				this.registerStatus++;
+			},
+
+			finish: function () {
+				this.registerStatus = 1;
+				this.$router.push('/home');
+			},
 		},
 		components: {
 			'error-tip'	: ErrorTip
@@ -231,10 +290,10 @@
 						.block {
 							position: absolute;
 							top: 50%;
-							left: 1px;
+							left: 2px;
 							transform: translate(0,-50%);
 							width: 68px;
-							height: 28px;
+							height: 30px;
 							border: 1px solid #dddddd;
 							border-radius: 15px;
 							line-height: 31px;
@@ -254,12 +313,15 @@
 				}
 
 				.register-step2 {
+					font-size: 14px;
+
 					.code-input-box {
 						height: 33px;
 						border-radius: 3px; 
 						line-height: 33px;
 						border: 1px solid #ddd;
 						margin-bottom: 15px;
+						position: relative;
 
 						input {
 							border: none;
@@ -271,6 +333,19 @@
 								outline: none;
 							}
 						}
+
+						.code-btn {
+							position: absolute;
+							right: 0;
+							top: 0;
+							width: 88px;
+							height: 30px;
+							border-left: 1px solid #ddd;
+							background: #f6f6f6;
+							color: #8a8a8a;
+							text-align: center;
+							cursor: pointer;
+						}
 					}
 
 					.pre-btn {
@@ -281,6 +356,28 @@
 					}
 				}
 
+				.register-step3 {
+					font-size: 14px;
+
+					.password-box {
+						margin-top: 19px;
+
+						p {
+							margin-bottom: 11px;
+							color: #6e6e6e;
+						}
+
+						input {
+							box-sizing: border-box;
+							height: 33px;
+							line-height: 29px;
+							border: 1px solid #dddddd;
+							border-radius: 3px;
+							padding-left: 10px;
+							width: 100%;
+						}
+					}
+				}
 
 				.bottom-btn {
 					height: 50px;
@@ -294,6 +391,129 @@
 						color: #fff;
 						font-weight: 600;
 						margin-top: 10px;
+					}
+				}
+			}
+		}
+
+		.register-success {
+			width: 540px;
+			margin: 70px auto 60px;
+			padding-bottom: 120px;
+			text-align: center;
+			border: 1px solid #ebebeb;
+			background: #fff;
+			-webkit-box-shadow: 0px 0px 10px 3px #e1e1e1; 
+			-moz-box-shadow: 0px 0px 10px 3px #e1e1e1;
+			box-shadow: 0px 0px 10px 3px #e1e1e1;
+
+			.icon-success {
+				width: 96px;
+				height: 96px;
+				margin: 0 auto;
+				background: url('../../assets/common-sprite.png') -158px 0;
+			}
+
+			p {
+				font-size: 18px;
+				margin-top: 44px;
+
+				span {
+					color: #d74941;
+					text-decoration: underline;
+					cursor: pointer;
+				}
+			}
+		}
+
+		.process {
+			width: 1055px;
+			margin: 0 auto 16px;
+			text-align: center;
+
+			p {
+				color: #d43328; 
+			}
+
+			.flow-chart {
+
+				div {
+					float: left;
+				}
+				
+				.line-wrap {
+					font-size: 14px;
+					color: #737373;
+					margin: 18px 20px 0;
+
+					span {
+						float: left;
+					}
+
+					p {
+						text-align: left;
+						margin-top: 0;
+						color: #737373;
+					}
+
+					.red {
+						color: #d43328;
+					}
+
+					.line {
+						display: inline-block;
+						width: 105px;
+						height: 2px;
+						background: #e4e4e4;
+						float: left;
+						margin: 10px 0 0 20px;
+					}
+				}
+			
+
+				.duobao {
+					width: 63px;
+					height: 63px;
+					line-height: 78px;
+					background: #e4e4e4;
+					border-radius: 50%;
+
+					i {
+						display: inline-block;
+						width: 35px;
+						height: 27px;
+						background: url('../../assets/common-sprite.png') -112px -96px;
+					}
+				}
+
+				.share {
+					width: 63px;
+					height: 63px;
+					line-height: 78px;
+					background: #e4e4e4;
+					border-radius: 50%;
+
+					i {
+						display: inline-block;
+						width: 35px;
+						height: 31px;
+						background: url('../../assets/common-sprite.png') -72px -28px;
+					}
+				}
+
+
+				.success {
+					width: 63px;
+					height: 63px;
+					line-height: 80px;
+					background: #e4e4e4;
+					border-radius: 50%;
+
+					i {
+						display: inline-block;
+						width: 35px;
+						height: 30px;
+						background: url('../../assets/common-sprite.png') -111px -128px;
 					}
 				}
 			}
