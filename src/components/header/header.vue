@@ -101,7 +101,7 @@
 						</router-link>
 					</li>
 					<li>
-						<router-link to="/help">
+						<router-link to="/userGuide">
 							<span>夺宝指南</span>
 						</router-link>
 					</li>

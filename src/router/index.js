@@ -62,10 +62,17 @@ export default new VueRouter({
 			}
 		},
 		{
-			path: '/help',
-			name: 'help',
+			path: '/userGuide',
+			name: 'userGuide',
 			component: function (resolve) {
-				require(['../components/help/help.vue'], resolve);
+				require(['../components/userGuide/userGuide.vue'], resolve);
+			}
+		},
+		{
+			path: '/guideContent',
+			name: 'guideContent',
+			component: function (resolve) {
+				require(['../components/userGuide/guideContent.vue'], resolve);
 			}
 		},
 		{
