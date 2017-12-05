@@ -30,7 +30,7 @@
 			</ul>
 
 			<div class="no-data" v-show="records.length == 0">
-				<span class="pig"></span>
+				<div><span class="pig"></span></div>
 				<span class="text">您未参与任何夺宝，请多多参与</span>
 			</div>
 		</div>
@@ -61,61 +61,61 @@
 				type : '0',
 
 				records: [
-					// {
-					// 	'issueDate': '20170203112',
-					// 	'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
-					// 	'price': '6388',
-					// 	'drawStatus': 1,
-					// 	'imgSrc': watchImage,
-					// 	'progressData': {
-					// 		'total': 220,
-					// 		'current': 120
-					// 	}
-					// },
-					// {
-					// 	'issueDate': '20170203112',
-					// 	'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
-					// 	'price': '6388',
-					// 	'drawStatus': 2,
-					// 	'imgSrc': watchImage,
-					// 	'progressData': {
-					// 		'total': 220,
-					// 		'current': 120
-					// 	}
-					// },
-					// {
-					// 	'issueDate': '20170203112',
-					// 	'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
-					// 	'price': '6388',
-					// 	'drawStatus': 3,
-					// 	'imgSrc': watchImage,
-					// 	'progressData': {
-					// 		'total': 220,
-					// 		'current': 120
-					// 	}
-					// },
-					// {
-					// 	'issueDate': '20170203112',
-					// 	'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
-					// 	'price': '6388',
-					// 	'drawStatus': 4,
-					// 	'imgSrc': watchImage,
-					// 	'progressData': {
-					// 		'total': 220,
-					// 		'current': 120
-					// 	}
-					// },
-					// {
-					// 	'issueDate': '20170203112',
-					// 	'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
-					// 	'price': '6388',
-					// 	'drawStatus': 5,
-					// 	'imgSrc': watchImage,
-					// 	'progressData': {
-					// 		'total': 220,
-					// 		'current': 120
-					// 	}
-					// }
+					{
+						'issueDate': '20170203112',
+						'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
+						'price': '6388',
+						'drawStatus': 1,
+						'imgSrc': watchImage,
+						'progressData': {
+							'total': 220,
+							'current': 120
+						}
+					},
+					{
+						'issueDate': '20170203112',
+						'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
+						'price': '6388',
+						'drawStatus': 2,
+						'imgSrc': watchImage,
+						'progressData': {
+							'total': 220,
+							'current': 120
+						}
+					},
+					{
+						'issueDate': '20170203112',
+						'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
+						'price': '6388',
+						'drawStatus': 3,
+						'imgSrc': watchImage,
+						'progressData': {
+							'total': 220,
+							'current': 120
+						}
+					},
+					{
+						'issueDate': '20170203112',
+						'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
+						'price': '6388',
+						'drawStatus': 4,
+						'imgSrc': watchImage,
+						'progressData': {
+							'total': 220,
+							'current': 120
+						}
+					},
+					{
+						'issueDate': '20170203112',
+						'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
+						'price': '6388',
+						'drawStatus': 5,
+						'imgSrc': watchImage,
+						'progressData': {
+							'total': 220,
+							'current': 120
+						}
+					}
 				]
 			}
 		},
@@ -217,13 +217,18 @@
 				text-align: center;
 				width: 100%;
 
-				.pig {
-					background-image: url("../../assets/no-data-sprite.png");
-					background-position: 0 -166px;
-					display: inline-block;
-					height: 80px;
+				div {
 					margin-top: 196px;
-					width: 80px;
+					width: 100%;
+					text-align: center;
+
+					.pig {
+						background-image: url("../../assets/no-data-sprite.png");
+						background-position: 0 -166px;
+						display: inline-block;
+						height: 80px;
+						width: 80px;
+					}
 				}
 
 				.text {
