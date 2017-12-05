@@ -37,7 +37,7 @@
 
 				<div class="win" v-if="item.drawStatus == 4">
 					<span class="win-icon"></span>
-					<span class="text">填写中奖信息</span>
+					<span class="text" v-on:click="fillWinInfo">填写中奖信息</span>
 				</div>
 
 				<div class="lose" v-if="item.drawStatus == 5">
@@ -78,6 +78,10 @@
 		methods: {
 			redirectTo: function (path) {
 				this.$router.push(path);
+			},
+
+			fillWinInfo: function () {
+				this.$router.push('/winRecords');
 			}
 		}
 	}
