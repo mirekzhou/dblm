@@ -32,13 +32,22 @@
 						</div>
 
 						<div class="slide-block">
+							<drag-verify :width="width" :height="height" :text="text" :success-text="successText" 
+										 :background="background" :progress-bar-bg="progressBarBg" :completed-bg="completedBg"
+										 :handler-bg="handlerBg" :handler-icon="handlerIcon" :text-size="textSize" 
+										 :success-icon="successIcon" :circle="getShape" v-on:passcallback="passVerify">
+								
+							</drag-verify>
+						</div>
+
+						<!-- <div class="slide-block">
 							<p>按住滑块，拖动完成上方拼图</p>
 							<div class="block">
 								<span></span>
 								<span></span>
 								<span></span>
 							</div>
-						</div>
+						</div> -->
 
 						<error-tip errorText="请输入正确手机号码"></error-tip>
 
@@ -113,12 +122,12 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 </template>
 
 <script>
 	import ErrorTip from '../../plugins/error-tip';
+	import DragVerify from './dragVerify'
 	import '../../scss/common.scss';
 	export default {
 		name: 'register',
@@ -128,7 +137,19 @@
 
 		data: function () {
 			return {
-				registerStatus: 1
+				registerStatus: 1,
+				handlerIcon:'fa fa-angle-double-right',
+				successIcon:'fa fa-check',
+				background:'#cccccc',
+				progressBarBg:'#FFFF99',
+				completedBg:'#66cc66',
+				handlerBg:'#fff',
+				text:'按住滑块，拖动完成上方拼图',
+				successText:'success',
+				width: 313,
+				height:34,
+				textSize:'16px',
+				isCircle:'true'
 			}
 		},
 
@@ -152,10 +173,19 @@
 				this.registerStatus = 1;
 				this.$router.push('/home');
 			},
+			passVerify: function () {
+				alert('验证成功');
+			}
 		},
 		components: {
-			'error-tip'	: ErrorTip
-		}
+			'error-tip'	: ErrorTip,
+			'dragVerify': DragVerify
+		},
+		computed:{
+			getShape(){
+				return this.isCircle==='true'
+			}
+		},
 	}
 </script>
 
@@ -274,42 +304,46 @@
 					}
 
 					.slide-block {
-						height: 34px;
-						line-height: 34px;
-						background: #f8f8f8;
-						border: 1px solid #dddddd;
-						border-radius: 15px;
 						margin-top: 20px;
-						position: relative;
-						color: #a0a0a0;
-
-						p {
-							margin-left: 80px;
-						}
-
-						.block {
-							position: absolute;
-							top: 50%;
-							left: 2px;
-							transform: translate(0,-50%);
-							width: 68px;
-							height: 30px;
-							border: 1px solid #dddddd;
-							border-radius: 15px;
-							line-height: 31px;
-							text-align: center;
-
-
-							span {
-								display: inline-block;
-								width: 4px;
-								height: 16px;
-								background: #cccccc;
-								border-radius: 2px;
-
-							}
-						}
 					}
+
+					// .slide-block {
+					// 	height: 34px;
+					// 	line-height: 34px;
+					// 	background: #f8f8f8;
+					// 	border: 1px solid #dddddd;
+					// 	border-radius: 15px;
+					// 	margin-top: 20px;
+					// 	position: relative;
+					// 	color: #a0a0a0;
+
+					// 	p {
+					// 		margin-left: 80px;
+					// 	}
+
+					// 	.block {
+					// 		position: absolute;
+					// 		top: 50%;
+					// 		left: 2px;
+					// 		transform: translate(0,-50%);
+					// 		width: 68px;
+					// 		height: 30px;
+					// 		border: 1px solid #dddddd;
+					// 		border-radius: 15px;
+					// 		line-height: 31px;
+					// 		text-align: center;
+
+
+					// 		span {
+					// 			display: inline-block;
+					// 			width: 4px;
+					// 			height: 16px;
+					// 			background: #cccccc;
+					// 			border-radius: 2px;
+
+					// 		}
+					// 	}
+					// }
 				}
 
 				.register-step2 {
@@ -518,7 +552,6 @@
 				}
 			}
 		}
-
 	}
 }
 </style>
