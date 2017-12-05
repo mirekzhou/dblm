@@ -1,5 +1,5 @@
 <template>
-	<div class="register">
+	<div class="page register">
 		<div class="register-wrap">
 			<div class="register-header" v-show="registerStatus < 4">
 				<div class="register-header-inner">
@@ -39,9 +39,9 @@
 								<span></span>
 							</div>
 						</div>
-						
+
 						<error-tip errorText="请输入正确手机号码"></error-tip>
-				
+
 					</div>
 
 					<div class="register-step2" v-show="registerStatus===2">
@@ -224,7 +224,7 @@
 			text-align: center;
 			border: 1px solid #ebebeb;
 			background: #fff;
-			-webkit-box-shadow: 0px 0px 10px 3px #e1e1e1; 
+			-webkit-box-shadow: 0px 0px 10px 3px #e1e1e1;
 			-moz-box-shadow: 0px 0px 10px 3px #e1e1e1;
 			box-shadow: 0px 0px 10px 3px #e1e1e1;
 
@@ -317,7 +317,7 @@
 
 					.code-input-box {
 						height: 33px;
-						border-radius: 3px; 
+						border-radius: 3px;
 						line-height: 33px;
 						border: 1px solid #ddd;
 						margin-bottom: 15px;
@@ -403,7 +403,7 @@
 			text-align: center;
 			border: 1px solid #ebebeb;
 			background: #fff;
-			-webkit-box-shadow: 0px 0px 10px 3px #e1e1e1; 
+			-webkit-box-shadow: 0px 0px 10px 3px #e1e1e1;
 			-moz-box-shadow: 0px 0px 10px 3px #e1e1e1;
 			box-shadow: 0px 0px 10px 3px #e1e1e1;
 
@@ -432,7 +432,7 @@
 			text-align: center;
 
 			p {
-				color: #d43328; 
+				color: #d43328;
 			}
 
 			.flow-chart {
@@ -440,7 +440,7 @@
 				div {
 					float: left;
 				}
-				
+
 				.line-wrap {
 					font-size: 14px;
 					color: #737373;
@@ -469,7 +469,7 @@
 						margin: 10px 0 0 20px;
 					}
 				}
-			
+
 
 				.duobao {
 					width: 63px;
