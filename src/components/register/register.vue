@@ -432,7 +432,7 @@
 
 		.register-success {
 			width: 540px;
-			margin: 70px auto 60px;
+			margin: -70px auto 60px;
 			padding-bottom: 120px;
 			text-align: center;
 			border: 1px solid #ebebeb;
@@ -444,7 +444,7 @@
 			.icon-success {
 				width: 96px;
 				height: 96px;
-				margin: 0 auto;
+				margin: 118px auto 0;
 				background: url('../../assets/common-sprite.png') -158px 0;
 			}
 
