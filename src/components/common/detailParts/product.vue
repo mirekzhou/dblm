@@ -1,20 +1,22 @@
 <template>
     <div class="product">
         <div class="left-part">
-            <div class=left-column>
-                <div class="img-list">
-                     <swiper :options="swiperOption">
-                        <swiper-slide  class="img-item" v-for="item in imgList" :key="item.id" @click="changeImg(item.imgDetail)">
-                            <img :src="item.url" @click="changeImg(item.imgDetail)">
-                        </swiper-slide>
-                        <div class="swiper-pagination" slot="pagination"></div>
-                        <div class="swiper-button-next" slot="button-next"></div>
-                      </swiper>
-                </div>
+            
+            <div class="img-list">
+                 <swiper :options="swiperOption" class="img-left" ref="swiperLeft">
+                    <swiper-slide  class="img-item" v-for="item in imgList" :key="item.id">
+                        <img :src="item.url">
+                    </swiper-slide>
+                    <div class="swiper-pagination" slot="pagination"></div>
+                    <div class="swiper-button-next" slot="button-next"></div>
+                  </swiper>
+                  <swiper :options="swiperOptionTop" class="img-box" ref="swiperRight">
+                    <swiper-slide v-for="item in imgList" :key="item.id">
+                        <img :src="item.imgDetail">
+                    </swiper-slide>
+                  </swiper>
             </div>
-            <div class="img-box">
-                <img :src="detailUrl">
-            </div>
+        
         </div>
         <div class="right-part">
             <div class='item-title'>{{productInfo.title}}</div>
@@ -93,22 +95,50 @@
                     }
                 ],
                 swiperOption: {
-                  direction: 'vertical',
-                  slidesPerView: 5,
-                  centeredSlides: true,
-                  
-                  height:400,
-                  loop : true,
-                  pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true
-                  },
-                  nextButton:'.swiper-button-next',
-                  prevButton:'null'
+                    centeredSlides: true,
+                    slidesPerView: 'auto',
+                    touchRatio: 0.2,
+                    slideToClickedSlide: true,
+                    direction: 'vertical',
+                    height:415,
+                    loop : true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true
+                    },
+                    notNextTick: true, 
+                    nextButton:'.swiper-button-next',
+                    prevButton:'null',
+                    onSlideChangeEnd: swiper => { 
+                        //调试
+                        console.log(swiper)
+                        if(swiper&&swiper.controller&&swiper.controller.control){
+                            swiper.controller.control.slideTo(swiper.realIndex)
+                        }
+                        //swiper.controller.control.slideTo(swiper.realIndex)
+                        this.page = swiper.realIndex+1; 
+                        this.index = swiper.realIndex; 
+                      }
+                },
+                swiperOptionTop: {
+                    direction: 'vertical',
+                    height:415,
+                    loop: true,
+                    notNextTick: true,
                 },
                 moveCount:count,
                 arrowImg:arrow
             }
+        },
+        mounted:function() {
+            console.log("asdasd")
+            var self=this
+            this.$nextTick(function() {
+                var swiperRight=self.$refs.swiperRight.swiper
+                var swiperLeft=self.$refs.swiperLeft.swiper
+                swiperRight.controller.control = swiperLeft
+                swiperLeft.controller.control = swiperRight
+            })
         },
 
         components:{
@@ -119,19 +149,9 @@
         },
 
         methods: {
-            moveUp:function(){
-                var len=this.$refs.move.children.length
-                if(len-4>this.moveCount){
-                    ++this.moveCount;
-                }
-            },
-
+        
             share: function () {
                 this.$store.dispatch('setShareDialogStatus', {status: true});
-            },
-
-            changeImg(url){
-                this.detailUrl=url
             }
         }
     }
@@ -148,15 +168,9 @@
             height:100%;
             float:left;
 
-            .left-column {
-                position:relative;
-                float:left;
-                height:100%;
-            }
-
             .img-list {
                 float:left;
-                width:80px;
+                width:100%;
                 height:415px;
                 overflow:hidden;
                 position:relative;
@@ -166,16 +180,24 @@
 
                 .img-item{
                     img {
-                        width:80px;
+                        width:100%;
                         height:80px;
                     }
+                }
+            }
+            .img-left {
+                float:left;
+                width:20%!important;
+                .swiper-slide-active {
+                    border:1px solid red;
                 }
             }
 
             .img-box {
                 float:left;
+                width:80%!important;
                 img{
-                    width:415px;
+                    width:100%;
                     height:415px;
                     border:1px solid #F0F0F0;
                 }
@@ -213,6 +235,7 @@
                 -o-transform: rotate(45deg);
                 transform: rotate(45deg);
             }
+            
         }
 
         .right-part {
