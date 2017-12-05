@@ -1,7 +1,7 @@
 <template>
     <div class="last-list">
         <div class="header">最后50名用户参与记录</div>
-        <div class="flex">
+        <div class="flex" v-show="joinList.length > 0">
             <ul class="half-box flex-full">
                 <li class="flex flex-center-y" v-for="item in joinList">
                     <div class="left"><img :src="item.img"></div>
@@ -24,17 +24,24 @@
                 </li>
             </ul>
         </div>
-        <pager 
-            :page-index="currentPage" 
-            :total="count" 
-            :page-size="pageSize" 
-            @change="pageChange"></pager>
+        <pager
+             v-show="joinList.length > 0"
+            :page-index="currentPage"
+            :total="count"
+            :page-size="pageSize"
+            @change="pageChange">
+        </pager>
+
+        <div class="no-data" v-show="joinList.length == 0">
+            <div><span class="icon-user"></span></div>
+            <span>抓紧机会！暂无用户参与</span>
+        </div>
     </div>
 </template>
 
 <script>
     import pager      from '../../common/pager';
-    
+
     export default {
         name: 'page',
 
@@ -66,7 +73,7 @@
                     //this.items = body.list
                 //})
                 this.count = 400
-                
+
             },
             //从page组件传递过来的当前page
             pageChange (page) {
@@ -77,7 +84,7 @@
         mounted() {
             //请求第一页数据
             this.getList()
-        } 
+        }
     }
 </script>
 
@@ -136,6 +143,29 @@
             img {
                 width:40px;
                 height:40px;
+            }
+        }
+
+        .no-data {
+            color: #999999;
+            height: 382px;
+            text-align: center;
+            width: 100%;
+
+            div {
+                height: 50px;
+                margin-top: 125px;
+                margin-bottom: 30px;
+                text-align: center;
+                width: 100%;
+
+                .icon-user {
+                    background-image: url("../../../assets/no-data-sprite.png");
+                    background-position: 0 0;
+                    display: inline-block;
+                    height: 50px;
+                    width: 52px;
+                }
             }
         }
     }
