@@ -10,9 +10,7 @@
 				</div>
 
 				<div class="sharePlatform">
-					<label>
-						<label >分享至</label>
-					</label>
+					<label>分享至</label>
 					<i class="sina"></i>
 					<i class="wechat"></i>
 					<i class="qq"></i>

@@ -54,12 +54,8 @@
 					</div>
 
 					<div class="register-step2" v-show="registerStatus===2">
-						<div class="code-input-box">
-							<input type="text" placeholder="请输入短信验证码">
-							<div class="code-btn" v-on:click="getCode">
-								<span>获取验证码</span>
-							</div>
-						</div>
+						
+						<code-input></code-input>
 						<error-tip errorText="输入验证码无效"></error-tip>
 						<div class="pre-btn" v-on:click="preStep">
 							<p ><上一步</p>
@@ -126,8 +122,9 @@
 </template>
 
 <script>
-	import ErrorTip from '../../plugins/error-tip';
-	import DragVerify from './dragVerify'
+	import ErrorTip 	from  '../../plugins/error-tip';
+	import DragVerify   from  '../../plugins/dragVerify';
+	import CodeInput    from  '../../plugins/codeInput';
 	import '../../scss/common.scss';
 	export default {
 		name: 'register',
@@ -161,9 +158,7 @@
 			preStep: function () {
 				this.registerStatus--;
 			},
-			getCode: function () {
-				console.log('222')
-			},
+		
 
 			finishRegister: function () {
 				this.registerStatus++;
@@ -179,7 +174,8 @@
 		},
 		components: {
 			'error-tip'	: ErrorTip,
-			'dragVerify': DragVerify
+			'dragVerify': DragVerify,
+			'code-input': CodeInput
 		},
 		computed:{
 			getShape(){
@@ -349,38 +345,7 @@
 				.register-step2 {
 					font-size: 14px;
 
-					.code-input-box {
-						height: 33px;
-						border-radius: 3px;
-						line-height: 33px;
-						border: 1px solid #ddd;
-						margin-bottom: 15px;
-						position: relative;
 
-						input {
-							border: none;
-							text-indent: 10px;
-							background: transparent;
-							margin-right: 12px;
-
-							&:focus {
-								outline: none;
-							}
-						}
-
-						.code-btn {
-							position: absolute;
-							right: 0;
-							top: 0;
-							width: 88px;
-							height: 30px;
-							border-left: 1px solid #ddd;
-							background: #f6f6f6;
-							color: #8a8a8a;
-							text-align: center;
-							cursor: pointer;
-						}
-					}
 
 					.pre-btn {
 						color: #747474;
