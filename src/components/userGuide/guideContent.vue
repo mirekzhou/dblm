@@ -85,6 +85,7 @@
 
 				.section1 {
 					color: #d43328;
+					font-size: 14px;
 					height: 30px;
 					line-height: 30px;
 					text-align: right;
@@ -97,7 +98,7 @@
 				}
 
 				.section2 {
-					font-size: 18px;
+					font-size: 16px;
 					height: 30px;
 					line-height: 30px;
 					text-align: center;

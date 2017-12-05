@@ -90,6 +90,7 @@
 				li {
 					cursor: pointer;
 					float: left;
+					font-size: 16px;
 					height: 50px;
 					line-height: 50px;
 					width: 345px;
