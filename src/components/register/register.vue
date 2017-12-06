@@ -32,12 +32,14 @@
 						</div>
 
 						<div class="slide-block">
-							<drag-verify :width="width" :height="height" :text="text" :success-text="successText" 
+<!-- 							<drag-verify :width="width" :height="height" :text="text" :success-text="successText"
 										 :background="background" :progress-bar-bg="progressBarBg" :completed-bg="completedBg"
-										 :handler-bg="handlerBg" :handler-icon="handlerIcon" :text-size="textSize" 
+										 :handler-bg="handlerBg" :handler-icon="handlerIcon" :text-size="textSize"
 										 :success-icon="successIcon" :circle="getShape" v-on:passcallback="passVerify">
-								
-							</drag-verify>
+
+							</drag-verify> -->
+
+							<drag-to-verify></drag-to-verify>
 						</div>
 
 						<!-- <div class="slide-block">
@@ -54,7 +56,7 @@
 					</div>
 
 					<div class="register-step2" v-show="registerStatus===2">
-						
+
 						<code-input></code-input>
 						<error-tip errorText="输入验证码无效"></error-tip>
 						<div class="pre-btn" v-on:click="preStep">
@@ -124,8 +126,10 @@
 <script>
 	import ErrorTip 	from  '../../plugins/error-tip';
 	import DragVerify   from  '../../plugins/dragVerify';
+	import DragToVerify from  '../../plugins/dragToVerify';
 	import CodeInput    from  '../../plugins/codeInput';
 	import '../../scss/common.scss';
+
 	export default {
 		name: 'register',
 
@@ -158,7 +162,7 @@
 			preStep: function () {
 				this.registerStatus--;
 			},
-		
+
 
 			finishRegister: function () {
 				this.registerStatus++;
@@ -173,9 +177,10 @@
 			}
 		},
 		components: {
-			'error-tip'	: ErrorTip,
-			'dragVerify': DragVerify,
-			'code-input': CodeInput
+			'error-tip'	     : ErrorTip,
+			'dragVerify'     : DragVerify,
+			'code-input'     : CodeInput,
+			'drag-to-verify' : DragToVerify
 		},
 		computed:{
 			getShape(){

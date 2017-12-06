@@ -58,10 +58,10 @@
 		},
 
 		mounted: function () {
-			this.$store.dispatch('showWinAlert', {
+/*			this.$store.dispatch('showWinAlert', {
 				issueDate: '20170304113',
 				luckyCode: '10000012'
-			});
+			});*/
 			// var that = this;
 
 			// this.$store.dispatch('showAlert', {
