@@ -31,28 +31,9 @@
 							<input type="text" placeholder="请输入手机号码">
 						</div>
 
-						<div class="slide-block">
-<!-- 							<drag-verify :width="width" :height="height" :text="text" :success-text="successText"
-										 :background="background" :progress-bar-bg="progressBarBg" :completed-bg="completedBg"
-										 :handler-bg="handlerBg" :handler-icon="handlerIcon" :text-size="textSize"
-										 :success-icon="successIcon" :circle="getShape" v-on:passcallback="passVerify">
-
-							</drag-verify> -->
-
-							<drag-to-verify></drag-to-verify>
-						</div>
-
-						<!-- <div class="slide-block">
-							<p>按住滑块，拖动完成上方拼图</p>
-							<div class="block">
-								<span></span>
-								<span></span>
-								<span></span>
-							</div>
-						</div> -->
-
 						<error-tip errorText="请输入正确手机号码"></error-tip>
 
+						<drag-to-verify></drag-to-verify>
 					</div>
 
 					<div class="register-step2" v-show="registerStatus===2">

@@ -1,5 +1,11 @@
 <template>
 	<div class="drag-to-verify">
+		<div class="drag-canvas">
+			<canvas width="300" height="150" ref="myCanvas"></canvas>
+			<span ref="refresh" v-on:click="verification">刷新</span>
+			<span class="drag-tip">{{tip}}</span>
+		</div>
+
 		<div class="drag-verify">
 			<div  class="drag-range"
 				  ref="rang"
@@ -11,14 +17,6 @@
 				  <span></span>
 			</div>
 		</div>
-
-		<div class="drag-canvas">
-			<canvas width="300" height="150" ref="myCanvas"></canvas>
-			<span ref="refresh" v-on:click="verification">刷新</span>
-			<span class="drag-tip">{{tip}}</span>
-		</div>
-
-
 	</div>
 </template>
 
@@ -217,6 +215,7 @@
     	}
 
     	.drag-verify {
+    		margin: 10px 0;
     		height: 32px;
     		border-radius:15px;
     		background: #f8f8f8;

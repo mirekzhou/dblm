@@ -42,7 +42,7 @@
 							v-on:mouseover="floatWindowMouseOver"
 							v-on:mouseout="floatWindowMouseOut">
 							<li>
-								<span>修改密码</span>
+								<span v-on:click="redirectTo('/forget')">修改密码</span>
 							</li>
 							<li>
 								<span v-on:click="redirectTo('/stationMessage')">

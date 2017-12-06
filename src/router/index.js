@@ -109,6 +109,13 @@ export default new VueRouter({
 			component: function (resolve) {
 				require(['../components/receiveInfo/receiveInfo.vue'], resolve);
 			}
+		},
+		{
+			path: '/forget',
+			name: 'forget',
+			component: function (resolve) {
+				require(['../components/forget/forget.vue'], resolve);
+			}
 		}
 	]
 });
