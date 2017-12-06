@@ -1,18 +1,24 @@
 <template>
 	<div class="drag-to-verify">
+		<div class="drag-verify">
+			<div  class="drag-range"
+				  ref="rang"
+				  v-on:mousedown="onMouseDown($event)"
+				  v-bind:style="{'left': end + 'px'}">
+
+				  <span></span>
+				  <span></span>
+				  <span></span>
+			</div>
+		</div>
+
 		<div class="drag-canvas">
 			<canvas width="300" height="150" ref="myCanvas"></canvas>
 			<span ref="refresh" v-on:click="verification">刷新</span>
 			<span class="drag-tip">{{tip}}</span>
 		</div>
 
-		<div class="drag-verify">
-			<span class="drag-range"
-				  ref="rang"
-				  v-on:mousedown="onMouseDown($event)"
-				  v-bind:style="{'left': end + 'px'}">
-			</span>
-		</div>
+
 	</div>
 </template>
 
@@ -211,28 +217,37 @@
     	}
 
     	.drag-verify {
-    		margin: 12px auto 0;
-    		width: 300px;
-    		height: 26px;
+    		height: 32px;
     		border-radius:15px;
-    		background: #ece4dd;
+    		background: #f8f8f8;
     		border: 1px solid #d6cbbc;
     		position: relative;
     	}
 
     	.drag-range {
     		position: relative;
-    		left: 0;
-    		top: -6px;
+    		margin-left: 2px;
+    		top: 1px;
     		display: block;
-    		width: 39px;
-    		height: 39px;
+    		width: 70px;
+    		height: 28px;
+    		line-height: 28px;
     		cursor: pointer;
     		background: #fff;
     		border: 1px solid #cebfb3;
     		border-radius: 20px;
-    		box-shadow:0 0 3px 0 #cebfb3,
-    		           0 0 8px 3px #f6eee4 inset;
+    		padding: 14px;
+    		padding: 5px 0 0 14px;
+
+    		span {
+    			display: inline-block;
+    			width: 4px;
+    			background: #9ac37b;
+    			float: left;
+    			height: 16px;
+    			margin-left: 6px;
+    			border-radius: 2px;
+    		}
     	}
 	}
 </style>

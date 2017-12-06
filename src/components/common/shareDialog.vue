@@ -11,13 +11,13 @@
 
 				<div class="sharePlatform">
 					<label>分享至</label>
-					<i class="sina"></i>
+			<!-- 		<i class="sina"></i>
 					<i class="wechat"></i>
-					<i class="qq"></i>
+					<i class="qq"></i> -->
+				<share :config="config"></share>
 					<span>让好友帮你夺宝成功</span>
 				</div>
 
-				<share :config="config"></share>
 
 				<div class="QRCode clear">
 					<label >二维码</label>
@@ -121,35 +121,39 @@
 						float: left;
 					}
 
-					.sina {
+					
+					.social-share {
 						display: inline-block;
-						width: 31px;
-						height: 28px;
-						float: left;
-						margin-top: 2px;
-						background: url("../../assets/common-sprite.png") -43px -90px;
 					}
 
-					.wechat {
-						display: inline-block;
-						width: 30px;
-						height: 28px;
-						float: left;
-						margin: 2px 0 0 20px;
-						background: url("../../assets/common-sprite.png") -43px -58px;
-					}
+					// .sina {
+					// 	display: inline-block;
+					// 	width: 31px;
+					// 	height: 28px;
+					// 	float: left;
+					// 	margin-top: 2px;
+					// 	background: url("../../assets/common-sprite.png") -43px -90px;
+					// }
 
-					.qq {
-						display: inline-block;
-						width: 30px;
-						height: 31px;
-						float: left;
-						margin: 2px 0 0 20px;
-						background: url("../../assets/common-sprite.png") -43px -24px;
-					}
+					// .wechat {
+					// 	display: inline-block;
+					// 	width: 30px;
+					// 	height: 28px;
+					// 	float: left;
+					// 	margin: 2px 0 0 20px;
+					// 	background: url("../../assets/common-sprite.png") -43px -58px;
+					// }
+
+					// .qq {
+					// 	display: inline-block;
+					// 	width: 30px;
+					// 	height: 31px;
+					// 	float: left;
+					// 	margin: 2px 0 0 20px;
+					// 	background: url("../../assets/common-sprite.png") -43px -24px;
+					// }
 
 					span {
-						margin-left: 20px;
 						font-size: 14px;
 
 					}
