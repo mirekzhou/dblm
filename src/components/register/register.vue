@@ -26,10 +26,7 @@
 
 				<div class="register-content-inner">
 					<div class="register-step1" v-show="registerStatus===1">
-						<div class="phone-input-box">
-							<i></i>
-							<input type="text" placeholder="请输入手机号码">
-						</div>
+						<phone-input text="请输入手机号码"></phone-input>
 
 						<error-tip errorText="请输入正确手机号码"></error-tip>
 
@@ -109,6 +106,7 @@
 	import DragVerify   from  '../../plugins/dragVerify';
 	import DragToVerify from  '../../plugins/dragToVerify';
 	import CodeInput    from  '../../plugins/codeInput';
+	import PhoneInput    from  '../../plugins/phoneInput';
 	import '../../scss/common.scss';
 
 	export default {
@@ -161,7 +159,8 @@
 			'error-tip'	     : ErrorTip,
 			'dragVerify'     : DragVerify,
 			'code-input'     : CodeInput,
-			'drag-to-verify' : DragToVerify
+			'drag-to-verify' : DragToVerify,
+			'phone-input'	 : PhoneInput
 		},
 		computed:{
 			getShape(){
@@ -174,7 +173,6 @@
 <style lang="scss" scoped>
 .register {
 	color: #000;
-
 	background: #f8f8f8;
 
 	.register-wrap {
@@ -256,35 +254,7 @@
 
 				.register-step1 {
 					font-size: 14px;
-
-					.phone-input-box {
-						height: 33px;
-						line-height: 29px;
-						border: 1px solid #dddddd;
-						border-radius: 3px;
-						padding-left: 10px;
-						margin-top: 30px;
-
-						i {
-							display: inline-block;
-							background: url('../../assets/common-sprite.png') -134px -52px;
-							width: 10px;
-							height: 18px;
-							vertical-align: middle;
-						}
-
-						input {
-							border: none;
-							text-indent: 10px;
-							background: transparent;
-							margin-right: 12px;
-
-							&:focus {
-								outline: none;
-							}
-						}
-					}
-
+				
 					.slide-block {
 						margin-top: 20px;
 					}
