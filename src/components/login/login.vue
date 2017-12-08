@@ -28,12 +28,7 @@
 						<p>验证</p>
 
 						<div class="slide-block">
-							<drag-verify :width="width" :height="height" :text="text" :success-text="successText" 
-										 :background="background" :progress-bar-bg="progressBarBg" :completed-bg="completedBg"
-										 :handler-bg="handlerBg" :handler-icon="handlerIcon" :text-size="textSize" 
-										 :success-icon="successIcon" :circle="getShape" v-on:passcallback="passVerify">
-
-							</drag-verify>
+							<drag-to-verify :isHideCanvas="isHideCanvas"  v-on:showCanvas="showCanvas" isFloat="true"></drag-to-verify>
 						</div>
 						<error-tip errorText="用户或密码错误"></error-tip>
 					</div>
@@ -43,12 +38,7 @@
 						<input type="text" placeholder="无限娱乐账号可直接登录">
 						<p>验证</p>
 						<div class="slide-block">
-							<drag-verify :width="width" :height="height" :text="text" :success-text="successText" 
-										 :background="background" :progress-bar-bg="progressBarBg" :completed-bg="completedBg"
-										 :handler-bg="handlerBg" :handler-icon="handlerIcon" :text-size="textSize" 
-										 :success-icon="successIcon" :circle="getShape" v-on:passcallback="passVerify">
-
-							</drag-verify>
+							<drag-to-verify :isHideCanvas="isHideCanvas"  v-on:showCanvas="showCanvas" isFloat="true"></drag-to-verify>
 						</div>
 
 						<code-input></code-input>
@@ -75,6 +65,7 @@
 	import '../../scss/common.scss';
 	import DragVerify   from '../../plugins/dragVerify';
 	import ErrorTip 	from '../../plugins/error-tip';
+	import DragToVerify from  '../../plugins/dragToVerify';
 	import CodeInput    from  '../../plugins/codeInput';
 	export default {
 		name: 'login',
@@ -100,7 +91,9 @@
 				width: 356,
 				height:34,
 				textSize:'14px',
-				isCircle:'true'
+				isCircle:'true',
+
+				isHideCanvas: true,
 			}
 		},
 
@@ -113,12 +106,17 @@
 			},
 			changeType: function () {
 				this.loginType = !this.loginType;
+			},
+
+			showCanvas: function (val) {
+				this.isHideCanvas = val;
 			}
 		},
 		components: {
 			'error-tip'	: ErrorTip,
 			'dragVerify': DragVerify,
-			'code-input': CodeInput
+			'code-input': CodeInput,
+			'drag-to-verify' : DragToVerify,
 		},
 		computed:{
 			getShape(){

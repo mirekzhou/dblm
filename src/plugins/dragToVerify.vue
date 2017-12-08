@@ -1,6 +1,6 @@
 <template>
 	<div class="drag-to-verify">
-		<div class="drag-canvas">
+		<div class="drag-canvas" v-bind:class="{ hide: isHideCanvas, flotage: isFloat}">
 			<canvas width="300" height="150" ref="myCanvas"></canvas>
 			<span ref="refresh" v-on:click="verification">刷新</span>
 			<span class="drag-tip">{{tip}}</span>
@@ -33,6 +33,8 @@
 		name: 'drag-to-verify',
 
 		props: [
+			'isHideCanvas',
+			'isFloat'
 		],
 
 		data: function () {
@@ -90,6 +92,7 @@
 			},
 
 			onMouseDown: function (e) {
+				this.$emit('showCanvas', false);
 				this.flag   = true;
 				this.start  = e.screenX;
 				this.origin = parseInt(this.rang.style.left || 0);
@@ -120,10 +123,16 @@
 							that.tip = '检验成功 ==== 刷新检验';
 							that.rang.style.left = 0;
 							that.verification()
+							that.$emit('showCanvas', true);
+
 						}else{
 							that.tip = '检验失败 ==== 返回起点';
 							that.rang.style.left = 0;
 							that.drawPuzzle(0);
+
+							setTimeout(() => {
+								that.$emit('showCanvas', true);
+							}, 500)
 						}
 					}
 				}, false);
@@ -187,6 +196,7 @@
 
 <style lang="scss" scoped>
 	.drag-to-verify {
+		position: relative;
     	.drag-canvas {
 			width: 312px;
 			height: 190px;
@@ -199,6 +209,16 @@
     		font-size: 12px;
     		color:#8c6f48 ;
     		line-height: 20px;
+    	}
+
+    	.hide {
+    		display: none;
+    	}
+
+    	.flotage {
+    		position: absolute;
+    		top: -250px;
+    		z-index: 9;
     	}
 
     	.drag-canvas canvas {

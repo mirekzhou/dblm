@@ -118,6 +118,7 @@
 		data: function () {
 			return {
 				registerStatus: 1,
+				
 				handlerIcon:'fa fa-angle-double-right',
 				successIcon:'fa fa-check',
 				background:'#cccccc',
@@ -129,7 +130,7 @@
 				width: 313,
 				height:34,
 				textSize:'16px',
-				isCircle:'true'
+				isCircle:'true',
 			}
 		},
 
