@@ -4,6 +4,13 @@
 			<win-item v-for="item in records" :item="item" key="item" v-show="records.length > 0">
 			</win-item>
 
+			<div class="pager-zone" v-show="records.length > 0">
+				<pager 	:pageIndex="pageIndex"
+						:totalPage="totalPage"
+						v-on:pageIndexChanged="pageIndexChanged">
+				</pager>
+			</div>
+
 			<div class="no-data" v-show="records.length == 0">
 				<span class="hand-shake"></span>
 				<span class="text">您暂未中奖，请多多参与</span>
@@ -14,13 +21,17 @@
 
 <script>
 	import watchImage from '../../assets/wine.jpg';
-	import winItem  from './winItem';
+	import pager      from '../common/pager2';
+	import winItem    from './winItem';
 
 	export default {
 		name: 'win-records',
 
 		data: function () {
 			return {
+				pageIndex: 1,
+				totalPage: 7,
+
 				records: [
 					{
 						productName: 'Armani 阿玛尼圆形石英表男士防水腕表',
@@ -95,10 +106,14 @@
 		},
 
 		components: {
-			'win-item' : winItem
+			'win-item' : winItem,
+			'pager'    : pager
 		},
 
 		methods: {
+			pageIndexChanged: function (value) {
+				this.pageIndex = value;
+			},
 		}
 	}
 </script>
@@ -113,6 +128,11 @@
 			margin: 0 auto;
 			padding-top: 8px;
 			padding-bottom: 20px;
+
+			.pager-zone {
+				margin-top: 30px;
+				text-align: center;
+			}
 
 			.no-data {
 				color: #414141;

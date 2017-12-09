@@ -29,6 +29,13 @@
 				</li>
 			</ul>
 
+			<div class="pager-zone" v-show="records.length > 0">
+				<pager 	:pageIndex="pageIndex"
+						:totalPage="totalPage"
+						v-on:pageIndexChanged="pageIndexChanged">
+				</pager>
+			</div>
+
 			<div class="no-data" v-show="records.length == 0">
 				<div><span class="pig"></span></div>
 				<span class="text">您未参与任何夺宝，请多多参与</span>
@@ -40,6 +47,7 @@
 <script>
 	import watchImage from '../../assets/armani-watch.png';
 	import IssueItem  from './issueItem';
+	import pager      from '../common/pager2';
 
 	export default {
 		name: 'issue-records',
@@ -49,6 +57,9 @@
 
 		data: function () {
 			return {
+				pageIndex: 1,
+				totalPage: 7,
+
 				types: [
 					{name: '全部',     value: '0'},
 					{name: '夺宝中',   value: '1'},
@@ -121,10 +132,15 @@
 		},
 
 		components: {
-			'issue-item' : IssueItem
+			'issue-item' : IssueItem,
+			'pager'      : pager
 		},
 
 		methods: {
+			pageIndexChanged: function (value) {
+				this.pageIndex = value;
+			},
+
 			setCurrentType: function (value) {
 				this.type = value;
 			}
@@ -207,7 +223,15 @@
 					border-bottom: 1px solid #e6e6e6;
 					padding-bottom: 36px;
 					margin-bottom: 36px;
+
+					&:last-child {
+						border-bottom: 0;
+					}
 				}
+			}
+
+			.pager-zone {
+				text-align: center;
 			}
 
 			.no-data {
