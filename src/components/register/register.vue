@@ -15,7 +15,7 @@
 						<span class="circle">3</span>
 						<span>设置默认密码</span>
 					</div>
-					<span class="red-line"></span>
+					<span class="red-line" :style="{ left: lineLeft + 'px'}"></span>
 				</div>
 			</div>
 
@@ -131,16 +131,21 @@
 				height:34,
 				textSize:'16px',
 				isCircle:'true',
+
+				lineLeft: 15
 			}
 		},
 
 		methods: {
 			nextStep: function () {
 				this.registerStatus++;
+				this.setLineLeft();
+
 			},
 
 			preStep: function () {
 				this.registerStatus--;
+				this.setLineLeft();
 			},
 
 
@@ -150,10 +155,22 @@
 
 			finish: function () {
 				this.registerStatus = 1;
+				this.lineLeft = 15;
 				this.$router.push('/home');
 			},
 			passVerify: function () {
 				alert('验证成功');
+			},
+
+			setLineLeft: function () {
+				if (this.registerStatus == 1) {
+					this.lineLeft = 15;
+
+				} else if (this.registerStatus == 2) {
+					this.lineLeft = 215;
+				} else if (this.registerStatus == 3) {
+					this.lineLeft = 416;
+				}
 			}
 		},
 		components: {
@@ -219,6 +236,10 @@
 				.red-line {
 					position: absolute;
 					display: inline-block;
+					transition:all 0.7s;
+				    -moz-transition:all 0.7s; /* Firefox 4 */
+				    -webkit-transition:all 0.7s; /* Safari and Chrome */
+				    -o-transition:all 0.7s; /* Opera */
 					bottom: -2px;
 					left: 15px;
 					width: 160px;

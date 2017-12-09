@@ -19,6 +19,9 @@
 	require('swiper/dist/css/swiper.css');
 	import Rule 					 from	 './rule';
 	import homeBanner  			  	 from 	 '../../assets/banner.jpg';
+	import homeBanner2  			 from 	 '../../assets/2.jpg';
+	import homeBanner3  			 from 	 '../../assets/3.jpg';
+	import homeBanner4 			  	 from 	 '../../assets/4.jpg';
 	import { swiper, swiperSlide } 	 from 	 'vue-awesome-swiper';
 	import '../../scss/common.scss';
 
@@ -34,16 +37,21 @@
 					pagination: '.swiper-pagination',
 					paginationClickable: true,
 					autoplay: 5000,
+					speed: 1000,
 					loop: true,
+					autoplayDisableOnInteraction : false,
 					spaceBetween: 0,
-					effect: 'fade'
+					effect: 'fade',
+					fade: {
+						crossFade: true,
+					}
 				},
 
 				banners: [
 					homeBanner,
-					homeBanner,
-					homeBanner,
-					homeBanner
+					homeBanner2,
+					homeBanner3,
+					homeBanner4
 				],
 			}
 		},

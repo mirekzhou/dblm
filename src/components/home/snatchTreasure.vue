@@ -34,7 +34,7 @@
 
 				treasureData: [
 					{
-						'cycle': '125545121212期',
+						'cycle': '125545121212',
 						'imgUrl': prizeImg,
 						'prize': 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
 						'price': '8999',
@@ -45,7 +45,7 @@
 						'drawLotteryStatus': 1
 					},
 					{
-						'cycle': '125545121212期',
+						'cycle': '125545121212',
 						'imgUrl': prizeImg,
 						'prize': 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
 						'price': '8999',
@@ -56,7 +56,7 @@
 						'drawLotteryStatus': 2
 					},
 					{
-						'cycle': '125545121212期',
+						'cycle': '125545121212',
 						'imgUrl': prizeImg,
 						'prize': 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
 						'price': '8999',
@@ -67,7 +67,7 @@
 						'drawLotteryStatus': 3
 					},
 					{
-						'cycle': '125545121212期',
+						'cycle': '125545121212',
 						'imgUrl': prizeImg,
 						'prize': 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
 						'price': '8999',

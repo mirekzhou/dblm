@@ -50,7 +50,10 @@
 					pagination: '.swiper-pagination',
 					paginationType: 'custom',
 					paginationClickable: true,
-					direction : 'vertical',
+					speed: 500,
+					autoplay: 5000,
+					autoplayDisableOnInteraction : false,
+					// direction : 'vertical',
 					paginationCustomRender: function (swiper, current, total) {
 				        const activeColor = '#d53328';
 				        const normalColor = 'transparent';
@@ -176,6 +179,7 @@
 				top: -6px;
 				right: 0;
 				left: inherit;
+				cursor: default;
 
 				span {
 					display: inline-block;

@@ -2,7 +2,7 @@
 	<div class="treasure clear">
 			<div class="treasure-inner" v-for="item in treasureData">
 				<div class="cycle">
-					<p>{{item.cycle}}</p>
+					<p>第{{item.cycle}}期</p>
 				</div>
 
 				<div class="box">
