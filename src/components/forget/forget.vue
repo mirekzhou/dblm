@@ -129,6 +129,10 @@
 						text-align: center;
 						margin: 134px 0 25px 0;
 						cursor: pointer;
+
+						p {
+							margin-left: -12px;
+						}
 					}
 				}
 

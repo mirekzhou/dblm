@@ -38,9 +38,9 @@
 
 		input {
 			border: none;
-			text-indent: 10px;
 			background: transparent;
-			margin-right: 12px;
+			margin-left: 24px;
+			text-align: center;
 
 			&:focus {
 				outline: none;

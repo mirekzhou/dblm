@@ -118,7 +118,7 @@
 		data: function () {
 			return {
 				registerStatus: 1,
-				
+
 				handlerIcon:'fa fa-angle-double-right',
 				successIcon:'fa fa-check',
 				background:'#cccccc',
@@ -309,6 +309,11 @@
 						text-align: center;
 						margin-top: 134px;
 						cursor: pointer;
+
+						p {
+							margin-left: -12px;
+							font-size: 16px;
+						}
 					}
 				}
 
