@@ -11,7 +11,7 @@
 				</li>
 
 				<li>
-					<div class="name">开奖说名</div>
+					<div class="name">开奖说明</div>
 					<ul>
 						<li>开奖彩种说明</li>
 						<li>公平性保障</li>

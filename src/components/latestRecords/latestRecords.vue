@@ -208,6 +208,7 @@
 
 						.active {
 							color: #d43328;
+							font-weight: bold;
 						}
 					}
 				}
@@ -240,6 +241,7 @@
 
 						.active {
 							color: #d43328;
+							font-weight: bold;
 						}
 					}
 				}

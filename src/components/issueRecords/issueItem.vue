@@ -33,6 +33,8 @@
 				</div>
 
 				<div class="wait-draw" v-if="item.drawStatus == 3">
+					<span class="wait-icon"></span>
+					<p class="text" v-on:click="goDrawSite">点此前往开奖网站</p>
 				</div>
 
 				<div class="win" v-if="item.drawStatus == 4">
@@ -82,6 +84,10 @@
 
 			fillWinInfo: function () {
 				this.$router.push('/winRecords');
+			},
+
+			goDrawSite: function () {
+				window.open('http://www.baidu.com');
 			}
 		}
 	}
@@ -172,12 +178,22 @@
 				}
 
 				.wait-draw {
-					background-image: url(../../assets/draw-status-sprite.png);
-					background-position: 0 -92px;
-					height: 90px;
-					vertical-align: middle;
-					margin-top: 65px;
-					width: 114px;
+					margin-top: 55px;
+
+					.wait-icon {
+						background-image: url(../../assets/draw-status-sprite.png);
+						background-position: 0 -92px;
+						height: 90px;
+						display: inline-block;
+						vertical-align: middle;
+						width: 114px;
+					}
+
+					.text {
+						color: #d43328;
+						cursor: pointer;
+						text-decoration: underline;
+					}
 				}
 
 				.win {

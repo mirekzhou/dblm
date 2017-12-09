@@ -36,7 +36,7 @@
 				rules: [
 				{
 					stepTitle: '步骤一',
-					text: '选择心仪商品参与夺宝获得一枚幸运码，同时生产夺宝分享链接'
+					text: '选择心仪商品参与夺宝获得一枚幸运码，同时生成夺宝分享链接'
 				},
 				{
 					stepTitle: '步骤二',
@@ -90,7 +90,7 @@
 						display: inline-block;
 						width: 16px;
 						height: 20px;
-						background: url("../../assets/common-sprite.png") 0 -59px; 
+						background: url("../../assets/common-sprite.png") 0 -59px;
 						vertical-align: top;
 						margin: 2px 10px 0 0;
 					}
@@ -111,7 +111,7 @@
 					display: inline-block;
 					width: 22px;
 					height: 18px;
-					background: url("../../assets/common-sprite.png") 0 -39px; 
+					background: url("../../assets/common-sprite.png") 0 -39px;
 					vertical-align: top;
 					margin: 5px 5px 0 0;
 				}

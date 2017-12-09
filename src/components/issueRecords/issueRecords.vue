@@ -192,6 +192,7 @@
 
 						.active {
 							color: #d43328;
+							font-weight: bold;
 						}
 					}
 				}
