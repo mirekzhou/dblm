@@ -48,29 +48,29 @@
 			return {
 				swiperOption: {
 					pagination: '.swiper-pagination',
-					paginationType: 'custom',
+					// paginationType: 'custom',
 					paginationClickable: true,
 					speed: 500,
 					autoplay: 5000,
 					autoplayDisableOnInteraction : false,
 					// direction : 'vertical',
-					paginationCustomRender: function (swiper, current, total) {
-				        const activeColor = '#d53328';
-				        const normalColor = 'transparent';
-				        let color = '';
-				        let paginationStyle = '';
-				        let html = '';
-				        for (let i = 1; i <= total; i++) {
-				        	if (i === current) {
-				            	color = activeColor;
-				        	} else {
-				            	color = normalColor;
-				        	}
-				        		paginationStyle = `background:${color};opacity:1;border-width:1px;border-style:solid;border-color:#d53328;`
-				        		html += `<span class="swiper-pagination-bullet" style=${paginationStyle}></span>`
-				        }
-				        return html
-			        }
+					// paginationCustomRender: function (swiper, current, total) {
+				 //        const activeColor = '#d53328';
+				 //        const normalColor = 'transparent';
+				 //        let color = '';
+				 //        let paginationStyle = '';
+				 //        let html = '';
+				 //        for (let i = 1; i <= total; i++) {
+				 //        	if (i === current) {
+				 //            	color = activeColor;
+				 //        	} else {
+				 //            	color = normalColor;
+				 //        	}
+				 //        		paginationStyle = `background:${color};opacity:1;border-width:1px;border-style:solid;border-color:#d53328;`
+				 //        		html += `<span class="swiper-pagination-bullet" style=${paginationStyle}></span>`
+				 //        }
+				 //        return html
+			  //       }
 				},
 
 				formatPrizeInfoData: []

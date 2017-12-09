@@ -15,9 +15,7 @@
 				
 				<div class="forget-step2" v-show="forgetStatus===2">
 					<code-input></code-input>
-					<div class="pre-btn" v-on:click="preStep">
-						<p ><上一步</p>
-					</div>
+
 				</div>
 
 				<div class="forget-step3" v-show="forgetStatus===3">
@@ -32,15 +30,15 @@
 						<input type="text" placeholder="密码为6-20位字符组成,不能是9位以下的纯字">
 						<error-tip errorText="请确认密码"></error-tip>
 					</div>
-
-					<div class="pre-btn" v-on:click="preStep">
-						<p ><上一步</p>
-					</div>
 				</div>
 
-				<div class="bottom-btn">
-					<p v-on:click="nextStep" v-show="forgetStatus!==3">下一步</p>
+				<div class="bottom-btn" :class="{mt134: forgetStatus==2}">
+					<p v-on:click="nextStep" v-show="forgetStatus!==3" >下一步</p>
 					<p v-on:click="finishForget" v-show="forgetStatus===3">完成</p>
+				</div>
+
+				<div class="pre-btn" v-on:click="preStep" v-show="forgetStatus==2">
+					<p ><上一步</p>
 				</div>
 			</div>
 		</div>
@@ -123,17 +121,6 @@
 					.code-input {
 						margin-top: 48px;
 					}
-
-					.pre-btn {
-						color: #747474;
-						text-align: center;
-						margin: 134px 0 25px 0;
-						cursor: pointer;
-
-						p {
-							margin-left: -12px;
-						}
-					}
 				}
 
 				.forget-step3 {
@@ -157,14 +144,9 @@
 								width: 100%;
 							}
 						}
-
-					.pre-btn {
-						color: #747474;
-						text-align: center;
-						margin: 87px 0 25px 0;
-						cursor: pointer;
-					}
 				}
+
+
 
 				.bottom-btn {
 					height: 50px;
@@ -175,9 +157,25 @@
 					text-align: center;
 					margin-top: 28px;
 
+					&.mt134 {
+						margin-top: 134px;
+					}
+
 					p {
 						color: #fff;
 						font-weight: 600;
+					}
+				}
+
+				.pre-btn {
+					color: #747474;
+					text-align: center;
+					margin: 0 0 25px 0;
+					cursor: pointer;
+					margin-top: 15px;
+
+					p {
+						margin-left: -12px;
 					}
 				}
 			}

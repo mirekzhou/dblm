@@ -31,15 +31,14 @@
 						<error-tip errorText="请输入正确手机号码"></error-tip>
 
 						<drag-to-verify></drag-to-verify>
+						<error-tip errorText="请确认密码"></error-tip>
 					</div>
 
 					<div class="register-step2" v-show="registerStatus===2">
 
 						<code-input></code-input>
 						<error-tip errorText="输入验证码无效"></error-tip>
-						<div class="pre-btn" v-on:click="preStep">
-							<p ><上一步</p>
-						</div>
+					
 					</div>
 
 					<div class="register-step3" v-show="registerStatus===3">
@@ -56,9 +55,12 @@
 						</div>
 					</div>
 
-					<div class="bottom-btn">
+					<div class="bottom-btn"  :class="{mt134: registerStatus==2}">
 						<p v-on:click="nextStep" v-show="registerStatus!==3">下一步</p>
 						<p v-on:click="finishRegister" v-show="registerStatus===3">完成注册</p>
+					</div>
+					<div class="pre-btn" v-on:click="preStep" v-show="registerStatus==2">
+						<p ><上一步</p>
 					</div>
 				</div>
 			</div>
@@ -322,20 +324,6 @@
 
 				.register-step2 {
 					font-size: 14px;
-
-
-
-					.pre-btn {
-						color: #747474;
-						text-align: center;
-						margin-top: 134px;
-						cursor: pointer;
-
-						p {
-							margin-left: -12px;
-							font-size: 16px;
-						}
-					}
 				}
 
 				.register-step3 {
@@ -360,6 +348,10 @@
 						}
 					}
 				}
+				
+				.mt134 {
+					margin-top: 134px;
+				}
 
 				.bottom-btn {
 					height: 50px;
@@ -373,6 +365,18 @@
 						color: #fff;
 						font-weight: 600;
 						margin-top: 10px;
+					}
+				}
+
+				.pre-btn {
+					color: #747474;
+					text-align: center;
+					cursor: pointer;
+					margin-top: 15px;
+
+					p {
+						margin-left: -12px;
+						font-size: 16px;
 					}
 				}
 			}
