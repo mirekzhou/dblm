@@ -140,6 +140,7 @@
 <style lang="scss" scoped>
 	.pager {
 		color: #000;
+		display: inline-block;
 
 		.page-item {
 			border: 1px solid #e5e5e5;

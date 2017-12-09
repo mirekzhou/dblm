@@ -28,7 +28,8 @@
 					<div class="right-part">
 						<pager 	:pageIndex="pageIndex"
 								:totalPage="totalPage"
-								v-on:pageIndexChanged="pageIndexChanged"></pager>
+								v-on:pageIndexChanged="pageIndexChanged">
+						</pager>
 					</div>
 				</div>
 			</div>
@@ -43,7 +44,7 @@
 
 <script>
 	import messageItem from './messageItem';
-	import pager       from './pager';
+	import pager       from '../common/pager2';
 
 	export default {
 		name: 'station-message',

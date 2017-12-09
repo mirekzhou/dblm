@@ -1,12 +1,12 @@
 <template>
 	<div class="banner">
 		<div class="banner-wraper">
-			<swiper :options="swiperOption"  ref="mySwiper">  
-				<swiper-slide v-for="item in banners" :key="item">  
+			<swiper :options="swiperOption"  ref="mySwiper">
+				<swiper-slide v-for="item in banners" :key="item">
 					<img :src="item" style="width:100% !important">
-				</swiper-slide>  
-				<div class="swiper-pagination" slot="pagination"></div>  
-			</swiper>  
+				</swiper-slide>
+				<div class="swiper-pagination" slot="pagination"></div>
+			</swiper>
 
 			<div class="wrapper">
 				<rule></rule>
@@ -35,7 +35,8 @@
 					paginationClickable: true,
 					autoplay: 5000,
 					loop: true,
-					spaceBetween: 0
+					spaceBetween: 0,
+					effect: 'fade'
 				},
 
 				banners: [
@@ -50,7 +51,7 @@
 		components: {
 			'swiper'		: swiper,
 			'swiper-slide'  : swiperSlide,
-			'rule'		  	: Rule	
+			'rule'		  	: Rule
 		},
 
 		methods: {

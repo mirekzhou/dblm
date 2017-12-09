@@ -46,6 +46,13 @@
 					<issue-item :item="item"></issue-item>
 				</li>
 			</ul>
+
+			<div class="pager-zone">
+				<pager 	:pageIndex="pageIndex"
+						:totalPage="totalPage"
+						v-on:pageIndexChanged="pageIndexChanged">
+				</pager>
+			</div>
 		</div>
 	</div>
 </template>
@@ -53,6 +60,7 @@
 <script>
 	import watchImage from '../../assets/armani-watch.png';
 	import IssueItem  from './issueItem';
+	import pager      from '../common/pager2';
 
 	export default {
 		name: 'latest-records',
@@ -78,6 +86,9 @@
 				time : '0',
 				status: '0',
 				name: '',
+
+				pageIndex: 1,
+				totalPage: 7,
 
 				records: [
 					{
@@ -114,40 +125,21 @@
 							'total': 220,
 							'current': 120
 						}
-					},
-					{
-						'issueDate': '20170203112',
-						'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
-						'price': '6388',
-						'drawStatus': 4,
-						'imgSrc': watchImage,
-						'deadline': '09:03:23 2017-12-19',
-						'progressData': {
-							'total': 220,
-							'current': 120
-						}
-					},
-					{
-						'issueDate': '20170203112',
-						'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
-						'price': '6388',
-						'drawStatus': 5,
-						'imgSrc': watchImage,
-						'deadline': '09:03:23 2017-12-19',
-						'progressData': {
-							'total': 220,
-							'current': 120
-						}
 					}
 				]
 			}
 		},
 
 		components: {
-			'issue-item' : IssueItem
+			'issue-item' : IssueItem,
+			'pager'      : pager
 		},
 
 		methods: {
+			pageIndexChanged: function (value) {
+				this.pageIndex = value;
+			},
+
 			setCurrentTime: function (value) {
 				this.time = value;
 			},
@@ -283,7 +275,15 @@
 					border-bottom: 1px solid #e6e6e6;
 					padding-bottom: 36px;
 					margin-bottom: 36px;
+
+					&:last-child {
+						border-bottom: none;
+					}
 				}
+			}
+
+			.pager-zone {
+				text-align: center;
 			}
 		}
 	}
