@@ -19,9 +19,9 @@
 	require('swiper/dist/css/swiper.css');
 	import Rule 					 from	 './rule';
 	import homeBanner  			  	 from 	 '../../assets/banner.jpg';
-	import homeBanner2  			 from 	 '../../assets/2.jpg';
-	import homeBanner3  			 from 	 '../../assets/3.jpg';
-	import homeBanner4 			  	 from 	 '../../assets/4.jpg';
+	import homeBanner2  			 from 	 '../../assets/banner2.jpg';
+	import homeBanner3  			 from 	 '../../assets/banner3.jpg';
+	import homeBanner4 			  	 from 	 '../../assets/banner4.jpg';
 	import { swiper, swiperSlide } 	 from 	 'vue-awesome-swiper';
 	import '../../scss/common.scss';
 
