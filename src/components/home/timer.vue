@@ -2,7 +2,7 @@
 	<div class="timer clear">
 		<div class="content">
 			<i class="icon-sand-glass"></i>
-			<label>距离结束</label>
+			<label>距离开始</label>
 			<span>{{getTime.days}}天</span>
 			<i>：</i>
 			<span>{{formatTimeString(getTime.hours)}}</span>
@@ -11,12 +11,12 @@
 			<i>：</i>
 			<span>{{formatTimeString(getTime.seconds)}}</span>
 		</div>
-		
 	</div>
 </template>
 
 <script>
 	import '../../scss/common.scss';
+
 	export default {
 		name: 'timer',
 

@@ -34,19 +34,15 @@
 </template>
 
 <script>
-
-    import imgItem1 from '../../../assets/2.jpg';
-    import imgItem2 from '../../../assets/3.jpg';
-
-    import bigImg1 from '../../../assets/1.jpg';
-    import  bigImg2 from '../../../assets/prize_info_2.jpg';
-    import  bigImg3 from '../../../assets/prize_info_1.jpg';
-
-    import arrow from '../../../assets/page-left-arrow.png';
-    import { swiper, swiperSlide } from 'vue-awesome-swiper'
-
+    import { swiper, swiperSlide } from 'vue-awesome-swiper';
+    import imgItem1   from '../../../assets/2.jpg';
+    import imgItem2   from '../../../assets/3.jpg';
+    import bigImg1    from '../../../assets/1.jpg';
+    import bigImg2    from '../../../assets/prize_info_2.jpg';
+    import bigImg3    from '../../../assets/prize_info_1.jpg';
+    import arrow      from '../../../assets/page-left-arrow.png';
     import progres    from '../../common/amountProgress';
-    import countDown    from '../../common/countdown';
+    import countDown  from '../../common/countdown';
 
     export default {
         name: 'product',
@@ -71,7 +67,7 @@
                 },
 
                 countdownData:{
-                    seconds:(new Date('2017-11-30')-new Date()),
+                    seconds:(new Date('2017-12-30')-new Date()),
                     desc:'倒计时结束时参与人数达到或超过总需人数，则随机抽取1人获得该商品'
                 },
 

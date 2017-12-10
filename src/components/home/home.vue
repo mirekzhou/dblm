@@ -41,5 +41,6 @@
 	.home-page {
 		color: #000;
 		margin-top: 120px;
+		padding-bottom: 20px;
 	}
 </style>

@@ -50,7 +50,7 @@
 
 		data: function () {
 			return {
-				seconds:(new Date('2017-11-30')-new Date()),
+				seconds:(new Date('2017-12-30')-new Date()),
 			}
 		},
 
