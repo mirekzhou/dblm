@@ -51,7 +51,6 @@
 
 		methods: {
 			startCountdown: function () {
-				console.log('开始倒计时...');
 		        var _this = this;
 
 		        this.seconds = this.secs;
@@ -72,7 +71,6 @@
 			stopCountdown: function () {
 				clearInterval(this.countDown);
 				this.countDown = null;
-				console.log('停止倒计时...');
 			},
 
 			formatTimeString: function ( number ) {

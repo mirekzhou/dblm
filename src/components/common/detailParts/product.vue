@@ -1,30 +1,31 @@
 <template>
     <div class="product">
         <div class="left-part">
-            
             <div class="img-list">
-                 <swiper :options="swiperOption" class="img-left" ref="swiperLeft">
-                    <swiper-slide  class="img-item" v-for="item in imgList" :key="item.id">
-                        <img :src="item.url">
+                <swiper :options="swiperOption" class="img-left" ref="swiperLeft">
+                    <swiper-slide  class="img-item" v-for="item in imgList" key="item">
+                        <img :src="item.smallImgUrl">
                     </swiper-slide>
+
                     <div class="swiper-pagination" slot="pagination"></div>
-                    <div class="swiper-button-next" slot="button-next"></div>
-                  </swiper>
-                  <swiper :options="swiperOptionTop" class="img-box" ref="swiperRight">
-                    <swiper-slide v-for="item in imgList" :key="item.id">
-                        <img :src="item.imgDetail">
-                    </swiper-slide>
-                  </swiper>
+                    <!-- <div class="swiper-button-next" slot="button-next"></div> -->
+                </swiper>
+
+                <div class="img-box">
+                    <img :src="bigImgUrl">
+                </div>
             </div>
-        
         </div>
+
         <div class="right-part">
             <div class='item-title'>{{productInfo.title}}</div>
             <div class='item-desc'>{{productInfo.desc}}</div>
             <div class='item-no'>第{{productInfo.no}}期</div>
             <div class="item-price">参考价格：<span class="price">{{productInfo.price}}元</span></div>
             <div class="item-progress"><progres :item="progressData"></progres></div>
+
             <countDown :secs="countdownData.seconds" :desc="countdownData.desc"></countDown>
+
             <div class="item-button">
                 <button class="btn-radius" v-on:click="share">分享夺宝</button>
             </div>
@@ -33,67 +34,72 @@
 </template>
 
 <script>
-    import awardImage from '../../../assets/1.jpg';
+
     import imgItem1 from '../../../assets/2.jpg';
     import imgItem2 from '../../../assets/3.jpg';
+
+    import bigImg1 from '../../../assets/1.jpg';
+    import  bigImg2 from '../../../assets/prize_info_2.jpg';
+    import  bigImg3 from '../../../assets/prize_info_1.jpg';
+
     import arrow from '../../../assets/page-left-arrow.png';
-    import  detailImg1 from '../../../assets/prize_info_2.jpg';
-    import  detailImg2 from '../../../assets/prize_info_1.jpg';
     import { swiper, swiperSlide } from 'vue-awesome-swiper'
 
     import progres    from '../../common/amountProgress';
     import countDown    from '../../common/countdown';
-    var count=0;
+
     export default {
-        name: 'page',
+        name: 'product',
 
         props: [
         ],
 
         data: function () {
+            var that = this;
+
             return {
-                detailUrl:awardImage,
                 productInfo:{
                     title:'[低至14382]低至低至低至低至低至低至低至低至',
                     desc:'低至低至低至低至低至低至低至低至',
                     no:142141241,
                     price:3432432
                 },
+
                 progressData:{
                     total:100,
                     current:50
                 },
+
                 countdownData:{
                     seconds:(new Date('2017-11-30')-new Date()),
                     desc:'倒计时结束时参与人数达到或超过总需人数，则随机抽取1人获得该商品'
                 },
+
+                bigImgUrl: bigImg2,
+
                 imgList:[
                     {
-                        id:'1',
-                        url:imgItem1,
-                        imgDetail:awardImage
+                        smallImgUrl : imgItem1,
+                        bigImgUrl   : bigImg1
                     },
                     {
-                        id:'2',
-                        url:imgItem2,
-                        imgDetail:detailImg1
+                        smallImgUrl : imgItem2,
+                        bigImgUrl   : bigImg2
                     },
                     {
-                        id:'3',
-                        url:imgItem1,
-                        imgDetail:detailImg2
+                        smallImgUrl : imgItem1,
+                        bigImgUrl   : bigImg3
                     },
                     {
-                        id:'4',
-                        url:imgItem2,
-                        imgDetail:detailImg1
+                        smallImgUrl : imgItem2,
+                        bigImgUrl   : bigImg2
                     },
                     {
-                        id:'5',
-                        url:imgItem2,
-                        imgDetail:awardImage
+                        smallImgUrl : imgItem2,
+                        bigImgUrl   : bigImg1
                     }
                 ],
+
                 swiperOption: {
                     centeredSlides: true,
                     slidesPerView: 'auto',
@@ -102,43 +108,22 @@
                     direction: 'vertical',
                     height:415,
                     loop : true,
+                    notNextTick: true,
+                    nextButton:'.swiper-button-next',
+                    prevButton:'null',
+
                     pagination: {
                         el: '.swiper-pagination',
                         clickable: true
                     },
-                    notNextTick: true, 
-                    nextButton:'.swiper-button-next',
-                    prevButton:'null',
-                    onSlideChangeEnd: swiper => { 
-                        //调试
-                        console.log(swiper)
-                        if(swiper&&swiper.controller&&swiper.controller.control){
-                            swiper.controller.control.slideTo(swiper.realIndex)
-                        }
-                        //swiper.controller.control.slideTo(swiper.realIndex)
-                        this.page = swiper.realIndex+1; 
-                        this.index = swiper.realIndex; 
-                      }
-                },
-                swiperOptionTop: {
-                    direction: 'vertical',
-                    height:415,
-                    loop: true,
-                    notNextTick: true,
-                },
-                moveCount:count,
-                arrowImg:arrow
+
+                    onSlideChangeEnd: function (swiper) {
+                        that.bigImgUrl = that.imgList[swiper.realIndex].bigImgUrl;
+                    }
+                }
             }
         },
         mounted:function() {
-            console.log("asdasd")
-            var self=this
-            this.$nextTick(function() {
-                var swiperRight=self.$refs.swiperRight.swiper
-                var swiperLeft=self.$refs.swiperLeft.swiper
-                swiperRight.controller.control = swiperLeft
-                swiperLeft.controller.control = swiperRight
-            })
         },
 
         components:{
@@ -149,7 +134,6 @@
         },
 
         methods: {
-        
             share: function () {
                 this.$store.dispatch('setShareDialogStatus', {status: true});
             }
@@ -174,17 +158,20 @@
                 height:415px;
                 overflow:hidden;
                 position:relative;
+
                 .progress-list {
                     position:absolute;
                 }
 
                 .img-item{
                     img {
+                        cursor: pointer;
                         width:100%;
                         height:80px;
                     }
                 }
             }
+
             .img-left {
                 float:left;
                 width:20%!important;
@@ -235,7 +222,7 @@
                 -o-transform: rotate(45deg);
                 transform: rotate(45deg);
             }
-            
+
         }
 
         .right-part {

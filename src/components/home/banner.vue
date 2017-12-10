@@ -36,7 +36,7 @@
 				swiperOption: {
 					pagination: '.swiper-pagination',
 					paginationClickable: true,
-					autoplay: 5000,
+					autoplay: 3000,
 					speed: 2000,
 					loop: true,
 					autoplayDisableOnInteraction : false,

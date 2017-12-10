@@ -215,12 +215,13 @@
 				}
 
 				.group-failed {
+					margin-top: 115px;
+
 					.group-failed-icon {
 						background-image: url(../../assets/draw-status-sprite.png);
 						background-position: -152px -92px;
 						height: 90px;
 						display: inline-block;
-						margin-top: 56px;
 						vertical-align: middle;
 						width: 114px;
 					}

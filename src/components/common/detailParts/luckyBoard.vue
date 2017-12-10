@@ -17,7 +17,7 @@
     import userImg from '../../../assets/header.png';
     import prizeHeader from '../../../assets/prize_info_header.png';
     export default {
-        name: 'page',
+        name: 'lucky-board',
 
         props: {
             rankList:Array
@@ -25,7 +25,7 @@
 
         data: function () {
             return {
-                
+
 
             }
         },
@@ -79,7 +79,7 @@
                     left: -10px;
                 }
             }
-        
+
         }
 
         .item-rank:first-child{
@@ -105,6 +105,6 @@
         }
 
     }
-    
-    
+
+
 </style>

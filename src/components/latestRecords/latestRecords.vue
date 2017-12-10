@@ -90,6 +90,7 @@
 				pageIndex: 1,
 				totalPage: 7,
 
+				//最新开奖列表只有2种状态：已开奖(drawStatus = 0)和组件联盟(drawStatus = 6)失败
 				records: [
 					{
 						'issueDate': '20170203112',
@@ -107,7 +108,7 @@
 						'issueDate': '20170203112',
 						'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
 						'price': '6388',
-						'drawStatus': 2,
+						'drawStatus': 0,
 						'imgSrc': watchImage,
 						'progressData': {
 							'total': 220,
@@ -118,7 +119,7 @@
 						'issueDate': '20170203112',
 						'description': 'Armani 阿玛尼圆形石英表男士防水腕表潮流运动手表AR6099/5905',
 						'price': '6388',
-						'drawStatus': 3,
+						'drawStatus': 6,
 						'imgSrc': watchImage,
 						'deadline': '09:03:23 2017-12-19',
 						'progressData': {

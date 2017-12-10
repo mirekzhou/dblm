@@ -33,14 +33,14 @@
 
 <script>
     export default {
-        name: 'page',
+        name: 'join-flow',
 
         props: [
         ],
 
         data: function () {
             return {
-                
+
             }
         },
 
@@ -84,7 +84,7 @@
                             background-size: auto;
                             background-repeat: no-repeat;
                         }
-                    } 
+                    }
 
                     .separate-arrow {
                         height:30px;
@@ -129,7 +129,7 @@
                     i {
                         background-position:-75px -28px;
                     }
-                    
+
                 }
 
                 .last {
@@ -138,11 +138,11 @@
                     }
                 }
             }
-            
+
 
         }
 
     }
-    
-    
+
+
 </style>

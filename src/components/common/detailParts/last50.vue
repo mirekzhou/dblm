@@ -43,7 +43,7 @@
     import pager      from '../../common/pager';
 
     export default {
-        name: 'page',
+        name: 'last-50',
 
         props: {
             joinList:Array

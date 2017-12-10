@@ -1,8 +1,8 @@
 <template>
 	<div class="prize-info clear">
 
-		<swiper :options="swiperOption"  ref="prizeInfoSwiper" >  
-			<swiper-slide v-for="(val, index) in formatPrizeInfoData" :key="index" v-if="formatPrizeInfoData">  
+		<swiper :options="swiperOption"  ref="prizeInfoSwiper" >
+			<swiper-slide v-for="(val, index) in formatPrizeInfoData" :key="index" v-if="formatPrizeInfoData">
 				<div class="box" v-for="item in val">
 					<img :src="item.imgUrl" alt="">
 					<div class="shade">
@@ -20,9 +20,9 @@
 						</div>
 					</div>
 				</div>
-			</swiper-slide>  
-			<div class="swiper-pagination" slot="pagination"></div>  
-		</swiper>  
+			</swiper-slide>
+			<div class="swiper-pagination" slot="pagination"></div>
+		</swiper>
 
 
 <!-- 		<div class="pagination">
@@ -48,29 +48,10 @@
 			return {
 				swiperOption: {
 					pagination: '.swiper-pagination',
-					// paginationType: 'custom',
 					paginationClickable: true,
 					speed: 500,
 					autoplay: 5000,
-					autoplayDisableOnInteraction : false,
-					// direction : 'vertical',
-					// paginationCustomRender: function (swiper, current, total) {
-				 //        const activeColor = '#d53328';
-				 //        const normalColor = 'transparent';
-				 //        let color = '';
-				 //        let paginationStyle = '';
-				 //        let html = '';
-				 //        for (let i = 1; i <= total; i++) {
-				 //        	if (i === current) {
-				 //            	color = activeColor;
-				 //        	} else {
-				 //            	color = normalColor;
-				 //        	}
-				 //        		paginationStyle = `background:${color};opacity:1;border-width:1px;border-style:solid;border-color:#d53328;`
-				 //        		html += `<span class="swiper-pagination-bullet" style=${paginationStyle}></span>`
-				 //        }
-				 //        return html
-			  //       }
+					autoplayDisableOnInteraction : false
 				},
 
 				formatPrizeInfoData: []
@@ -88,6 +69,7 @@
 		created: function () {
 			var tempLength = this.prizeInfoData.length;
 			var page = Math.ceil(tempLength/3);
+
 			for (var i = 0; i < page; i++ ) {
 				if (this.formatPrizeInfoData[i] == undefined) {
 					this.formatPrizeInfoData[i] = [];
@@ -95,7 +77,6 @@
 				for (var j = 0; j < 3; j++) {
 					if(this.prizeInfoData[i*3 + j] != undefined) {
 						this.formatPrizeInfoData[i].push(this.prizeInfoData[i*3 + j])
-
 					}
 				}
 			}
@@ -125,7 +106,7 @@
 					width: $infoWidth;
 					height: 269px;
 				}
-				
+
 				.info-wrap {
 					width: $infoWidth;
 					height: 90px;
@@ -171,7 +152,7 @@
 					color: #fff;
 				}
 			}
-			
+
 			.swiper-pagination {
 				position: absolute;
 				width: 14px;

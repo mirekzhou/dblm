@@ -46,7 +46,7 @@
 <script>
     import userImg from '../../../assets/header.png';
     export default {
-        name: 'page',
+        name: 'draw-zone',
 
         props: [
         ],

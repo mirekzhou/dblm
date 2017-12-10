@@ -7,13 +7,12 @@
 
 				<div class="box">
 					<img :src="item.imgUrl" v-on:click="redirectTo('/issueDetail')">
-					<p class="prize">{{item.prize}}</p>
+					<p class="prize" v-on:click="redirectTo('/issueDetail')">{{item.prize}}</p>
 					<p class="price">市场参考价：<span>{{item.price}}</span></p>
 					<home-progress :item="item.progressData"></home-progress>
 				</div>
 
 				<div class="treasure-bottom">
-
 					<div class="countdown">
 						<timer :secs="seconds"></timer>
 					</div>
@@ -122,6 +121,7 @@
 				}
 
 				.prize {
+					cursor: pointer;
 					margin-top: 5px;
 					line-height: 26px;
 				}
