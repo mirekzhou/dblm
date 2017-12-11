@@ -131,12 +131,28 @@
 			}
 		},
 
+		mounted: function () {
+			debugger
+			this.getList();
+		},
+
 		components: {
 			'issue-item' : IssueItem,
 			'pager'      : pager
 		},
 
 		methods: {
+			getList: function () {
+				var opt = {
+					url: '../../data/latest-records.json',
+					data: {}
+				};
+
+				this.$store.dispatch('get', opt, function (data) {
+					debugger
+				});
+			},
+
 			pageIndexChanged: function (value) {
 				this.pageIndex = value;
 			},

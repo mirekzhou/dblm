@@ -74,7 +74,7 @@
 						<span>你好</span>
 						<span v-show="loginStatus">{{userName}}</span>
 						<span v-show="!loginStatus">,夺宝</span>
-						<span v-show="!loginStatus" class="red-highlight" v-on:click="login">请登录</span>
+						<span v-show="!loginStatus" class="red-highlight">请登录</span>
 					</div>
 				</div>
 
