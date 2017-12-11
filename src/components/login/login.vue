@@ -212,7 +212,7 @@
 
 				if (!this.code) {
 					this.showErrorTip2 = true;
-					this.errorText2    = '验证码';
+					this.errorText2    = '请输入验证码';
 					this.codeFlag  = false;
 					return;
 				}

@@ -6,7 +6,7 @@
 				<div class="copy">
 					<label >联盟链接</label>
 					<input type="text" v-model="link">
-					<button>复制</button>
+					<button v-clipboard:copy="link" v-clipboard:success="onCopy">复制</button>
 				</div>
 
 				<div class="sharePlatform">
@@ -35,8 +35,11 @@
 </template>
 
 <script>
-	import { mapState } from 'vuex';
 	import '../../scss/common.scss';
+	import Vue          from 'vue';
+	import { mapState } from 'vuex';
+	import VueClipboard from 'vue-clipboard2';
+	Vue.use(VueClipboard);
 
 	export default {
 		name: 'shareDialog',
@@ -56,6 +59,9 @@
 		methods: {
 			hideDialog: function () {
 				this.$store.dispatch('setShareDialogStatus', {status: false});
+			},
+			onCopy: function () {
+				// console.log('复制成功')
 			}
 		}
 	}
