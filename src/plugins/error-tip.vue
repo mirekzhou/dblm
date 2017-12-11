@@ -30,7 +30,7 @@
 	height: 20px;
 	color: #d43328;
 	margin-top: 7px;
-	font-size: 14px;
+	font-size: 13px;
 	.icon-error {
 		display: inline-block;
 		width: 19px;

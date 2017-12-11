@@ -1,7 +1,7 @@
 <template>
 	<div class="phone-input">
 		<i></i>
-		<input type="text" :placeholder="text">
+		<input type="text" :placeholder="text" v-on:input="updateValue($event.target.value)">
 	</div>
 </template>
 
@@ -20,6 +20,10 @@
 
 		methods: {
 			getCode: function () {
+			},
+			
+			updateValue: function (value) {
+				this.$emit('input', value);
 			}
 		}
 	}

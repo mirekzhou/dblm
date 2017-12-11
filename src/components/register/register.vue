@@ -26,40 +26,41 @@
 
 				<div class="register-content-inner">
 					<div class="register-step1" v-show="registerStatus===1">
-						<phone-input text="请输入手机号码"></phone-input>
+						<phone-input text="请输入手机号码" v-on:input="listenInputVal"></phone-input>
 
-						<error-tip errorText="请输入正确手机号码"></error-tip>
+						<drag-to-verify v-on:setDragVerifyFlag="setDragVerifyFlag" ></drag-to-verify>
 
-						<drag-to-verify></drag-to-verify>
-						<error-tip errorText="请确认密码"></error-tip>
+						<error-tip :errorText="errorText1" :showErrorTip="showErrorTip1"></error-tip>
+
 					</div>
 
 					<div class="register-step2" v-show="registerStatus===2">
 
-						<code-input></code-input>
-						<error-tip errorText="输入验证码无效"></error-tip>
+						<code-input v-on:input="listenCodeInputVal"></code-input>
+						<error-tip  :errorText="errorText2" :showErrorTip="showErrorTip2"></error-tip>
 					
 					</div>
 
 					<div class="register-step3" v-show="registerStatus===3">
 						<div class="password-box">
 							<p>设置登录密码</p>
-							<input type="text" placeholder="密码为6-20位字符组成,不能是9位以下的纯字">
-							<error-tip errorText="密码为6-20位字符组成,不能是9位以下的纯字"></error-tip>
+							<input  type="password" 
+									v-model="password"
+							        placeholder="密码为6-20位字符组成,不能是9位以下的纯数字">
+							<error-tip :errorText="errorText3" :showErrorTip="showErrorTip3"></error-tip>
 						</div>
 
 						<div class="password-box">
 							<p>重复密码</p>
-							<input type="text" placeholder="密码为6-20位字符组成,不能是9位以下的纯字">
-							<error-tip errorText="请确认密码"></error-tip>
+							<input type="password" placeholder="密码为6-20位字符组成,不能是9位以下的纯数字" v-model="confirmPassword">
 						</div>
 					</div>
 
-					<div class="bottom-btn"  :class="{mt134: registerStatus==2}">
+					<div class="bottom-btn"  :class="{mt134: registerStatus==2,mt35: registerStatus==3}">
 						<p v-on:click="nextStep" v-show="registerStatus!==3">下一步</p>
 						<p v-on:click="finishRegister" v-show="registerStatus===3">完成注册</p>
 					</div>
-					<div class="pre-btn" v-on:click="preStep" v-show="registerStatus==2">
+					<div class="pre-btn" v-on:click="preStep" v-show="registerStatus==2 || registerStatus==3">
 						<p ><上一步</p>
 					</div>
 				</div>
@@ -120,29 +121,40 @@
 		data: function () {
 			return {
 				registerStatus: 1,
+				lineLeft: 15,
+				phone: '',
+				code: '',
+				password: '',
+				confirmPassword: '',
 
-				handlerIcon:'fa fa-angle-double-right',
-				successIcon:'fa fa-check',
-				background:'#cccccc',
-				progressBarBg:'#FFFF99',
-				completedBg:'#66cc66',
-				handlerBg:'#fff',
-				text:'按住滑块，拖动完成上方拼图',
-				successText:'success',
-				width: 313,
-				height:34,
-				textSize:'16px',
-				isCircle:'true',
+				errorText1: '请输入正确手机号码',
+				showErrorTip1:  false,
 
-				lineLeft: 15
+				errorText2: '输入验证码无效',
+				showErrorTip2:  false,
+
+				passwordReg: /^\d{9,16}$|^(?!\d+$)\w{6,20}$/g,
+				errorText3: '密码为6-20位字符组成,不能是9位以下的纯数字',
+				showErrorTip3:  false,
 			}
 		},
 
 		methods: {
 			nextStep: function () {
+				if (this.registerStatus == 1) {
+					this.checkInput1();
+					if (this.showErrorTip1 == true) {
+						return;
+					}
+				} else if (this.registerStatus == 2) {
+					this.checkInput2();
+					if (this.showErrorTip2 == true) {
+						return;
+					}
+				}
+
 				this.registerStatus++;
 				this.setLineLeft();
-
 			},
 
 			preStep: function () {
@@ -152,7 +164,73 @@
 
 
 			finishRegister: function () {
+				this.checkInput3();
+				if (this.showErrorTip3 == true) {
+					return;
+				}
 				this.registerStatus++;
+			},
+
+			checkInput1: function () {
+				this.showErrorTip1 = false;
+
+				if (!this.phone) {
+					this.showErrorTip1 = true;
+					this.errorText1   = '请输入手机号';
+					return;
+				}
+
+				if (!this.dragVerifyFlag) {
+					this.showErrorTip1 = true;
+					this.errorText1    = '请拖动完成验证';
+					return;
+				}
+
+				this.showErrorTip1 = false;
+			},
+
+			checkInput2: function () {
+				this.showErrorTip2 = false;
+				if (!this.code) {
+					this.showErrorTip2 = true;
+					this.errorText2   = '输入验证码无效';
+					return;
+				}
+
+				this.showErrorTip2 = false;
+			},
+
+			checkInput3: function () {
+				this.showErrorTip3 = false;
+
+				if (!this.password.match(this.passwordReg)) {
+					this.showErrorTip3 = true;
+					this.errorText3   = '密码为6-20位字符组成,不能是9位以下的纯数字';
+					return;
+				}
+
+				if (this.password != this.confirmPassword) {
+					this.showErrorTip3 = true;
+					this.errorText3    = '两次密码应该保持一致';
+					return;
+				}
+
+				this.showErrorTip3 = false;
+			},
+
+			setDragVerifyFlag: function(val) {
+				this.dragVerifyFlag = val;
+
+				if (val == true) {
+					this.showErrorTip1 = false;
+				}
+
+			},
+			listenInputVal: function (val) {
+				this.phone = val;
+			},
+			listenCodeInputVal: function (val) {
+				this.code = val;
 			},
 
 			finish: function () {
@@ -160,10 +238,7 @@
 				this.lineLeft = 15;
 				this.$router.push('/home');
 			},
-			passVerify: function () {
-				alert('验证成功');
-			},
-
+			
 			setLineLeft: function () {
 				if (this.registerStatus == 1) {
 					this.lineLeft = 15;
@@ -324,6 +399,10 @@
 
 				.register-step2 {
 					font-size: 14px;
+
+					.code-input {
+						margin-top: 30px;
+					}
 				}
 
 				.register-step3 {
@@ -351,6 +430,10 @@
 				
 				.mt134 {
 					margin-top: 134px;
+				}
+
+				.mt35 {
+					margin-top: 35px;
 				}
 
 				.bottom-btn {
