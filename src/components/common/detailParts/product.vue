@@ -13,6 +13,19 @@
 
                 <div class="img-box">
                     <img :src="bigImgUrl">
+
+                    <div class="win-user">
+                        <div class="left-sec">
+                            <img :src="winUserHead" />
+                        </div>
+
+                        <div class="right-sec">
+                            <div>中奖用户：{{winUser}}</div>
+                            <div>中奖number：{{winNumber}}</div>
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,6 +48,7 @@
 
 <script>
     import { swiper, swiperSlide } from 'vue-awesome-swiper';
+    import headerImg  from '../../../assets/prize_info_header.png';
     import imgItem1   from '../../../assets/2.jpg';
     import imgItem2   from '../../../assets/3.jpg';
     import bigImg1    from '../../../assets/1.jpg';
@@ -54,6 +68,10 @@
             var that = this;
 
             return {
+                winUserHead: headerImg,
+                winUser: '13557225656',
+                winNumber: '10010',
+
                 productInfo:{
                     title:'[低至14382]低至低至低至低至低至低至低至低至',
                     desc:'低至低至低至低至低至低至低至低至',
@@ -179,12 +197,51 @@
             .img-box {
                 float:left;
                 width:80%!important;
-                img{
+                position: relative;
+
+                img {
                     width:100%;
                     height:415px;
                     border:1px solid #F0F0F0;
                 }
+
+                .win-user {
+                    width: 100%;
+                    height: 100px;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    color: #fff;
+                    background-repeat: no-repeat;
+                    background-size: 100% 100px;
+                    background-image: url("../../../assets/red-bg.png");
+
+                    .left-sec {
+                        float: left;
+                        width: 120px;
+                        text-align: right;
+
+                        img {
+                            border: 2px solid white;
+                            border-radius: 50%;
+                            height: 54px;
+                            width: 54px;
+                            margin-top: 26px;
+                        }
+                    }
+
+                    .right-sec {
+                        color: #FFF;
+                        font-size: 16px;
+                        float: right;
+                        line-height: 25px;
+                        width: 250px;
+                        text-align: left;
+                        margin-top: 30px;
+                    }
+                }
             }
+
             .swiper-button-prev {
                 position: absolute;
                 top:10px;
