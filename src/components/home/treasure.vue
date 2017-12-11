@@ -164,15 +164,16 @@
 					font-size: 12px;
 					overflow: hidden;
 
+					p {
+						height: 36px;
+						line-height: 36px;
+					}
+
 					.draw {
 						height: 100%;
 						background-color: #d53328;
 						overflow: hidden;
 						cursor: pointer;
-
-						p {
-							margin-top: 12px;
-						}
 					}
 
 					.share {
@@ -180,10 +181,6 @@
 						background-color: #d55528;
 						overflow: hidden;
 						cursor: pointer;
-
-						p {
-							margin-top: 12px;
-						}
 					}
 
 					.already {
@@ -191,10 +188,6 @@
 						background-color: #c2c2c2;
 						overflow: hidden;
 						cursor: pointer;
-
-						p {
-							margin-top: 12px;
-						}
 					}
 
 					.will-start {
@@ -202,10 +195,6 @@
 						background-color: #e08f8a;
 						overflow: hidden;
 						cursor: pointer;
-
-						p {
-							margin-top: 12px;
-						}
 					}
 
 				}

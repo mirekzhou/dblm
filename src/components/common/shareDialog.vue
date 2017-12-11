@@ -39,6 +39,7 @@
 	import Vue          from 'vue';
 	import { mapState } from 'vuex';
 	import VueClipboard from 'vue-clipboard2';
+
 	Vue.use(VueClipboard);
 
 	export default {
@@ -127,7 +128,7 @@
 						float: left;
 					}
 
-					
+
 					.social-share {
 						display: inline-block;
 					}
