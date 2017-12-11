@@ -11,13 +11,9 @@
 
 				<div class="sharePlatform">
 					<label>分享至</label>
-			<!-- 		<i class="sina"></i>
-					<i class="wechat"></i>
-					<i class="qq"></i> -->
-				<share :config="config"></share>
+					<share :config="config"></share>
 					<span>让好友帮你夺宝成功</span>
 				</div>
-
 
 				<div class="QRCode clear">
 					<label >二维码</label>
@@ -199,9 +195,9 @@
 				.confirm {
 					width: 116px;
 					height: 36px;
-					padding-top: 8px;
+					line-height: 36px;
 					color: #fff;
-					margin: 36px auto 0;
+					margin: 25px auto 0;
 					background: #d53328;
 					border-radius: 3px;
 					cursor: pointer;

@@ -21,24 +21,28 @@
 				<div class="inner-wrap">
 					<div class="password-login" v-show="!loginType">
 						<p>账号</p>
-						<input  type="text" 
-						        placeholder="无限娱乐账号可直接登录" 
-						        v-model="account" 
+						<input  type="text"
+						        placeholder="无限娱乐账号可直接登录"
+						        v-model="account"
 						        v-on:blur="accountBlur"
 						        v-on:focus="inputFocus">
 						<p>密码</p>
-						<input  type="text" 
+						<input  type="text"
 						        placeholder="无限娱乐账号可直接登录"
 						        v-on:blur="passwordBlur"
 						        v-on:focus="inputFocus"
 						        v-model="password">
-						<p class="p-forget" v-on:click="redirectTo('/forget')">忘记密码?</p>
+
+						<p class="p-forget">
+							<span v-on:click="redirectTo('/forget')">忘记密码?</span>
+						</p>
+
 						<p>验证</p>
 
 						<div class="slide-block">
-							<drag-to-verify :isHideCanvas="isHideCanvas"  
+							<drag-to-verify :isHideCanvas="isHideCanvas"
 											v-on:showCanvas="showCanvas"
-											v-on:setDragVerifyFlag="setDragVerifyFlag1" 
+											v-on:setDragVerifyFlag="setDragVerifyFlag1"
 											isFloat="true"></drag-to-verify>
 						</div>
 						<error-tip :errorText="errorText1" :showErrorTip="showErrorTip1"></error-tip>
@@ -46,16 +50,16 @@
 
 					<div class="code-login" v-show="loginType">
 						<p>请输入手机号码</p>
-						<input  type="text" 
+						<input  type="text"
 								v-on:blur="phoneBlur"
 								v-on:focus="inputFocus"
 								v-model="phone"
 						        placeholder="无限娱乐账号可直接登录">
 						<p>验证</p>
 						<div class="slide-block">
-							<drag-to-verify :isHideCanvas="isHideCanvas"  
-											v-on:showCanvas="showCanvas" 
-											v-on:setDragVerifyFlag="setDragVerifyFlag2" 
+							<drag-to-verify :isHideCanvas="isHideCanvas"
+											v-on:showCanvas="showCanvas"
+											v-on:setDragVerifyFlag="setDragVerifyFlag2"
 											isFloat="true"></drag-to-verify>
 						</div>
 
@@ -306,7 +310,7 @@
 					width: 131px;
 					height: 30px;
 					line-height: 30px;
-					font-size: 12px; 
+					font-size: 12px;
 
 					p {
 						margin-left: -3px;
@@ -329,7 +333,7 @@
 						width: 34px;
 						height: 34px;
 					}
- 
+
 					.trigon {
 						position: absolute;
 						bottom: 0;
@@ -349,7 +353,6 @@
 				font-size: 12px;
 
 				.password-login {
-
 					p {
 						margin: 12px 0;
 						font-weight: 600;
