@@ -19,7 +19,7 @@
 
 					<div class="drawLottery">
 						<div class="draw" v-show="item.drawLotteryStatus === 1">
-							<p>参与夺宝</p>
+							<p v-on:click="goDetail">参与夺宝</p>
 						</div>
 
 						<div class="share" v-show="item.drawLotteryStatus === 2" v-on:click="showShareDialog">
@@ -71,6 +71,10 @@
 
 			redirectTo: function (path) {
 				this.$router.push(path);
+			},
+
+			goDetail: function () {
+				this.$router.push('/issueDetail');
 			}
 		}
 	}

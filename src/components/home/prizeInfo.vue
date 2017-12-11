@@ -1,11 +1,11 @@
 <template>
 	<div class="prize-info clear">
-
 		<swiper :options="swiperOption"  ref="prizeInfoSwiper" >
 			<swiper-slide v-for="(val, index) in formatPrizeInfoData" :key="index" v-if="formatPrizeInfoData">
 				<div class="box" v-for="item in val">
-					<img :src="item.imgUrl" alt="">
-					<div class="shade">
+					<img :src="item.imgUrl" v-on:click="goDetail" alt="">
+
+					<div class="shade" v-on:click="goDetail">
 						<p>{{item.title}}</p>
 						<p class="red">{{item.cycle}}</p>
 					</div>
@@ -23,13 +23,6 @@
 			</swiper-slide>
 			<div class="swiper-pagination" slot="pagination"></div>
 		</swiper>
-
-
-<!-- 		<div class="pagination">
-			<span class="active"></span>
-			<span></span>
-			<span></span>
-		</div> -->
 	</div>
 </template>
 
@@ -64,6 +57,9 @@
 		},
 
 		methods: {
+			goDetail: function () {
+				this.$router.push('/latestDetail');
+			}
 		},
 
 		created: function () {
