@@ -44,7 +44,7 @@
 
 				<div class="group-failed" v-if="item.drawStatus == 6">
 					<span class="group-failed-icon"></span>
-					<p class="text">未达到参数要求</p>
+					<p class="text">未达到参与人数要求</p>
 				</div>
 			</div>
 		</div>
