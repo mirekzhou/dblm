@@ -270,7 +270,11 @@
 						float: right;
 
 						.down-arrow {
-
+							background-image: url("../../assets/common-sprite.png");
+							background-position: -112px -52px;
+							display: inline-block;
+							height: 8px;
+							width: 10px;
 						}
 					}
 
