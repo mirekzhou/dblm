@@ -29,7 +29,7 @@
 					<div class="clear"></div>
 				</div>
 
-				<div class="right-part" v-if="$route.path != '/register'">
+				<div class="right-part" v-if="$route.path != '/register' && $route.path != '/login'">
 					<div class="text user-center"
 						 v-on:mouseover="ucMouseOver"
 						 v-on:mouseout="ucMouseOut">
@@ -80,7 +80,12 @@
 
 				<div class="right-part" v-if="$route.path == '/register'">
 					<span>已有账号？</span>
-					<span class="red-highlight" v-on:click="login">前往登录</span>
+					<span class="red-highlight" v-on:click="redirectTo('/login')">前往登录</span>
+				</div>
+
+				<div class="right-part" v-if="$route.path == '/login'">
+					<span>暂无账号？</span>
+					<span class="red-highlight" v-on:click="redirectTo('/register')">前往注册</span>
 				</div>
 
 				<div class="clear"></div>
@@ -147,10 +152,6 @@
 			redirectTo: function (path) {
 				this.$router.push(path);
 				this.showFloatWindow = false;
-			},
-
-			login: function () {
-				this.$store.dispatch('setLoginStatus', true);
 			},
 
 			logout: function () {
