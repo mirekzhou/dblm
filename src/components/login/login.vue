@@ -21,28 +21,46 @@
 				<div class="inner-wrap">
 					<div class="password-login" v-show="!loginType">
 						<p>账号</p>
-						<input type="text" placeholder="无限娱乐账号可直接登录" v-model="account">
+						<input  type="text" 
+						        placeholder="无限娱乐账号可直接登录" 
+						        v-model="account" 
+						        v-on:blur="accountBlur"
+						        v-on:focus="inputFocus">
 						<p>密码</p>
-						<input type="text" placeholder="无限娱乐账号可直接登录" v-model="password">
-						<p class="p-forget">忘记密码?</p>
+						<input  type="text" 
+						        placeholder="无限娱乐账号可直接登录"
+						        v-on:blur="passwordBlur"
+						        v-on:focus="inputFocus"
+						        v-model="password">
+						<p class="p-forget" v-on:click="redirectTo('/forget')">忘记密码?</p>
 						<p>验证</p>
 
 						<div class="slide-block">
-							<drag-to-verify :isHideCanvas="isHideCanvas"  v-on:showCanvas="showCanvas" isFloat="true"></drag-to-verify>
+							<drag-to-verify :isHideCanvas="isHideCanvas"  
+											v-on:showCanvas="showCanvas"
+											v-on:setDragVerifyFlag="setDragVerifyFlag1" 
+											isFloat="true"></drag-to-verify>
 						</div>
-						<error-tip errorText="用户或密码错误"></error-tip>
+						<error-tip :errorText="errorText1" :showErrorTip="showErrorTip1"></error-tip>
 					</div>
 
 					<div class="code-login" v-show="loginType">
 						<p>请输入手机号码</p>
-						<input type="text" placeholder="无限娱乐账号可直接登录">
+						<input  type="text" 
+								v-on:blur="phoneBlur"
+								v-on:focus="inputFocus"
+								v-model="phone"
+						        placeholder="无限娱乐账号可直接登录">
 						<p>验证</p>
 						<div class="slide-block">
-							<drag-to-verify :isHideCanvas="isHideCanvas"  v-on:showCanvas="showCanvas" isFloat="true"></drag-to-verify>
+							<drag-to-verify :isHideCanvas="isHideCanvas"  
+											v-on:showCanvas="showCanvas" 
+											v-on:setDragVerifyFlag="setDragVerifyFlag2" 
+											isFloat="true"></drag-to-verify>
 						</div>
 
-						<code-input></code-input>
-						<error-tip errorText="手机号尚未注册"></error-tip>
+						<code-input  v-on:input="listenInputVal"></code-input>
+						<error-tip :errorText="errorText2" :showErrorTip="showErrorTip2"></error-tip>
 					</div>
 
 					<div class="login-btn" v-on:click="goLogin">
@@ -77,23 +95,26 @@
 			return {
 				account: '',
 				password: '',
-
+				phone: '',
+				code: '',
 				loginType: false,
-
-				handlerIcon:'fa fa-angle-double-right',
-				successIcon:'fa fa-check',
-				background:'#f8f8f8',
-				progressBarBg:'#FFFF99',
-				completedBg:'#66cc66',
-				handlerBg:'#fff',
-				text:'按住滑块，拖动完成上方拼图',
-				successText:'success',
-				width: 356,
-				height:34,
-				textSize:'14px',
-				isCircle:'true',
-
 				isHideCanvas: true,
+
+				errorText1: '用户或密码错误',
+				showErrorTip1: false,
+
+				accountFlag: false,
+				passwordFlag: false,
+				dragVerifyFlag1: false,
+
+
+
+				errorText2: '请输入手机号',
+				showErrorTip2: false,
+
+				phoneFlag: false,
+				codeFlag: false,
+				dragVerifyFlag2: false,
 			}
 		},
 
@@ -102,7 +123,25 @@
 				alert('验证成功');
 			},
 			goLogin: function () {
+				if (this.loginType == false) {
+					this.checkInpu1();
+					if (!this.accountFlag || !this.passwordFlag  || !this.dragVerifyFlag1) {
+						console.log('验证失败');
+						return;
+					}
+					//验证成功方法
+					this.$router.push('/home');
+				} else {
+					this.checkInpu2();
 
+					if (!this.phoneFlag || !this.codeFlag || !this.dragVerifyFlag2) {
+						console.log('验证失败');
+						return;
+					}
+
+					//验证成功方法
+					this.$router.push('/home');
+				}
 			},
 			changeType: function () {
 				this.loginType = !this.loginType;
@@ -110,7 +149,109 @@
 
 			showCanvas: function (val) {
 				this.isHideCanvas = val;
+			},
+
+			setDragVerifyFlag1: function(val) {
+				this.dragVerifyFlag1 = val;
+
+			},
+
+			setDragVerifyFlag2: function (val) {
+				this.dragVerifyFlag2 = val;
+			},
+			redirectTo: function (path) {
+				this.$router.push(path);
+			},
+
+			checkInpu1: function () {
+				this.accountFlag    = false;
+				this.passwordFlag   = false;
+				this.showErrorTip1  = false;
+
+				if (!this.account) {
+					this.showErrorTip1 = true;
+					this.errorText1    = '请输入账号';
+					this.accountFlag   = false;
+					return;
+				}
+				this.accountFlag = true;
+
+				if (!this.password) {
+					this.showErrorTip1 = true;
+					this.errorText1    = '请输入密码';
+					this.passwordFlag  = false;
+					return;
+				}
+				this.passwordFlag = true;
+
+				if (!this.dragVerifyFlag1) {
+					this.showErrorTip1 = true;
+					this.errorText1    = '请拖动完成验证';
+					return;
+				}
+			},
+
+			checkInpu2: function () {
+				this.phoneFlag    = false;
+				this.codeFlag   = false;
+				this.showErrorTip2  = false;
+
+				if (!this.phone) {
+					this.showErrorTip2 = true;
+					this.errorText12   = '请输入手机号';
+					this.phoneFlag   = false;
+					return;
+				}
+				this.phoneFlag   = true;
+
+				if (!this.dragVerifyFlag2) {
+					this.showErrorTip2 = true;
+					this.errorText2    = '请拖动完成验证';
+					return;
+				}
+
+				if (!this.code) {
+					this.showErrorTip2 = true;
+					this.errorText2    = '验证码';
+					this.codeFlag  = false;
+					return;
+				}
+				this.codeFlag  = true;
+			},
+
+			accountBlur: function () {
+				if (!this.account) {
+					this.showErrorTip1 = true;
+					this.errorText1    = '请输入账号';
+					this.accountFlag   = false;
+				}
+			},
+			passwordBlur: function () {
+				if (!this.password) {
+					this.showErrorTip1 = true;
+					this.errorText1    = '请输入密码';
+					this.passwordtFlag   = false;
+				}
+			},
+
+			phoneBlur: function () {
+				if (!this.phone) {
+					this.showErrorTip2 = true;
+					this.errorText2    = '请输入手机号';
+					this.phonetFlag   = false;
+				}
+			},
+
+			inputFocus: function () {
+				this.showErrorTip1 = false;
+				this.showErrorTip2 = false;
+			},
+
+			listenInputVal: function (val) {
+				this.code = val;
+				console.log(this.code)
 			}
+
 		},
 		components: {
 			'error-tip'	: ErrorTip,
@@ -152,6 +293,7 @@
 				line-height: 56px;
 				border-bottom: 1px solid #e1e1e1;
 				background: #f8f8f8;
+				font-weight: 600;
 			}
 
 			.changeLogin {
@@ -210,11 +352,14 @@
 
 					p {
 						margin: 12px 0;
+						font-weight: 600;
 					}
 
 					.p-forget {
 						text-align: right;
 						margin-bottom: 0;
+						cursor: pointer;
+						font-weight: 500;
 
 						&+p {
 							margin-top: 0;
@@ -239,6 +384,7 @@
 				.code-login {
 					p {
 						margin: 12px 0;
+						font-weight: 600;
 					}
 
 					input {

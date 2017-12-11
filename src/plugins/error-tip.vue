@@ -1,5 +1,5 @@
 <template>
-	<div class="error-tip">
+	<div class="error-tip" v-show="showErrorTip">
 		<span class="icon-error">×</span>
 		<span>{{errorText}}</span>
 	</div>
@@ -15,7 +15,8 @@
 			}
 		},
 		props: [
-			'errorText'
+			'errorText',
+			'showErrorTip'
 		],
 
 		methods: {

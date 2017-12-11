@@ -1,6 +1,8 @@
 <template>
 	<div class="code-input">
-		<input type="text" placeholder="请输入短信验证码">
+		<input  type="text" 
+				v-on:input="updateValue($event.target.value)"
+				placeholder="请输入短信验证码">
 		<div class="code-btn" v-on:click="getCode">
 			<span>获取验证码</span>
 		</div>
@@ -22,6 +24,10 @@
 		methods: {
 			getCode: function () {
 				console.log('222')
+			},
+
+			updateValue: function (value) {
+				this.$emit('input', value);
 			}
 		}
 	}

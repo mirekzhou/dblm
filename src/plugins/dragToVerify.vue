@@ -7,7 +7,9 @@
 		</div>
 
 		<div class="drag-verify">
+			<p>按住滑块，滑动完成上方拼图</p>
 			<div  class="drag-range"
+				  :class="{default: passFlag==0,red: passFlag==1,green: passFlag==2}"
 				  ref="rang"
 				  v-on:mousedown="onMouseDown($event)"
 				  v-bind:style="{'left': end + 'px'}">
@@ -16,6 +18,9 @@
 				  <span></span>
 				  <span></span>
 			</div>
+
+			<i class="success" v-show="passFlag==2"></i>
+			<span class="fail" v-show="passFlag==1">×</span>
 		</div>
 	</div>
 </template>
@@ -54,6 +59,8 @@
 				origin      : 0,
 				start       : 0,
 				end         : 0,
+
+				passFlag    : 0
 			}
 		},
 
@@ -121,17 +128,21 @@
 
 						if( that.end >= that.posX - 2 && that.end <= that.posX + 2) {
 							that.tip = '检验成功 ==== 刷新检验';
+							that.passFlag = 2;
 							that.rang.style.left = 0;
-							that.verification()
+							that.verification();
 							that.$emit('showCanvas', true);
+							that.$emit('setDragVerifyFlag', true);
 
 						}else{
 							that.tip = '检验失败 ==== 返回起点';
 							that.rang.style.left = 0;
+							that.passFlag = 1;
 							that.drawPuzzle(0);
 
 							setTimeout(() => {
 								that.$emit('showCanvas', true);
+								that.$emit('setDragVerifyFlag', false);
 							}, 500)
 						}
 					}
@@ -241,10 +252,36 @@
     		background: #f8f8f8;
     		border: 1px solid #d6cbbc;
     		position: relative;
+    		text-align: center;
+    		line-height: 32px;
+    		color: #b5b5b5;
+
+    		p {
+    			font-size: 14px;
+    			margin-left: 25px;
+    		}
+    	}
+
+    	.default {
+    		span {
+    			background: #ccc;
+    		}
+    	}
+
+    	.red {
+    		span {
+    			background: #d43328;
+    		}
+    	}
+
+    	.green {
+    		span {
+    			background: #9ac37b;
+    		}
     	}
 
     	.drag-range {
-    		position: relative;
+    		position: absolute;
     		margin-left: 2px;
     		top: 1px;
     		display: block;
@@ -261,12 +298,35 @@
     		span {
     			display: inline-block;
     			width: 4px;
-    			background: #9ac37b;
     			float: left;
     			height: 16px;
     			margin-left: 6px;
     			border-radius: 2px;
     		}
+    	}
+
+    	.success {
+    		display: inline-block;
+    		position: absolute;
+    		right: -27px;
+    		top: 7px;
+    		background: url('../assets/common-sprite.png') -111px -61px; 
+    		width: 19px;
+    		height: 19px;
+    	}
+
+    	.fail {
+    		display: inline-block;
+    		position: absolute;
+    		right: -27px;
+    		top: 7px;
+    		width: 19px;
+    		height: 19px;
+    		border-radius: 50%;
+    		background: #d43328;
+    		text-align: center;
+    		line-height: 19px;
+    		color: #fff;
     	}
 	}
 </style>
