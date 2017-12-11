@@ -17,17 +17,12 @@
 
 <!-- 		<suspension></suspension>
 		<breaking-news></breaking-news>
-		<login></login>
-		<register></register>
 		<notifier :show="showToast" :toastr="toastr"></notifier> -->
 	</div>
 </template>
 
 <script>
 	import { mapState }   from 'vuex';
-
-	import login          from './components/login';
-	import register       from './components/register';
 	import suspension     from './components/suspension';
 	import breakingNews   from './components/breakingNews';
 	import notifier       from 'cxlt-vue2-toastr/src/toastr/toastr';
@@ -58,24 +53,6 @@
 		},
 
 		mounted: function () {
-/*			this.$store.dispatch('showWinAlert', {
-				issueDate: '20170304113',
-				luckyCode: '10000012'
-			});*/
-			// var that = this;
-
-			// this.$store.dispatch('showAlert', {
-			// 	title: '夺宝失败',
-			// 	message: '本期夺宝已截止，下期请早',
-			// 	buttons: [
-			// 		{
-			// 			name: '知道了',
-			// 			callback: function () {
-			// 				that.$store.dispatch('hideAlert');
-			// 			}
-			// 		}
-			// 	]
-			// });
 		},
 
 		methods: {
@@ -98,8 +75,6 @@
 		components: {
 			'my-header'     :  header,
 			'my-footer'     :  footer,
-			'login'         :  login,
-			'register'      :  register,
 			'suspension'    :  suspension,
 			'breaking-news' :  breakingNews,
 			'notifier'      :  notifier,

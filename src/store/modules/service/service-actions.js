@@ -1,7 +1,26 @@
 import axios from 'axios';
 
 export default {
-	get: function ({state, dispatch, commit}, opt) {
+	get: function({state, dispatch, commit}, opt) {
+        var task;
+        var that   = this;
+		var url    = encodeURI(opt.url);
+
+        opt.data = opt.data || {};
+
+		axios({
+			method  : 'get',
+			url     : opt.url,
+			data    : opt.data,
+			timeout : 20000
+		}).then(function (response) {
+			if (opt.callback && typeof opt.callback === 'function') {
+				opt.callback(response);
+			}
+		}).catch(function (xhr, testStatus, error) {
+			console.log('【错误】：' + xhr);
+			console.log('【参数】：' + JSON.stringify(opt));
+		});
 	},
 
 	post: function ({state, dispatch, commit}, opt) {

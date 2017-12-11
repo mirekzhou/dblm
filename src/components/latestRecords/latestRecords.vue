@@ -132,7 +132,6 @@
 		},
 
 		mounted: function () {
-			debugger
 			this.getList();
 		},
 
@@ -144,13 +143,14 @@
 		methods: {
 			getList: function () {
 				var opt = {
-					url: '../../data/latest-records.json',
-					data: {}
+					url: '../../../data/latestRecords.json',
+					data: {},
+					callback: function (data) {
+						debugger
+					}
 				};
 
-				this.$store.dispatch('get', opt, function (data) {
-					debugger
-				});
+				this.$store.dispatch('get', opt);
 			},
 
 			pageIndexChanged: function (value) {
