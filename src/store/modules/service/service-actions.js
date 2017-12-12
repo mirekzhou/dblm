@@ -3,19 +3,18 @@ import axios from 'axios';
 export default {
 	get: function({state, dispatch, commit}, opt) {
         var task;
+        var domain = 'http://www.api.com';
         var that   = this;
-		var url    = encodeURI(opt.url);
+		var url    = encodeURI(opt.localUrl?opt.url : domain + opt.url);
 
         opt.data = opt.data || {};
 
-		axios({
-			method  : 'get',
-			url     : opt.url,
-			data    : opt.data,
-			timeout : 20000
+		axios.get(url, {
+			params: opt.data,
+			timeout: 6000
 		}).then(function (response) {
 			if (opt.callback && typeof opt.callback === 'function') {
-				opt.callback(response);
+				opt.callback(response.data);
 			}
 		}).catch(function (xhr, testStatus, error) {
 			console.log('【错误】：' + xhr);
