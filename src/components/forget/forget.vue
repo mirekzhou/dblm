@@ -218,7 +218,7 @@
 		padding-bottom: 64px;
 
 		.forget-wrap {
-			width: 713px;
+			width: 540px;
 			height: 390px;
 			margin: 54px auto 0;
 			border: 1px solid #ebebeb;
@@ -253,7 +253,7 @@
 
 				.forget-step2 {
 					.code-input {
-						margin-top: 95px;
+						margin-top: 72px;
 					}
 				}
 

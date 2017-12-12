@@ -227,7 +227,8 @@
 
     	.flotage {
     		position: absolute;
-    		top: -250px;
+    		top: -150px;
+    		left: 30px;
     		z-index: 9;
     	}
 
