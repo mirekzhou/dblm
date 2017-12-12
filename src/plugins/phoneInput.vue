@@ -8,10 +8,10 @@
 <script>
 	export default {
 		name: 'phone-input',
-		
+
 		data: function () {
 			return {
-				
+
 			}
 		},
 		props: [
@@ -21,7 +21,7 @@
 		methods: {
 			getCode: function () {
 			},
-			
+
 			updateValue: function (value) {
 				this.$emit('input', value);
 			}
@@ -36,7 +36,6 @@
 	border: 1px solid #dddddd;
 	border-radius: 3px;
 	padding-left: 10px;
-	margin-top: 30px;
 
 	i {
 		display: inline-block;

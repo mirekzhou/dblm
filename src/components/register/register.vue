@@ -31,28 +31,27 @@
 						<drag-to-verify v-on:setDragVerifyFlag="setDragVerifyFlag" ></drag-to-verify>
 
 						<error-tip :errorText="errorText1" :showErrorTip="showErrorTip1"></error-tip>
-
 					</div>
 
 					<div class="register-step2" v-show="registerStatus===2">
-
 						<code-input v-on:input="listenCodeInputVal"></code-input>
 						<error-tip  :errorText="errorText2" :showErrorTip="showErrorTip2"></error-tip>
-					
 					</div>
 
 					<div class="register-step3" v-show="registerStatus===3">
 						<div class="password-box">
 							<p>设置登录密码</p>
-							<input  type="password" 
+							<input  type="password"
 									v-model="password"
-							        placeholder="密码为6-20位字符组成,不能是9位以下的纯数字">
+							        placeholder="密码为6-20位字符组成,不能是9位以下的纯数字" />
+
 							<error-tip :errorText="errorText3" :showErrorTip="showErrorTip3"></error-tip>
 						</div>
 
 						<div class="password-box">
 							<p>重复密码</p>
 							<input type="password" placeholder="密码为6-20位字符组成,不能是9位以下的纯数字" v-model="confirmPassword">
+							<error-tip :errorText="errorText4" :showErrorTip="showErrorTip4"></error-tip>
 						</div>
 					</div>
 
@@ -61,7 +60,7 @@
 						<p v-on:click="finishRegister" v-show="registerStatus===3">完成注册</p>
 					</div>
 					<div class="pre-btn" v-on:click="preStep" v-show="registerStatus==2 || registerStatus==3">
-						<p ><上一步</p>
+						<p >&lt;上一步</p>
 					</div>
 				</div>
 			</div>
@@ -136,6 +135,9 @@
 				passwordReg: /^\d{9,16}$|^(?!\d+$)\w{6,20}$/g,
 				errorText3: '密码为6-20位字符组成,不能是9位以下的纯数字',
 				showErrorTip3:  false,
+
+				errorText4: '',
+				showErrorTip4:  false
 			}
 		},
 
@@ -165,9 +167,11 @@
 
 			finishRegister: function () {
 				this.checkInput3();
-				if (this.showErrorTip3 == true) {
+
+				if (this.showErrorTip3 == true || this.showErrorTip4 == true) {
 					return;
 				}
+
 				this.registerStatus++;
 			},
 
@@ -209,13 +213,15 @@
 					return;
 				}
 
+				this.showErrorTip3 = false;
+
 				if (this.password != this.confirmPassword) {
-					this.showErrorTip3 = true;
-					this.errorText3    = '两次密码应该保持一致';
+					this.showErrorTip4 = true;
+					this.errorText4    = '两次密码应该保持一致';
 					return;
 				}
 
-				this.showErrorTip3 = false;
+				this.showErrorTip4 = false;
 			},
 
 			setDragVerifyFlag: function(val) {
@@ -238,7 +244,7 @@
 				this.lineLeft = 15;
 				this.$router.push('/home');
 			},
-			
+
 			setLineLeft: function () {
 				if (this.registerStatus == 1) {
 					this.lineLeft = 15;
@@ -349,60 +355,20 @@
 			.register-content-inner {
 				width: 313px;
 				margin: 0 auto;
+				padding-top: 30px;
 				text-align: left;
 
 				.register-step1 {
 					font-size: 14px;
-				
+
 					.slide-block {
 						margin-top: 20px;
 					}
-
-					// .slide-block {
-					// 	height: 34px;
-					// 	line-height: 34px;
-					// 	background: #f8f8f8;
-					// 	border: 1px solid #dddddd;
-					// 	border-radius: 15px;
-					// 	margin-top: 20px;
-					// 	position: relative;
-					// 	color: #a0a0a0;
-
-					// 	p {
-					// 		margin-left: 80px;
-					// 	}
-
-					// 	.block {
-					// 		position: absolute;
-					// 		top: 50%;
-					// 		left: 2px;
-					// 		transform: translate(0,-50%);
-					// 		width: 68px;
-					// 		height: 30px;
-					// 		border: 1px solid #dddddd;
-					// 		border-radius: 15px;
-					// 		line-height: 31px;
-					// 		text-align: center;
-
-
-					// 		span {
-					// 			display: inline-block;
-					// 			width: 4px;
-					// 			height: 16px;
-					// 			background: #cccccc;
-					// 			border-radius: 2px;
-
-					// 		}
-					// 	}
-					// }
 				}
 
 				.register-step2 {
 					font-size: 14px;
-
-					.code-input {
-						margin-top: 30px;
-					}
+					padding-top: 30px;
 				}
 
 				.register-step3 {
@@ -427,9 +393,9 @@
 						}
 					}
 				}
-				
+
 				.mt134 {
-					margin-top: 134px;
+					margin-top: 80px;
 				}
 
 				.mt35 {
