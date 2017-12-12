@@ -28,7 +28,7 @@
 					<div class="register-step1" v-show="registerStatus===1">
 						<phone-input text="请输入手机号码" v-on:input="listenInputVal"></phone-input>
 
-						<drag-to-verify v-on:setDragVerifyFlag="setDragVerifyFlag" ></drag-to-verify>
+						<drag-to-verify v-on:setDragVerifyFlag="setDragVerifyFlag"></drag-to-verify>
 
 						<error-tip :errorText="errorText1" :showErrorTip="showErrorTip1"></error-tip>
 					</div>
