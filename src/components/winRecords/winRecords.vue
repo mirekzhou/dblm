@@ -29,7 +29,7 @@
 
 		data: function () {
 			return {
-				pageSize: 4,
+				pageSize: 3,
 				pageIndex: 1,
 				totalPage: 0,
 
