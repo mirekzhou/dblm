@@ -12,7 +12,7 @@
 					<error-tip errorText="请输入正确手机号码"></error-tip>
 					<drag-to-verify></drag-to-verify>
 				</div>
-				
+
 				<div class="forget-step2" v-show="forgetStatus===2">
 					<code-input></code-input>
 
@@ -111,11 +111,12 @@
 				background: #f8f8f8;
 				font-size: 16px;
 			}
-			
+
 			.forget-content {
 				width: 313px;
 				margin: 0 auto;
 				text-align: left;
+				padding-top: 30px;
 
 				.forget-step2 {
 					.code-input {
