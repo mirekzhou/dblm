@@ -4,22 +4,22 @@
 			<div class="register-header" v-show="registerStatus < 4">
 				<div class="register-header-inner">
 					<div class="register-title1">
-						<span class="circle active">1</span>
+						<span class="circle" :class="{active:registerStatus===1}">1</span>
 						<span>填写手机号码</span>
 					</div>
 					<div class="register-title2">
-						<span class="circle">2</span>
+						<span class="circle" :class="{active:registerStatus===2}">2</span>
 						<span>输入验证码</span>
 					</div>
 					<div class="register-title3">
-						<span class="circle">3</span>
+						<span class="circle" :class="{active:registerStatus===3}">3</span>
 						<span>设置默认密码</span>
 					</div>
 					<span class="red-line" :style="{ left: lineLeft + 'px'}"></span>
 				</div>
 			</div>
 
-			<div class="register-content" v-show="registerStatus < 4">
+			<div class="register-content clear" v-show="registerStatus < 4">
 				<div class="headline">
 					<p>创建夺宝联盟账号</p>
 				</div>
@@ -50,18 +50,21 @@
 
 						<div class="password-box">
 							<p>重复密码</p>
-							<input type="password" placeholder="密码为6-20位字符组成,不能是9位以下的纯数字" v-model="confirmPassword">
+							<input type="password"  v-model="confirmPassword">
 							<error-tip :errorText="errorText4" :showErrorTip="showErrorTip4"></error-tip>
 						</div>
 					</div>
+					
+					<div class="btn-wrap">
+						<div class="bottom-btn"  :class="{mt134: registerStatus==2,mt35: registerStatus==3}">
+							<p v-on:click="nextStep" v-show="registerStatus!==3">下一步</p>
+							<p v-on:click="finishRegister" v-show="registerStatus===3">完成注册</p>
+						</div>
+						<div class="pre-btn" v-on:click="preStep" v-show="registerStatus==2 || registerStatus==3">
+							<p >&lt;上一步</p>
+						</div>
+					</div>
 
-					<div class="bottom-btn"  :class="{mt134: registerStatus==2,mt35: registerStatus==3}">
-						<p v-on:click="nextStep" v-show="registerStatus!==3">下一步</p>
-						<p v-on:click="finishRegister" v-show="registerStatus===3">完成注册</p>
-					</div>
-					<div class="pre-btn" v-on:click="preStep" v-show="registerStatus==2 || registerStatus==3">
-						<p >&lt;上一步</p>
-					</div>
 				</div>
 			</div>
 
@@ -334,6 +337,7 @@
 
 		.register-content {
 			width: 540px;
+			height: 390px;
 			margin: 70px auto 60px;
 			padding-bottom: 17px;
 			text-align: center;
@@ -354,6 +358,8 @@
 
 			.register-content-inner {
 				width: 313px;
+				height: 340px;
+				position: relative;
 				margin: 0 auto;
 				padding-top: 30px;
 				text-align: left;
@@ -369,17 +375,30 @@
 				.register-step2 {
 					font-size: 14px;
 					padding-top: 30px;
+
+					.code-input {
+						margin-top: 50px;
+					}
 				}
 
 				.register-step3 {
 					font-size: 14px;
 
 					.password-box {
-						margin-top: 19px;
+						margin-top: 20px;
+						height: 93px;
+
+						&:first-child {
+							margin-top: 0px;
+						}
 
 						p {
 							margin-bottom: 11px;
 							color: #6e6e6e;
+						}
+
+						.error-tip {
+							opacity: 1;
 						}
 
 						input {
@@ -394,45 +413,53 @@
 					}
 				}
 
-				.mt134 {
-					margin-top: 80px;
-				}
+				.btn-wrap {
+					position: absolute;
+					bottom: 17px;
+					width: 100%;
 
-				.mt35 {
-					margin-top: 35px;
-				}
-
-				.bottom-btn {
-					height: 50px;
-					line-height: 50px;
-					background: #d43328;
-					border-radius: 3px;
-					cursor: pointer;
-					text-align: center;
-
-					p {
-						color: #fff;
-						font-weight: 600;
-						margin-top: 10px;
+					.mt134 {
+						margin-top: 80px;
 					}
-				}
 
-				.pre-btn {
-					color: #747474;
-					text-align: center;
-					cursor: pointer;
-					margin-top: 15px;
-
-					p {
-						margin-left: -12px;
-						font-size: 16px;
+					.mt35 {
+						margin-top: 35px;
 					}
+
+					.bottom-btn {
+						height: 50px;
+						line-height: 50px;
+						background: #d43328;
+						border-radius: 3px;
+						cursor: pointer;
+						text-align: center;
+
+						p {
+							color: #fff;
+							font-weight: 600;
+							margin-top: 10px;
+						}
+					}
+
+					.pre-btn {
+						color: #747474;
+						text-align: center;
+						cursor: pointer;
+						margin-top: 15px;
+
+						p {
+							margin-left: -12px;
+							font-size: 16px;
+						}
+					}
+
 				}
 			}
 		}
 
 		.register-success {
-			width: 540px;
+			width: 770px;
+			height: 395px;
 			margin: -70px auto 60px;
 			padding-bottom: 120px;
 			text-align: center;

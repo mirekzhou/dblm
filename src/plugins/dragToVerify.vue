@@ -1,9 +1,9 @@
 <template>
 	<div class="drag-to-verify">
 		<div class="drag-canvas" v-bind:class="{ hide: isHideCanvas, flotage: isFloat}">
-			<canvas width="300" height="150" ref="myCanvas"></canvas>
-			<span ref="refresh" v-on:click="verification">刷新</span>
-			<span class="drag-tip">{{tip}}</span>
+			<canvas width="313" height="100" ref="myCanvas"></canvas>
+		<!-- 	<span ref="refresh" v-on:click="verification">刷新</span>
+			<span class="drag-tip">{{tip}}</span> -->
 		</div>
 
 		<div class="drag-verify">
@@ -92,7 +92,7 @@
 					that.imgContext = that.cxt.createPattern(that.img, "no-repeat");
 					// 随机拼图位置
 					that.posX = 180 * Math.random() + 80;
-					that.posY = 70 * Math.random() + 40;
+					that.posY = 70 * Math.random();
 					// 初始化拼块
 					that.drawPuzzle(0)
 				}
@@ -152,7 +152,7 @@
 			drawPuzzle: function (value) {
 				var that = this;
 				// 绘制背景
-				this.cxt.rect(0, 0, 300, 150);
+				this.cxt.rect(0, 0, 313, 100);
 				this.cxt.fillStyle = this.imgContext;
 				this.cxt.fill();
 
@@ -209,9 +209,8 @@
 	.drag-to-verify {
 		position: relative;
     	.drag-canvas {
-			width: 312px;
-			height: 190px;
-			padding: 5px 1px 20px 5px;
+			width: 313px;
+			height: 100px;
     		background: #f2ece1;
     		border: 1px solid #dad2c5;
     		border-radius: 4px;
