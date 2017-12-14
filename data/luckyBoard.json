@@ -1,0 +1,24 @@
+{
+	"message": "",
+	"code": 0,
+	"data": [
+		{
+			"rank": 1,
+			"headImg": "",
+			"phone": "139***1234",
+			"luckyNumberCount": 200
+		},
+		{
+			"rank": 2,
+			"headImg": "",
+			"phone": "139***5678",
+			"luckyNumberCount": 200
+		},
+		{
+			"rank": 3,
+			"headImg": "",
+			"phone": "139***4321",
+			"luckyNumberCount": 200
+		}
+	]
+}

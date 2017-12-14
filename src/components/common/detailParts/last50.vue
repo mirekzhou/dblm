@@ -1,33 +1,36 @@
 <template>
     <div class="last-list">
         <div class="header">最后50名用户参与记录</div>
+
         <div class="flex" v-show="joinList.length > 0">
             <ul class="half-box flex-full">
                 <li class="flex flex-center-y" v-for="item in joinList">
-                    <div class="left"><img :src="item.img"></div>
+                    <div class="left"><img :src="item.headImg"></div>
                     <div class="right-content flex-full">
                         <span>{{item.phone}}</span>
-                        <span class="date">{{item.date}}</span>
-                        <span>{{item.no}}</span>
+                        <span class="date">{{item.datetime}}</span>
+                        <span>{{item.number}}</span>
                     </div>
                 </li>
             </ul>
+
             <div class="line-middle"></div>
+
             <ul class="half-box flex-full">
                 <li class="flex flex-center-y" v-for="item in joinList">
-                    <div class="left"><img :src="item.img"></div>
+                    <div class="left"><img :src="item.headImg"></div>
                     <div class="right-content flex-full">
                         <span>{{item.phone}}</span>
-                        <span class="date">{{item.date}}</span>
-                        <span>{{item.no}}</span>
+                        <span class="date">{{item.datetime}}</span>
+                        <span>{{item.number}}</span>
                     </div>
                 </li>
             </ul>
         </div>
         <pager
              v-show="joinList.length > 0"
-            :page-index="currentPage"
-            :total="count"
+            :page-index="pageIndex"
+            :total="totalPage"
             :page-size="pageSize"
             @change="pageChange">
         </pager>
@@ -40,50 +43,58 @@
 </template>
 
 <script>
-    import pager      from '../../common/pager';
+    import pager   from '../../common/pager';
+    import headImg from '../../../assets/prize_info_header.png';
 
     export default {
         name: 'last-50',
 
         props: {
-            joinList:Array
         },
 
         data:function () {
             return {
-                pageSize : 50 , //每页显示20条数据
-                currentPage : 1, //当前页码
-                count : 400, //总记录数
+                joinList: [],
+
+                pageSize: 10,
+                pageIndex: 1,
+                totalPage: 0,
             }
         },
+
         components:{
             'pager': pager,
         },
 
-        methods: {
-            //获取数据
-            getList () {
-                //模拟
-                //let url = `/api/list/?pageSize=${this.pageSize}&currentPage=${this.currentPage}`
-                //this.$http.get(url)
-                //.then(({body}) => {
-
-                    //子组件监听到count变化会自动更新DOM
-                    //this.count = body.count
-                    //this.items = body.list
-                //})
-                this.count = 400
-
-            },
-            //从page组件传递过来的当前page
-            pageChange (page) {
-                this.currentPage = page
-                this.getList()
-            }
+        mounted () {
+            this.getData()
         },
-        mounted() {
-            //请求第一页数据
-            this.getList()
+
+        methods: {
+            getData: function () {
+                var that = this;
+                var opt = {
+                    localUrl: true,
+                    url: '../../../data/last50.json',
+                    callback: function (data) {
+                        var i;
+                        var arr = data.data;
+
+                        for (i = 0; i < arr.length; i++) {
+                            arr[i].headImg = headImg;
+                        }
+
+                        that.joinList  = arr;
+                        that.totalPage = arr.length % that.pageSize == 0? Math.floor(arr.length/that.pageSize) : Math.floor((arr.length/that.pageSize) + 1);
+                    }
+                };
+
+                this.$store.dispatch('get', opt);
+            },
+
+            pageChange: function (page) {
+                this.pageIndex = page;
+            }
         }
     }
 </script>

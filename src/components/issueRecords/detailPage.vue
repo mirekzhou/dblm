@@ -9,10 +9,10 @@
 
             <div class="bottom-content">
                 <div class="left-part">
-                    <luckyBoard :rankList='rankList'></luckyBoard>
+                    <luckyBoard></luckyBoard>
                 </div>
                 <div class="right-part">
-                    <lastList :joinList='joinList'></lastList>
+                    <lastList></lastList>
                 </div>
             </div>
         </div>
@@ -27,8 +27,6 @@
     import myLuckyBoard from '../common/detailParts/myLuckyBoard';
     import luckyBoard   from '../common/detailParts/luckyBoard';
     import lastList     from '../common/detailParts/last50';
-    import userImg      from '../../assets/header.png';
-    import prizeHeader  from '../../assets/prize_info_header.png';
 
 	export default {
 		name: 'detail-page',
@@ -38,72 +36,6 @@
 
         data: function () {
             return {
-                list : [
-                    {title:'werjiewr',price:1214},
-                    {title:'werjiewr',price:1214},
-                    {title:'werjiewr',price:1214}
-                ],
-                rankList:[
-                    {
-                        img:prizeHeader,
-                        phone:'139****1234',
-                        luckyQty:200
-                    },
-                    {
-                        img:prizeHeader,
-                        phone:'139****1234',
-                        luckyQty:200
-                    },
-                    {
-                        img:prizeHeader,
-                        phone:'139****1234',
-                        luckyQty:200
-                    }
-                ],
-                joinList:[
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    },
-                    {
-                        img:userImg,
-                        phone:'139****1234',
-                        date:'2017-09-03 17:30:23.586',
-                        no:173294832
-                    }
-                ]
             }
         },
 
@@ -115,10 +47,7 @@
             'my-lucky-board' : myLuckyBoard,
             'luckyBoard'     : luckyBoard,
             'lastList'       : lastList
-        },
-
-		methods: {
-		}
+        }
 	}
 </script>
 

@@ -3,10 +3,10 @@
         <div class="header"><i class="icon"></i><span>幸运码排行榜</span></div>
         <ul>
             <li class="flex flex-center-y item-rank" v-for="item in rankList">
-                <div class="left"><i class="icon-rank"></i><img :src="item.img"></div>
+                <div class="left"><i class="icon-rank"></i><img :src="item.headImg"></div>
                 <div class="right-content flex-full flex-column flex-center-x">
                     <p>{{item.phone}}</p>
-                    <p>共获得幸运码<span class="red">{{item.luckyQty}}个</span></p>
+                    <p>共获得幸运码<span class="red">{{item.luckyNumberCount}}个</span></p>
                 </div>
             </li>
         </ul>
@@ -14,23 +14,44 @@
 </template>
 
 <script>
-    import userImg from '../../../assets/header.png';
     import prizeHeader from '../../../assets/prize_info_header.png';
+
     export default {
         name: 'lucky-board',
 
         props: {
-            rankList:Array
         },
 
         data: function () {
             return {
-
-
+                rankList: []
             }
         },
 
+        mounted () {
+            this.getData()
+        },
+
         methods: {
+            getData: function () {
+                var that = this;
+                var opt = {
+                    localUrl: true,
+                    url: '../../../data/luckyBoard.json',
+                    callback: function (data) {
+                        var i;
+                        var arr = data.data;
+
+                        for (i = 0; i < arr.length; i++) {
+                            arr[i].headImg = prizeHeader;
+                        }
+
+                        that.rankList  = arr;
+                    }
+                };
+
+                this.$store.dispatch('get', opt);
+            }
         }
     }
 </script>

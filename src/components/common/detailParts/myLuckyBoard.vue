@@ -31,9 +31,9 @@
 								<span class="head-icon"></span>
 								<span class="text">{{leftList[i-1].phone}}</span>
 							</div>
-							<div class="td td2">{{leftList[i-1].date}}</div>
+							<div class="td td2">{{leftList[i-1].datetime}}</div>
 							<div class="td td3">
-								<span>{{leftList[i-1].number}}</span>
+								<span>{{leftList[i-1].helpNumber}}</span>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -43,9 +43,9 @@
 								<span class="head-icon"></span>
 								<span class="text">{{rightList[i-1].phone}}</span>
 							</div>
-							<div class="td td2">{{rightList[i-1].date}}</div>
+							<div class="td td2">{{rightList[i-1].datetime}}</div>
 							<div class="td td3">
-								<span>{{rightList[i-1].number}}</span>
+								<span>{{rightList[i-1].helpNumber}}</span>
 							</div>
 							<div class="clear"></div>
 						</div>
@@ -61,6 +61,8 @@
 </template>
 
 <script>
+	import headImg from '../../../assets/prize_info_header.png';
+
 	export default {
 		name: 'my-lucky-board',
 
@@ -70,21 +72,36 @@
 		data: function () {
 			return {
 				luckyNumber: '10101010',
-
-				list: [
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'},
-					{phone: '139****1234', date: '2017-09-31 17:30:23', number: '156489'}
-				]
+				list: []
 			}
 		},
+
+        mounted () {
+            this.getData()
+        },
+
+        methods: {
+            getData: function () {
+                var that = this;
+                var opt = {
+                    localUrl: true,
+                    url: '../../../data/myLuckyBoard.json',
+                    callback: function (data) {
+                        var i;
+                        var arr = data.data;
+
+                        for (i = 0; i < arr.length; i++) {
+                            arr[i].headImg = headImg;
+                        }
+
+                        that.list  = arr;
+                        that.totalPage = arr.length % that.pageSize == 0? Math.floor(arr.length/that.pageSize) : Math.floor((arr.length/that.pageSize) + 1);
+                    }
+                };
+
+                this.$store.dispatch('get', opt);
+            }
+        },
 
 		computed: {
 			leftList: function () {
