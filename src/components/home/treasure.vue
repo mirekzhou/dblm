@@ -136,6 +136,7 @@
 
 					span {
 						color: #d63328;
+						font-weight: bold;
 					}
 				}
 			}

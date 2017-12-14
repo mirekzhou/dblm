@@ -21,7 +21,7 @@
 
                         <div class="right-sec">
                             <div>中奖用户：{{winUser}}</div>
-                            <div>中奖number：{{winNumber}}</div>
+                            <div>中奖号码：{{winNumber}}</div>
                         </div>
 
                         <div class="clear"></div>

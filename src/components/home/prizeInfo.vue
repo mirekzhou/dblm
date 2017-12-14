@@ -131,10 +131,6 @@
 					}
 				}
 
-				.red {
-					color: #d53328;
-				}
-
 				.shade {
 					position: absolute;
 					width: 251px;
@@ -146,6 +142,11 @@
 					text-align: center;
 					padding-top: 25px;
 					color: #fff;
+
+					.red {
+						color: #d53328;
+						font-weight: bold;
+					}
 				}
 			}
 

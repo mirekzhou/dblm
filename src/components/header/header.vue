@@ -370,6 +370,7 @@
 								border-radius: 4px;
 								color: #FFF;
 								display: inline-block;
+								font-weight: bold;
 								height: 25px;
 								line-height: 25px;
 								margin-left: 15px;

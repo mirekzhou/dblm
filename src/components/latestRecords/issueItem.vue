@@ -2,6 +2,19 @@
 	<div class="issue-item">
 		<div class="left-part">
 			<img :src="item.imgSrc">
+
+            <div class="win-user" v-if="item.winUser && item.winNumber">
+                <div class="left-sec">
+                    <img :src="winUserHead" />
+                </div>
+
+                <div class="right-sec">
+                    <div>中奖用户：{{item.winUser}}</div>
+                    <div>中奖号码：{{item.winNumber}}</div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
 		</div>
 
 		<div class="middle-part">
@@ -55,6 +68,7 @@
 
 <script>
 	import AmountProgress from '../common/amountProgress';
+	import headerImg      from '../../assets/prize_info_header.png';
 
 	export default {
 		name: 'issue-item',
@@ -65,6 +79,8 @@
 
 		data: function () {
 			return {
+				winUserHead: headerImg,
+
 				statusDict: {
 					1 : '夺宝中',
 					2 : '开奖失败',
@@ -99,13 +115,49 @@
 			border: 1px solid #e6e6e6;
 			float: left;
 			height: 100%;
-			width: 276px;
+			width: 296px;
 			position: relative;
 			text-align: center;
 
 			img {
 				height: 100%;
 			}
+
+            .win-user {
+                width: 100%;
+                height: 70px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                color: #fff;
+                background-repeat: no-repeat;
+                background-size: 100% 100px;
+                background-image: url("../../assets/red-bg.png");
+
+                .left-sec {
+                    float: left;
+                    width: 83px;
+                    text-align: right;
+
+                    img {
+                        border: 2px solid white;
+                        border-radius: 50%;
+                        height: 47px;
+                        width: 47px;
+                        margin-top: 20px;
+                    }
+                }
+
+                .right-sec {
+                    color: #FFF;
+                    font-size: 14px;
+                    float: right;
+                    line-height: 20px;
+                    width: 194px;
+                    text-align: left;
+                    margin-top: 26px;
+                }
+            }
 		}
 
 		.middle-part {

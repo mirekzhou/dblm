@@ -91,7 +91,7 @@
 		},
 
 		components: {
-			
+
 		},
 
 		methods: {
@@ -186,6 +186,7 @@ $topWidth				: 19px;
             				.prize {
             					color: #d94941;
             					font-size: 15px;
+            					font-weight: bold;
             				}
             			}
             		}
