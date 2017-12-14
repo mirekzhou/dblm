@@ -263,7 +263,7 @@
 						color: #FFF;
 						cursor: pointer;
 						display: inline-block;
-						font-size: 12px;
+						font-size: 14px;
 						height: 28px;
 						line-height: 28px;
 						margin-left: 18px;
