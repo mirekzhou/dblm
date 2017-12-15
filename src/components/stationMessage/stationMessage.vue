@@ -56,33 +56,9 @@
 			return {
 				pageIndex: 1,
 				totalPage: 7,
+				pageSize: 4,
 
-				messages: [
-					{
-						'status': '0',
-						'checked': false,
-						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
-						'datetime': '2017-09-08 17:23:43'
-					},
-					{
-						'status': '0',
-						'checked': false,
-						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
-						'datetime': '2017-09-08 17:23:43'
-					},
-					{
-						'status': '0',
-						'checked': false,
-						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
-						'datetime': '2017-09-08 17:23:43'
-					},
-					{
-						'status': '0',
-						'checked': false,
-						'message': '通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知',
-						'datetime': '2017-09-08 17:23:43'
-					}
-				]
+				messages: []
 			}
 		},
 
@@ -91,7 +67,26 @@
 			'pager' : pager
 		},
 
+		mounted: function () {
+			this.getData();
+		},
+
 		methods: {
+			getData: function () {
+				var that = this;
+				var opt = {
+					localUrl: true,
+					url: '../../../data/stationMessage.json',
+					callback: function (data) {
+						var arr = data.data
+						that.messages  = arr;
+						that.totalPage = arr.length % that.pageSize == 0? Math.floor(arr.length/that.pageSize) : Math.floor((arr.length/that.pageSize) + 1);
+					}
+				};
+
+				this.$store.dispatch('get', opt);
+			},
+
 			pageIndexChanged: function (value) {
 				this.pageIndex = value;
 			},
@@ -196,6 +191,7 @@
 						height: 80px;
 						line-height: 80px;
 						width: 700px;
+						text-align: right;
 					}
 				}
 			}
