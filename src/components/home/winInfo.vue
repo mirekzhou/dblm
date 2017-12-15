@@ -6,10 +6,10 @@
 				<span>正在夺宝</span>
 			</div>
 
-			<div class="marquee-box left">
+			<div class="marquee-box left" >
 				<div class="marquee-list" :class="{anim: animate}">
-					<div class="marquee-section clear" v-for="winUserData in formatWinUserData">
-						<div class="win-user left" v-for="item in winUserData">
+					<div class="marquee-section clear" v-for="data in formatWinUserData">
+						<div class="win-user left" v-for="item in data">
 							<img :src="item.imgUrl" class="left">
 							<div class="user-data left">
 								<span>{{item.number}}</span>
@@ -36,53 +36,7 @@
 
 		data: function () {
 			return {
-				winUserData: [
-					{
-						number: '13257422145',
-						prize: '康师傅来一桶酸菜牛肉24盒装',
-						imgUrl: headerImg
-					},
-					{
-						number: '13257422145',
-						prize: 'IPHONE8 128G',
-						imgUrl: headerImg
-					},
-					{
-						number: '13257422145',
-						prize: 'IPHONE8 128G',
-						imgUrl: headerImg
-					},
-					{
-						number: '13257422145',
-						prize: 'IPHONE8 32gs',
-						imgUrl: headerImg
-					},
-					{
-						number: '13257422145',
-						prize: 'IPHONE8 32gs',
-						imgUrl: headerImg
-					},
-					{
-						number: '13257422145',
-						prize: 'IPHONE8 32gs',
-						imgUrl: headerImg
-					},
-					{
-						number: '13257422145',
-						prize: 'IPHONE8 64gs',
-						imgUrl: headerImg
-					},
-					{
-						number: '13257422145',
-						prize: 'IPHONE8 64gs',
-						imgUrl: headerImg
-					},
-					{
-						number: '13257422145',
-						prize: 'IPHONE8 64gs',
-						imgUrl: headerImg
-					},
-				],
+				winUserData: [],
 
 				formatWinUserData: [],
 
@@ -101,25 +55,47 @@
 		               this.formatWinUserData.push(this.formatWinUserData[0]);  // 将数组的第一个元素添加到数组的
 		               this.formatWinUserData.shift();               //删除数组的第一个元素
 		               this.animate=false;  // margin-top 为0 的时候取消过渡动画，实现无缝滚动
-		            },2000)
+		           },2000)
+		   },
+		   getData: function () {
+		   	var that = this;
+		   	var opt = {
+		   		localUrl: true,
+		   		url: '../../../data/winInfo.json',
+		   		callback: function (data) {
+		   			that.winUserData = data.data;
+
+		   			for (var i = 0; i < that.winUserData.length; i++) {
+		   				if (!that.winUserData[i].imgUrl) {
+		   					that.winUserData[i].imgUrl = headerImg;
+		   				}
+		   			}
+
+		   			var tempLength = that.winUserData.length;
+		   			var page = Math.ceil(tempLength/3);
+		   			for (var i = 0; i < page; i++ ) {
+		   				if (that.formatWinUserData[i] == undefined) {
+		   					that.formatWinUserData[i] = [];
+		   				}
+		   				for (var j = 0; j < 3; j++) {
+		   					if(that.winUserData[i*3 + j] != undefined) {
+		   						that.formatWinUserData[i].push(that.winUserData[i*3 + j])
+		   					}
+		   				}
+		   			}
+
+		   			that.animate = true;
+		   			setInterval(that.scroll,4000);
 		   		}
+		   	};
+
+		   	this.$store.dispatch('get', opt);
+		   },
 		},
 
-		created: function () {
-			var tempLength = this.winUserData.length;
-			var page = Math.ceil(tempLength/3);
-			for (var i = 0; i < page; i++ ) {
-				if (this.formatWinUserData[i] == undefined) {
-					this.formatWinUserData[i] = [];
-				}
-				for (var j = 0; j < 3; j++) {
-					if(this.winUserData[i*3 + j] != undefined) {
-						this.formatWinUserData[i].push(this.winUserData[i*3 + j])
-					}
-				}
-			}
+		mounted: function () {
+            this.getData();
 
-			setInterval(this.scroll,4000);
 		},
 	}
 </script>

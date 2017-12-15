@@ -1,9 +1,9 @@
 <template>
 	<div class="banner">
-		<div class="banner-wraper">
-			<swiper :options="swiperOption"  ref="mySwiper">
-				<swiper-slide v-for="item in banners" :key="item">
-					<img :src="item" style="width:100% !important">
+		<div class="banner-wraper" >
+			<swiper :options="swiperOption"  ref="mySwiper" v-if="banners.length > 0">
+				<swiper-slide v-for="item in banners" :key="item.imgUrl">
+					<img :src="item.imgUrl" style="width:100% !important">
 				</swiper-slide>
 				<div class="swiper-pagination" slot="pagination"></div>
 			</swiper>
@@ -47,12 +47,7 @@
 					}
 				},
 
-				banners: [
-					homeBanner,
-					homeBanner2,
-					homeBanner3,
-					homeBanner4
-				],
+				banners: [],
 			}
 		},
 
@@ -63,7 +58,28 @@
 		},
 
 		methods: {
-		}
+			getData: function () {
+				var that = this;
+				var opt = {
+					localUrl: true,
+					url: '../../../data/banner.json',
+					callback: function (data) {
+						that.banners = data.data;
+
+						for (var i = 0; i < that.banners.length; i++) {
+							if (!that.banners[i].imgUrl) {
+								that.banners[i].imgUrl = homeBanner;
+							}
+						}
+					}
+				};
+
+				this.$store.dispatch('get', opt);
+			},
+		},
+		mounted: function () {
+			this.getData();
+		},
 	}
 </script>
 

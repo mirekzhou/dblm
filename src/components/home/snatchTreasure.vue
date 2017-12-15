@@ -3,7 +3,7 @@
 		<div class="wrapper">
 			<section-title title="夺宝专区" :sectionData="sectionData">
 			</section-title>
-			<treasure :treasureData='treasureData'></treasure>
+			<treasure :treasureData='treasureData' v-if="treasureData.length > 0"></treasure>
 		</div>
 	</div>
 </template>
@@ -32,52 +32,7 @@
 					border: '8px solid #d55528'
 				},
 
-				treasureData: [
-					{
-						'cycle': '125545121212',
-						'imgUrl': prizeImg,
-						'prize': 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
-						'price': '8999',
-						'progressData': {
-							'total': 220,
-							'current': 120
-						},
-						'drawLotteryStatus': 1
-					},
-					{
-						'cycle': '125545121212',
-						'imgUrl': prizeImg,
-						'prize': 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
-						'price': '8999',
-						'progressData': {
-							'total': 220,
-							'current': 120
-						},
-						'drawLotteryStatus': 2
-					},
-					{
-						'cycle': '125545121212',
-						'imgUrl': prizeImg,
-						'prize': 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
-						'price': '8999',
-						'progressData': {
-							'total': 220,
-							'current': 120
-						},
-						'drawLotteryStatus': 3
-					},
-					{
-						'cycle': '125545121212',
-						'imgUrl': prizeImg,
-						'prize': 'IPHONE8 128G 夺宝联盟巴西世界杯高级定制版全球限量1000台 各种颜色均有 全网通 全网通 全网通',
-						'price': '8999',
-						'progressData': {
-							'total': 220,
-							'current': 120
-						},
-						'drawLotteryStatus': 4
-					},
-				]
+				treasureData: []
 			}
 		},
 
@@ -86,8 +41,30 @@
 			'treasure'       :  Treasure
 		},
 
+		
 		methods: {
-		}
+			getData: function () {
+				var that = this;
+				var opt = {
+					localUrl: true,
+					url: '../../../data/treasure.json',
+					callback: function (data) {
+						that.treasureData = data.data;
+
+						for (var i = 0; i < that.treasureData.length; i++) {
+							if (!that.treasureData[i].imgUrl) {
+								that.treasureData[i].imgUrl = prizeImg;
+							}
+						}
+					}
+				};
+
+				this.$store.dispatch('get', opt);
+			},
+		},
+		mounted: function () {
+			this.getData();
+		},
 	}
 </script>
 

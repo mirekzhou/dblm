@@ -6,7 +6,7 @@
 				<span>夺宝规则</span>
 			</div>
 
-			<div v-for ="val in rules">
+			<div v-for ="val in rules" v-if="rules.length > 0">
 				<div class="rule-box">
 					<div class="step-title">
 						<i class="icon-light"></i>
@@ -33,25 +33,27 @@
 
 		data: function () {
 			return {
-				rules: [
-				{
-					stepTitle: '步骤一',
-					text: '选择心仪商品参与夺宝获得一枚幸运码，同时生成夺宝分享链接'
-				},
-				{
-					stepTitle: '步骤二',
-					text: '将链接分享给好友，邀请好友来助攻，好友点击链接即可为您多获得一枚幸运码'
-				},
-				{
-					stepTitle: '步骤三',
-					text: '等待平台开出幸运号码，持有对应的用户0元揽获大奖'
-				},
-				]
+				rules: []
 			}
 		},
 
 		methods: {
-		}
+			getData: function () {
+				var that = this;
+				var opt = {
+					localUrl: true,
+					url: '../../../data/rule.json',
+					callback: function (data) {
+						that.rules = data.data;
+					}
+				};
+
+				this.$store.dispatch('get', opt);
+			},
+		},
+		mounted: function () {
+			this.getData();
+		},
 	}
 </script>
 

@@ -3,7 +3,7 @@
 		<div class="wrapper">
 			<section-title title="最新开奖" :sectionData="sectionData">
 			</section-title>
-			<prize-info :prizeInfoData='prizeInfoData'></prize-info>
+			<prize-info :prizeInfoData='prizeInfoData' v-if="prizeInfoData.length > 0"></prize-info>
 		</div>
 	</div>
 </template>
@@ -33,59 +33,7 @@
 					border: '8px solid #d53328'
 				},
 
-				prizeInfoData: [
-					{
-						imgUrl: prize_info_1,
-						title: '品尝芳醇的桂花之魄',
-						cycle: '第20170923993期',
-						phoneNumber: '13657221474',
-						winNumber: '12000',
-
-					},
-					{
-						imgUrl: prize_info_2,
-						title: '品尝芳醇的桂花之魄',
-						cycle: '第20170923993期',
-						phoneNumber: '13657221474',
-						winNumber: '12000'
-
-					},
-					{
-						imgUrl: prize_info_1,
-						title: '品尝芳醇的桂花之魄',
-						cycle: '第20170923993期',
-						phoneNumber: '13657221474',
-						winNumber: '12000'
-					},
-					{
-						imgUrl: prize_info_1,
-						title: '品尝芳醇的桂花之魄',
-						cycle: '第20170923993期',
-						phoneNumber: '13657221474',
-						winNumber: '12000'
-					},
-					{
-						imgUrl: prize_info_1,
-						title: '品尝芳醇的桂花之魄',
-						cycle: '第20170923993期',
-						phoneNumber: '13657221474',
-						winNumber: '12000'
-					},
-					{
-						imgUrl: prize_info_1,
-						title: '品尝芳醇的桂花之魄',
-						cycle: '第20170923993期',
-						phoneNumber: '13657221474',
-						winNumber: '12000'
-					},
-					{
-						imgUrl: prize_info_1,
-						title: '品尝芳醇的桂花之魄',
-						cycle: '第20170923993期',
-						phoneNumber: '13657221474',
-						winNumber: '12000'
-					}
-				]
+				prizeInfoData: []
 			}
 		},
 
@@ -95,7 +43,28 @@
 		},
 
 		methods: {
-		}
+				getData: function () {
+				var that = this;
+				var opt = {
+					localUrl: true,
+					url: '../../../data/prizeInfo.json',
+					callback: function (data) {
+						that.prizeInfoData = data.data;
+
+						for (var i = 0; i < that.prizeInfoData.length; i++) {
+							if (!that.prizeInfoData[i].imgUrl) {
+								that.prizeInfoData[i].imgUrl = prize_info_1;
+							}
+						}
+					}
+				};
+
+				this.$store.dispatch('get', opt);
+			},
+		},
+		mounted: function () {
+			this.getData();
+		},
 	}
 </script>
 
