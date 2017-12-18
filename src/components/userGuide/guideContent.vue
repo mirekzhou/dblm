@@ -94,7 +94,7 @@
 			width: $wrapperWidth;
 			margin: 0 auto;
 			padding-top: 8px;
-			padding-bottom: 130px;
+			padding-bottom: 185px;
 
 			.bar {
 				font-size: 13px;

@@ -109,7 +109,7 @@
 					if (!this.codeFlag) {
 						return;
 					}
-				} 
+				}
 				this.forgetStatus++;
 			},
 			preStep: function () {
@@ -215,7 +215,7 @@
 	.forget {
 		color: #000;
 		background: #f8f8f8;
-		padding-bottom: 64px;
+		padding-bottom: 226px;
 
 		.forget-wrap {
 			width: 540px;

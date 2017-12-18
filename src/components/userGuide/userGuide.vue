@@ -59,7 +59,7 @@
 			width: $wrapperWidth;
 			margin: 0 auto;
 			padding-top: 8px;
-			padding-bottom: 380px;
+			padding-bottom: 441px;
 
 			.bar {
 				font-size: 13px;

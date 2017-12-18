@@ -275,7 +275,7 @@
 	.login {
 		background: #f8f8f8;
 		color: #5b5b5b;
-		padding-bottom: 60px;
+		padding-bottom: 142px;
 
 		.wrapper {
 			img {
