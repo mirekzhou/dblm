@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="start-time">
-				开始时间：{{item.startTime}}
+				开奖时间：{{item.startTime}}
 			</div>
 		</div>
 

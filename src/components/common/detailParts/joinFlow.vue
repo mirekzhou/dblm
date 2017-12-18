@@ -7,7 +7,7 @@
                     <div class="item-icon"><i></i></div>
                     <div class="flex-full">
                         <p class="item-title">参与夺宝</p>
-                        <div class="item-text">选择商品参与夺宝</div>
+                        <div class="item-text">参与夺宝获取自己的第一组幸运号码</div>
                     </div>
                     <div class="flex-full separate-arrow" ></div>
                 </li>
@@ -15,7 +15,7 @@
                     <div class="item-icon"><i></i></div>
                     <div class="flex-full middle-content">
                         <p class="item-title">分享夺宝链接</p>
-                        <div class="item-text">分享夺宝商品链接，好友访问链接即可获得幸运码，更多幸运码意味更大中奖概率</div>
+                        <div class="item-text">将夺宝链接分享给朋友，好友根据提示为我助攻，获得更多幸运码</div>
                     </div>
                     <div class="flex-full separate-arrow" ></div>
                 </li>
@@ -23,7 +23,9 @@
                     <div class="item-icon"><i></i></div>
                     <div class="flex-full">
                         <p class="item-title">查看是否中奖</p>
-                        <div class="item-text">等待开奖时间，查看是否中奖，如中奖请在顶部右上方【中奖信息】填写收货地址，然后等待奖品到家</div>
+                        <div class="item-text">
+                            达开奖时间后，平台在所有参与者中抽出一组幸运码，持有该幸运码的用户获得本期大奖
+                        </div>
                     </div>
                 </li>
             </ul>

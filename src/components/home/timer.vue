@@ -2,7 +2,7 @@
 	<div class="timer clear">
 		<div class="content">
 			<i class="icon-sand-glass"></i>
-			<label>距离开始</label>
+			<label>距离开奖</label>
 			<span>{{getTime.days}}天</span>
 			<i>：</i>
 			<span>{{formatTimeString(getTime.hours)}}</span>
@@ -134,8 +134,8 @@
 				color:white;
 				text-align:center;
 				background-color:#d43328;
-				font-size:12px;
-				over-flow:hidden;
+				font-size:16px;
+				overflow:hidden;
 				margin-top: 18px;
 			}
 
