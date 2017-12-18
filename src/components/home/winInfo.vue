@@ -13,6 +13,7 @@
 							<img :src="item.imgUrl" class="left">
 							<div class="user-data left">
 								<span>{{item.number}}</span>
+								<span>参与夺宝</span>
 								<span class="prize">{{item.prize}}</span>
 							</div>
 						</div>
