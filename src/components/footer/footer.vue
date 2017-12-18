@@ -5,23 +5,21 @@
 				<li>
 					<div class="name">新手指南</div>
 					<ul>
-						<li>用户协议</li>
-						<li>常见问题</li>
+						<li v-on:click="jump1">常见问题</li>
 					</ul>
 				</li>
 
 				<li>
 					<div class="name">开奖说明</div>
 					<ul>
-						<li>开奖彩种说明</li>
-						<li>公平性保障</li>
+						<li v-on:click="jump2">开奖规则</li>
 					</ul>
 				</li>
 
 				<li>
 					<div class="name">友情链接</div>
 					<ul>
-						<li>无线娱乐</li>
+						<li v-on:click="jump3">无线娱乐</li>
 					</ul>
 				</li>
 			</ul>
@@ -39,7 +37,21 @@
 
 <script>
 	export default {
-		name: 'footer'
+		name: 'footer',
+
+		methods: {
+			jump1: function () {
+				this.$router.push('/userGuide');
+			},
+
+			jump2: function () {
+				this.$router.push({ name: 'guideContent', params: {guideId: '4'}});
+			},
+
+			jump3: function () {
+				window.open('http://www.baidu.com');
+			},
+		}
 	}
 </script>
 

@@ -141,7 +141,7 @@
 
 		data: function () {
 			return {
-				times             : [9, 9, 9, 9, 9],
+				times             : [9, 9, 9],
 				winMessageCount   : 0,
 				notificationCount : 0,
 				showFloatWindow   : false

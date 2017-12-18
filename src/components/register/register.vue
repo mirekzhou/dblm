@@ -13,7 +13,7 @@
 					</div>
 					<div class="register-title3">
 						<span class="circle" :class="{active:registerStatus===3}">3</span>
-						<span>设置默认密码</span>
+						<span>设置密码</span>
 					</div>
 					<span class="red-line" :style="{ left: lineLeft + 'px'}"></span>
 				</div>
@@ -54,7 +54,7 @@
 							<error-tip :errorText="errorText4" :showErrorTip="showErrorTip4"></error-tip>
 						</div>
 					</div>
-					
+
 					<div class="btn-wrap">
 						<div class="bottom-btn"  :class="{mt134: registerStatus==2,mt35: registerStatus==3}">
 							<p v-on:click="nextStep" v-show="registerStatus!==3">下一步</p>
