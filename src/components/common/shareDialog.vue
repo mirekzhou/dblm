@@ -2,26 +2,21 @@
 	<div class="bg">
 		<div class="share-dialog">
 			<div class="share-dialog-wrap">
-				<p>分享链接给好友，好友访问链接即可为你活动一枚号码球</p>
-				<div class="copy">
-					<label >联盟链接</label>
-					<input type="text" v-model="link">
-					<button v-clipboard:copy="link" v-clipboard:success="onCopy">复制</button>
+				<div class="head">
+					<span class="close" v-on:click="hideDialog">✕</span>
 				</div>
+
+				<p>分享链接给好友，请好友帮您助攻，每获好友助攻一次您就可多获得一组幸运码，幸运码越多中奖概率越大哦</p>
 
 				<div class="sharePlatform">
 					<label>分享至</label>
 					<share :config="config"></share>
-					<span>让好友帮你夺宝成功</span>
 				</div>
 
-				<div class="QRCode clear">
-					<label >二维码</label>
-					<img src="../../assets/code.jpg" alt="">
-					<div class="explain">
-						<p class="redText">二维码扫图</p>
-						<span>用手机给二维码拍照，也可以分享到微信、QQ好友</span>
-					</div>
+				<div class="copy">
+					<label >分享链接</label>
+					<input type="text" v-model="link">
+					<button v-clipboard:copy="link" v-clipboard:success="onCopy">复制</button>
 				</div>
 
 				<div class="confirm" v-on:click="hideDialog">确定</div>
@@ -74,6 +69,7 @@
 		top: 0;
 		background: rgba(0,0,0,0.8);
 		z-index: 999;
+
 		.share-dialog {
 			width: 644px;
 			height: 373px;
@@ -86,9 +82,27 @@
 			z-index: 999;
 
 			.share-dialog-wrap {
-				width: 600px;
-				margin: 35px auto 0;
+				width: 530px;
+				margin: 0 auto;
 				text-align: center;
+
+				.head {
+					height: 50px;
+					position: relative;
+					width: 100%;
+
+					.close {
+						cursor: pointer;
+						position: absolute;
+						right: -45px;
+						top: 5px;
+						font-size: 20px;
+					}
+				}
+
+				p {
+					text-align: left;
+				}
 
 				.copy {
 					text-align: left;
@@ -101,14 +115,15 @@
 					}
 
 					input {
-						width: 448px;
+						width: 380px;
 						height: 26px;
 						border:1px solid #e5e5e5;
 						box-sizing: border-box;
 					}
 
 					button {
-						width: 57px;
+						cursor: pointer;
+						width: 62px;
 						height: 26px;
 					}
 				}
