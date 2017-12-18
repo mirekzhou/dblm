@@ -17,6 +17,8 @@
 					<label >分享链接</label>
 					<input type="text" v-model="link">
 					<button v-clipboard:copy="link" v-clipboard:success="onCopy">复制</button>
+
+					<div class="tip"></div>
 				</div>
 
 				<div class="confirm" v-on:click="hideDialog">确定</div>
