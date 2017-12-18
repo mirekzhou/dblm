@@ -206,6 +206,7 @@
                 }
 
                 .win-user {
+                    display: none;
                     width: 100%;
                     height: 100px;
                     position: absolute;
