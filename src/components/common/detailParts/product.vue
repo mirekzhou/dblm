@@ -1,41 +1,26 @@
 <template>
     <div class="product">
         <div class="left-part">
-            <div class="img-list">
-                <swiper :options="swiperOption" class="img-left" ref="swiperLeft">
-                    <swiper-slide  class="img-item" v-for="item in imgList" key="item">
-                        <img :src="item.smallImgUrl">
-                    </swiper-slide>
-
-                    <div class="swiper-pagination" slot="pagination"></div>
-                    <!-- <div class="swiper-button-next" slot="button-next"></div> -->
-                </swiper>
-
-                <div class="img-box">
-                    <img :src="bigImgUrl">
-
-                    <div class="win-user">
-                        <div class="left-sec">
-                            <img :src="winUserHead" />
-                        </div>
-
-                        <div class="right-sec">
-                            <div>中奖用户：{{winUser}}</div>
-                            <div>中奖号码：{{winNumber}}</div>
-                        </div>
-
-                        <div class="clear"></div>
-                    </div>
-                </div>
+            <div class="big-image">
+                <img :src="bigImgUrl">
             </div>
+
+            <swiper :options="swiperOption" class="small-images" ref="swiperLeft">
+                <swiper-slide  class="img-item" v-for="item in productInfo.imgList" key="item">
+                    <img :src="item.smallImgUrl" />
+                </swiper-slide>
+
+                <div class="swiper-pagination" slot="pagination"></div>
+            </swiper>
         </div>
 
         <div class="right-part">
+            <div class='item-date'>第{{productInfo.issueDate}}期</div>
             <div class='item-title'>{{productInfo.title}}</div>
-            <div class='item-desc'>{{productInfo.desc}}</div>
-            <div class='item-no'>第{{productInfo.no}}期</div>
+            <div class='item-desc'>{{productInfo.description}}</div>
+
             <div class="item-price">参考价格：<span class="price">{{productInfo.price}}元</span></div>
-            <div class="item-progress"><progres :item="progressData"></progres></div>
+            <div class="item-progress"><progres :item="productInfo.progressData || {}"></progres></div>
 
             <countDown :secs="countdownData.seconds" :desc="countdownData.desc"></countDown>
 
@@ -61,67 +46,16 @@
     export default {
         name: 'product',
 
-        props: [
-        ],
-
         data: function () {
             var that = this;
 
             return {
-                winUserHead: headerImg,
-                winUser: '13557225656',
-                winNumber: '10010',
-
-                productInfo:{
-                    title:'[低至14382]低至低至低至低至低至低至低至低至',
-                    desc:'低至低至低至低至低至低至低至低至',
-                    no:142141241,
-                    price:3432432
-                },
-
-                progressData:{
-                    total:100,
-                    current:50
-                },
-
-                countdownData:{
-                    seconds:(new Date('2017-12-30')-new Date()),
-                    desc:'倒计时结束时参与人数达到或超过总需人数，则随机抽取1人获得该商品'
-                },
-
-                bigImgUrl: bigImg2,
-
-                imgList:[
-                    {
-                        smallImgUrl : imgItem1,
-                        bigImgUrl   : bigImg1
-                    },
-                    {
-                        smallImgUrl : imgItem2,
-                        bigImgUrl   : bigImg2
-                    },
-                    {
-                        smallImgUrl : imgItem1,
-                        bigImgUrl   : bigImg3
-                    },
-                    {
-                        smallImgUrl : imgItem2,
-                        bigImgUrl   : bigImg2
-                    },
-                    {
-                        smallImgUrl : imgItem2,
-                        bigImgUrl   : bigImg1
-                    }
-                ],
-
                 swiperOption: {
                     centeredSlides: true,
-                    slidesPerView: 'auto',
+                    slidesPerView: 5,
                     touchRatio: 0.2,
                     slideToClickedSlide: true,
-                    direction: 'vertical',
-                    height:415,
-                    loop : true,
+                    direction: 'horizontal',
                     notNextTick: true,
                     nextButton:'.swiper-button-next',
                     prevButton:'null',
@@ -134,10 +68,11 @@
                     onSlideChangeEnd: function (swiper) {
                         that.bigImgUrl = that.imgList[swiper.realIndex].bigImgUrl;
                     }
-                }
+                },
+
+                productInfo: '',
+                bigImgUrl: bigImg2
             }
-        },
-        mounted:function() {
         },
 
         components:{
@@ -147,99 +82,106 @@
             swiperSlide
         },
 
+        mounted: function () {
+            this.getProductInfo();
+        },
+
         methods: {
+            getProductInfo: function () {
+                var that = this;
+                var opt = {
+                    localUrl: true,
+                    url: '../../../data/productInfo.json',
+                    callback: function (data) {
+                        that.productInfo = data.data;
+                        that.productInfo.imgList = [
+                            {
+                                smallImgUrl : imgItem1,
+                                bigImgUrl   : bigImg1
+                            },
+                            {
+                                smallImgUrl : imgItem2,
+                                bigImgUrl   : bigImg2
+                            },
+                            {
+                                smallImgUrl : imgItem1,
+                                bigImgUrl   : bigImg3
+                            },
+                            {
+                                smallImgUrl : imgItem2,
+                                bigImgUrl   : bigImg2
+                            },
+                            {
+                                smallImgUrl : imgItem2,
+                                bigImgUrl   : bigImg1
+                            }
+                        ]
+                    }
+                };
+
+                this.$store.dispatch('get', opt);
+            },
+
             share: function () {
                 this.$store.dispatch('setShareDialogStatus', {status: true});
             }
+        },
+
+        computed: {
+            countdownData: function () {
+                if (!this.productInfo || !this.productInfo.deadline) {
+                    return {
+                        seconds: 0,
+                        desc: '--'
+                    };
+                }
+
+                return {
+                    seconds : (new Date(this.productInfo.deadline) - new Date()),
+                    desc    : '倒计时结束时参与人数达到或超过总需人数，则随机抽取1人获得该商品'
+                }
+            },
         }
     }
 </script>
 
 <style lang="scss" scoped>
     .product {
-        margin-top:30px;
-        height:415px;
+        margin-top: 40px;
+        height:440px;
 
         .left-part {
-            position:relative;
-            width:500px;
-            height:100%;
-            float:left;
+            position: relative;
+            width: 453px;
+            height: 100%;
+            float: left;
 
-            .img-list {
-                float:left;
-                width:100%;
-                height:415px;
-                overflow:hidden;
-                position:relative;
-
-                .progress-list {
-                    position:absolute;
-                }
-
-                .img-item{
-                    img {
-                        cursor: pointer;
-                        width:100%;
-                        height:80px;
-                    }
+            .img-item {
+                img {
+                    cursor: pointer;
+                    height: 80px;
+                    width: 80px;
                 }
             }
 
-            .img-left {
-                float:left;
-                width:20%!important;
-                .swiper-slide-active {
-                    border:1px solid red;
-                }
-            }
-
-            .img-box {
-                float:left;
-                width:80%!important;
-                position: relative;
+            .big-image {
+                border:1px solid #F0F0F0;
+                height: 350px;
+                overflow: hidden;
+                width: 100%;
 
                 img {
-                    width:100%;
-                    height:415px;
-                    border:1px solid #F0F0F0;
-                }
-
-                .win-user {
-                    display: none;
                     width: 100%;
-                    height: 100px;
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    color: #fff;
-                    background-repeat: no-repeat;
-                    background-size: 100% 100px;
-                    background-image: url("../../../assets/red-bg.png");
+                }
+            }
 
-                    .left-sec {
-                        float: left;
-                        width: 120px;
-                        text-align: right;
+            .swiper-container {
+                height: 80px;
+                margin-top: 10px;
+                width: 100%;
 
-                        img {
-                            border: 2px solid white;
-                            border-radius: 50%;
-                            height: 54px;
-                            width: 54px;
-                            margin-top: 26px;
-                        }
-                    }
-
-                    .right-sec {
-                        color: #FFF;
-                        font-size: 16px;
-                        float: right;
-                        line-height: 25px;
-                        width: 250px;
-                        text-align: left;
-                        margin-top: 30px;
-                    }
+                .swiper-slide-active {
+                    border:1px solid red;
                 }
             }
 
@@ -276,7 +218,6 @@
                 -o-transform: rotate(45deg);
                 transform: rotate(45deg);
             }
-
         }
 
         .right-part {
@@ -285,22 +226,17 @@
             float:left;
             margin-left:80px;
 
-            .item-desc {
-                font-size:12px;
-                color:#707070;
-                margin:12px 0;
-            }
-
-            .item-no {
+            .item-date {
                 position:relative;
                 background-color: #d43328;
                 color: #FFF;
-                font-size: 12px;
+                font-size: 14px;
                 height: 24px;
                 line-height: 24px;
-                width: 118px;
+                width: 140px;
                 text-align: center;
-                &:after{
+
+                &:after {
                     position:absolute;
                     right:-12px;
                     height:24px;
@@ -313,11 +249,23 @@
                 }
             }
 
+            .item-title {
+                margin-top: 11px;
+                margin-left: -8px;
+            }
+
+            .item-desc {
+                font-size: 12px;
+                color: #707070;
+                margin: 11px 0;
+            }
+
             .item-price {
-                margin:10px 0 15px 0;
-                font-size:12px;
-                color:#707070;
-                .price{
+                margin:11px 0 15px 0;
+                font-size: 14px;
+                color: #707070;
+
+                .price {
                     margin-left:5px;
                     color:red;
                 }
@@ -346,8 +294,5 @@
                 }
             }
         }
-
     }
-
-
 </style>

@@ -1,6 +1,6 @@
 <template>
 	<div class="my-lucky-board">
-		<div class="title">我的幸运码：{{luckyNumber}}</div>
+		<div class="title">我的幸运码</div>
 
 		<div class="content" v-bind:style="{height: len > 3? '500px' : '310px'}">
 			<div class="table">

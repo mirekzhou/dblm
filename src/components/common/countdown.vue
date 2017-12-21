@@ -2,17 +2,31 @@
 	<div class="count-down">
 		<div class="content flex-center-y">
 			<i class="icon-sand-glass"></i>
-			<label>距离结束</label>
-			<span>{{getTime.days}}天</span>
-			<i>：</i>
-			<span>{{formatTimeString(getTime.hours)}}</span>
-			<i>：</i>
-			<span>{{formatTimeString(getTime.minutes)}}</span>
-			<i>：</i>
-			<span>{{formatTimeString(getTime.seconds)}}</span>
-		</div>
-		<div class="desc">{{desc}}</div>
 
+			<label>距离结束</label>
+
+			<span class="item">
+				<span class="number">{{getTime.days}}</span>
+				天
+			</span>
+
+			<span class="item">
+				<span class="number">{{formatTimeString(getTime.hours)}}</span>
+				时
+			</span>
+
+			<span class="item">
+				<span class="number">{{formatTimeString(getTime.minutes)}}</span>
+				分
+			</span>
+
+			<span class="item number">
+				<span class="number">{{formatTimeString(getTime.seconds)}}</span>
+				秒
+			</span>
+		</div>
+
+		<div class="desc">{{desc}}</div>
 	</div>
 </template>
 
@@ -111,7 +125,7 @@
 		color: #000;
 		border:1px solid #F0F0F0;
 		width:550px;
-		padding:10px 50px 5px 50px;
+		padding:10px 0px 5px 85px;
 
 		.content {
 			.icon-sand-glass {
@@ -126,16 +140,18 @@
 				margin-right:5px;
 			}
 
-			span {
+			.item {
+				color: #d43328;
 				display:inline-block;
-				width:$itemWidth;
 				height:$itemWidth;
 				line-height:$itemWidth;
-				color:white;
+				margin-left: 10px;
 				text-align:center;
-				background-color:#d43328;
-				font-size:12px;
-				over-flow:hidden;
+				font-size: 14px;
+
+				.number {
+					font-size: 22px;
+				}
 			}
 
 			i {

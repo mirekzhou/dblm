@@ -27,7 +27,7 @@
 				<span class="red-highlight">{{item.price}}元</span>
 			</div>
 
-			<div class="deadline">截至时间：{{item.deadline}}</div>
+			<div class="deadline">开奖时间：{{item.deadline}}</div>
 
 			<amount-progress :item="item.progressData"></amount-progress>
 		</div>
