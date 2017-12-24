@@ -2,14 +2,28 @@
 	<div class="timer clear">
 		<div class="content">
 			<i class="icon-sand-glass"></i>
-			<label>距离开奖</label>
-			<span>{{getTime.days}}天</span>
-			<i>：</i>
-			<span>{{formatTimeString(getTime.hours)}}</span>
-			<i>：</i>
-			<span>{{formatTimeString(getTime.minutes)}}</span>
-			<i>：</i>
-			<span>{{formatTimeString(getTime.seconds)}}</span>
+
+			<label>距离结束</label>
+
+			<span class="item">
+				<span class="number">{{getTime.days}}</span>
+				天
+			</span>
+
+			<span class="item">
+				<span class="number">{{formatTimeString(getTime.hours)}}</span>
+				时
+			</span>
+
+			<span class="item">
+				<span class="number">{{formatTimeString(getTime.minutes)}}</span>
+				分
+			</span>
+
+			<span class="item number">
+				<span class="number">{{formatTimeString(getTime.seconds)}}</span>
+				秒
+			</span>
 		</div>
 	</div>
 </template>
@@ -106,55 +120,54 @@
 <style lang="scss" scoped>
 	.timer {
 		$itemWidth : 40px;
-		color: #000;
+
 		border:1px solid #F0F0F0;
+		color: #000;
 
 		.content {
-			float: left;
+			height: 74px;
+			line-height: 74px;
+			text-align: left;
 
 			.icon-sand-glass {
-				float: left;
-				margin: 27px 10px 0 0;
-				display: inline-block;
-				background: url("../../assets/common-sprite.png") -43px 0;
-				width: 19px;
-				height: 20px;
-			}
-			label {
-				margin: 27px 13px 0 0;
-				float: left;
+			    margin-right:10px;
+			    display: inline-block;
+			    background: url(../../assets/common-sprite.png) -43px 0;
+			    vertical-align: middle;
+			    width: 19px;
+			    height: 20px;
 			}
 
-			span {
-				float: left;
+			label {
+				margin-right:5px;
+				vertical-align: middle;
+			}
+
+			.item {
+				color: #d43328;
 				display:inline-block;
-				width:$itemWidth;
-				height:$itemWidth;
-				line-height:$itemWidth;
-				color:white;
+				height: $itemWidth;
+				line-height: $itemWidth;
+				margin-left: 10px;
 				text-align:center;
-				background-color:#d43328;
-				font-size:16px;
-				overflow:hidden;
-				margin-top: 18px;
+				font-size: 14px;
+    			vertical-align: middle;
+
+				.number {
+					font-size: 22px;
+					font-weight: 400;
+					vertical-align: bottom;
+				}
 			}
 
 			i {
-				float: left;
 				display:inline-block;
 				width:$itemWidth;
 				height:$itemWidth;
 				line-height:$itemWidth;
 				color:red;
 				font-style: normal;
-				margin-top: 18px;
 			}
-		}
-
-		.desc {
-			margin-top:10px;
-			font-size:12px;
-			color:#707070;
 		}
 	}
 </style>

@@ -1,21 +1,19 @@
 <template>
-	<div class="home-progress clear">
-		<label class="title">总需人次：{{item.total}}</label>
-
-		<div class="left">
-			<div class="middle-content">
-				<div class="progress-bar border-radius">
-					<div class="current border-radius" :style="'width:'+ getPercent"></div>
-				</div>
-
-				<div class="percent">{{getPercent}}</div>
-			</div>
-
-			<div class="text">
-				<div class="current-qty">当前参与：{{item.current}}</div>
-				<div class="available-qty">剩余：{{item.total - item.current}}</div>
+	<div class="home-progress">
+		<div class="left-part">
+			<div class="progress-bar border-radius">
+				<div class="current border-radius" :style="'width:'+ getPercent">{{getPercent}}</div>
 			</div>
 		</div>
+
+		<div class="right-part">
+			<div class="current-qty">当前参与：{{item.current}}</div>
+			<div class="available-qty">剩余：{{item.total - item.current}}</div>
+			<div class="total-qty">总需人次：{{item.total}}次</div>
+			<div class="clear"></div>
+		</div>
+
+		<div class="clear"></div>
 	</div>
 </template>
 
@@ -24,9 +22,7 @@
 	export default {
 		name: 'home-progress',
 
-		props: [
-			'item'
-		],
+		props: ['item'],
 
 		data: function () {
 			return {
@@ -49,57 +45,58 @@
 <style lang="scss" scoped>
 	.home-progress {
 		color: #000;
-		width: 540px;
+		width: 560px;
 
-		.title {
-			float: right;
-			text-align:center;
-			display:block;
-			margin-top: 10px;
+		.left-part {
 			font-size:12px;
-			color:#5E5E5E;
-		}
-
-		.middle-content {
-			position:relative;
-			font-size:12px;
-			height:12px;
-			line-height:1;
-			margin:12px 0;
-			width: 427px;
+			float: left;
+			width: 284px;
 
 			.progress-bar {
-				width:392px;
-				height:10px;
-				background-color:#E5E5E5;
+				border-radius: 50px;
+				width: 284px;
+				height: 18px;
+				line-height: 18px;
+				background-color: #E5E5E5;
 
 				.current {
-					background-color:#d43328;
+					background-color: #d43328;
+					border-radius: 50px;
+					color: #FFF;
 					height: 100%;
+					text-align: center;
 				}
-			}
-
-			.percent {
-				position:absolute;
-				right:0;
-				top:0;
 			}
 		}
 
-		.text {
-		 	position:relative;
-		 	color:#5E5E5E;
-		 	font-size:12px;
+		.right-part {
+		 	font-size: 12px;
+		 	float: left;
+		 	margin-left: 8px;
+		 	width: 266px;
 
-			.current-qty{
-				position:absolute;
-				left:0
+			.current-qty {
+				color: #333333;
+				float: left;
+				height: 18px;
+				line-height: 18px;
 			}
-			.available-qty{
-				position:absolute;
-				right:0;
+
+			.available-qty {
+				color: #333333;
+				float: left;
+				height: 18px;
+				line-height: 18px;
+				margin-left: 8px;
+			}
+
+			.total-qty {
+				color: #666666;
+				float: left;
+				height: 18px;
+				line-height: 18px;
+				margin-left: 17px;
 			}
 		}
 	}
-
 </style>

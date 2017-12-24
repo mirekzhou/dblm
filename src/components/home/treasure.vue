@@ -13,27 +13,29 @@
 				</div>
 
 				<div class="treasure-bottom">
-					<div class="countdown">
+					<div class="left-part">
 						<timer :secs="seconds"></timer>
 					</div>
 
-					<div class="drawLottery">
-						<div class="draw" v-show="item.drawLotteryStatus === 1">
-							<p v-on:click="goDetail">参与夺宝</p>
+					<div class="right-part">
+						<div class="button draw" v-on:click="goDetail" v-show="item.drawLotteryStatus === 1">
+							参与夺宝
 						</div>
 
-						<div class="share" v-show="item.drawLotteryStatus === 2" v-on:click="showShareDialog">
-							<p>分享夺宝</p>
+						<div class="button share" v-show="item.drawLotteryStatus === 2" v-on:click="showShareDialog">
+							分享夺宝
 						</div>
 
-						<div class="already" v-show="item.drawLotteryStatus === 3">
-							<p>已开奖</p>
+						<div class="button already" v-show="item.drawLotteryStatus === 3">
+							已开奖
 						</div>
 
-						<div class="will-start" v-show="item.drawLotteryStatus === 4">
-							<p>即将开始</p>
+						<div class="button will-start" v-show="item.drawLotteryStatus === 4">
+							即将开始
 						</div>
 					</div>
+
+					<div class="clear"></div>
 				</div>
 			</div>
 	</div>
@@ -81,7 +83,7 @@
 </script>
 
 <style lang="scss" scoped>
-	$boxWidth		: 	 557px;
+	$boxWidth		: 	 560px;
 	$imgHeight		:	 275px;
 
 	.treasure {
@@ -108,9 +110,9 @@
 				left: 0;
 				width: 143px;
 				height: 34px;
+				line-height: 34px;
 				color: #fff;
-				font-size: 12px;
-				padding-top: 10px;
+				font-size: 14px;
 			}
 
 			.box {
@@ -126,13 +128,17 @@
 
 				.prize {
 					cursor: pointer;
-					margin-top: 5px;
+					color: #333333;
+					font-size: 14px;
+					margin-top: 10px;
 					line-height: 26px;
 				}
 
 				.price {
-					color: #b7b7b7;
+					color: #666666;
+					font-size: 14px;
 					margin-top: 6px;
+					margin-bottom: 18px;
 
 					span {
 						color: #d63328;
@@ -147,55 +153,47 @@
 				position: absolute;
 				bottom: 0;
 				background: #ececec;
+				padding: 0 20px;
 
-				.countdown {
-					width: 557px;
-					margin: 0 auto;
+				.left-part {
+					height: 100%;
+					float: left;
+					width: 370px;
 				}
 
-				.drawLottery {
-					width: 119px;
-					height: 36px;
-					border-radius: 5px;
-					position: absolute;
-					top: 50%;
-					right: 25px;
-					transform: translate(0,-50%);
-					color: #fff;
-					font-size: 12px;
-					overflow: hidden;
+				.right-part {
+					float: right;
+					height: 74px;
+					line-height: 74px;
+					text-align: right;
 
-					p {
-						height: 36px;
-						line-height: 36px;
+					.button {
+						border-radius: 5px;
+						color: #FFF;
+						cursor: pointer;
+						display: inline-block;
+						font-size: 14px;
+						height: 37px;
+						line-height: 37px;
+						vertical-align: middle;
+						width: 118px;
+						text-align: center;
 					}
 
 					.draw {
-						height: 100%;
 						background-color: #d53328;
-						overflow: hidden;
-						cursor: pointer;
 					}
 
 					.share {
-						height: 100%;
 						background-color: #d55528;
-						overflow: hidden;
-						cursor: pointer;
 					}
 
 					.already {
-						height: 100%;
 						background-color: #c2c2c2;
-						overflow: hidden;
-						cursor: pointer;
 					}
 
 					.will-start {
-						height: 100%;
 						background-color: #e08f8a;
-						overflow: hidden;
-						cursor: pointer;
 					}
 
 				}

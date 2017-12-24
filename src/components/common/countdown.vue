@@ -124,7 +124,7 @@
 
 		color: #000;
 		border:1px solid #F0F0F0;
-		width:550px;
+		width: 550px;
 		padding:10px 0px 5px 85px;
 
 		.content {
@@ -143,14 +143,18 @@
 			.item {
 				color: #d43328;
 				display:inline-block;
-				height:$itemWidth;
-				line-height:$itemWidth;
+				font-weight: bold;
+				height: $itemWidth;
+				line-height: $itemWidth;
 				margin-left: 10px;
 				text-align:center;
 				font-size: 14px;
+    			vertical-align: middle;
 
 				.number {
 					font-size: 22px;
+					font-weight: 400;
+					vertical-align: bottom;
 				}
 			}
 
