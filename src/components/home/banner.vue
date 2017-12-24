@@ -48,6 +48,7 @@
 				},
 
 				banners: [],
+				bannerDemos: [homeBanner, homeBanner2, homeBanner3, homeBanner4]
 			}
 		},
 
@@ -68,7 +69,7 @@
 
 						for (var i = 0; i < that.banners.length; i++) {
 							if (!that.banners[i].imgUrl) {
-								that.banners[i].imgUrl = homeBanner;
+								that.banners[i].imgUrl = that.bannerDemos[i];
 							}
 						}
 					}
