@@ -27,7 +27,7 @@
 						</div>
 
 						<div class="button already" v-show="item.drawLotteryStatus === 3">
-							已开奖
+							已结束
 						</div>
 
 						<div class="button will-start" v-show="item.drawLotteryStatus === 4">

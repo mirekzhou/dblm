@@ -1,26 +1,32 @@
 <template>
 	<div class="win-info">
 		<div class="wrapper">
-			<div class="icon-wrap left">
+			<div class="icon-wrap">
 				<i class="icon-camera"></i>
-				<span>正在夺宝</span>
+				<span>{{count}}人正在夺宝</span>
 			</div>
 
-			<div class="marquee-box left" >
+			<div class="marquee-box" >
 				<div class="marquee-list" :class="{anim: animate}">
-					<div class="marquee-section clear" v-for="data in formatWinUserData">
-						<div class="win-user left" v-for="item in data">
-							<img :src="item.imgUrl" class="left">
-							<div class="user-data left">
+					<div class="marquee-section" v-for="data in formatWinUserData">
+						<div class="win-user" v-for="item in data">
+							<img :src="item.imgUrl" />
+
+							<div class="user-data">
 								<span>{{item.number}}</span>
 								<span>参与夺宝</span>
-								<span class="prize">{{item.prize}}</span>
+								<div class="prize">{{item.prize}}</div>
 							</div>
+
+							<div class="clear"></div>
 						</div>
 					</div>
 
+					<div class="clear"></div>
 				</div>
 			</div>
+
+			<div class="clear"></div>
 		</div>
 	</div>
 </template>
@@ -41,7 +47,9 @@
 
 				formatWinUserData: [],
 
-				animate: false
+				animate: false,
+
+				count: 100
 			}
 		},
 
@@ -102,7 +110,8 @@
 </script>
 
 <style lang="scss" scoped>
-$topWidth				: 19px;
+$topWidth : 19px;
+
 .win-info {
 	float: left;
 	width: 100%;
@@ -112,7 +121,9 @@ $topWidth				: 19px;
 		margin: 0 auto;
 
 		.icon-wrap {
-			margin: 30px 60px 0 0;
+			margin: 30px 10px 0 0;
+			float: left;
+
 			.icon-camera {
 				display: inline-block;
 				width: 29px;
@@ -122,48 +133,53 @@ $topWidth				: 19px;
 			}
 		}
 
-		.marquee-box{
-			position: relative;
+		.marquee-box {
+			float: right;
 			width: 1040px;
             height: 73px;
             overflow: hidden;
+            position: relative;
 
-            .anim{
+            .anim {
             	transition: all 2s;
             	margin-top: -73px;
             }
 
-            .marquee-list{
+            .marquee-list {
             	position: absolute;
             	top:0;
-            	left: 0;
+            	right: 0;
 
             	.marquee-section {
             		height: 73px;
+
             		.win-user {
             			margin-top: $topWidth;
             			display: inline-block;
-            			margin-right: 10px;
+            			float: right;
+            			margin-left: 35px;
+            			width: 300px;
 
             			&:last-child {
             				margin-right: 0;
             			}
 
             			img {
+            				float: left;
             				width: 46px;
             				height: 46px;
-            				margin-right: 30px;
             			}
 
             			.user-data {
-            				width: 262px;
+            				float: left;
             				font-size: 13px;
             				margin-top: 10px;
+            				margin-left: 20px;
+            				width: 233px;
 
             				.prize {
             					color: #d94941;
-            					font-size: 15px;
-            					font-weight: bold;
+            					font-size: 14px;
             				}
             			}
             		}

@@ -41,7 +41,7 @@
 			'treasure'       :  Treasure
 		},
 
-		
+
 		methods: {
 			getData: function () {
 				var that = this;

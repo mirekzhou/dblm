@@ -1,6 +1,6 @@
 <template>
 	<div class="prize-info clear">
-		<swiper :options="swiperOption"  ref="prizeInfoSwiper" >
+<!-- 		<swiper :options="swiperOption"  ref="prizeInfoSwiper" >
 			<swiper-slide v-for="(val, index) in formatPrizeInfoData" :key="index" v-if="formatPrizeInfoData">
 				<div class="box" v-for="item in val">
 					<img :src="item.imgUrl" v-on:click="goDetail" alt="">
@@ -22,7 +22,28 @@
 				</div>
 			</swiper-slide>
 			<div class="swiper-pagination" slot="pagination"></div>
-		</swiper>
+		</swiper> -->
+
+		<div class="content">
+			<div class="box" v-for="item in prizeInfoData">
+				<img :src="item.imgUrl" v-on:click="goDetail" />
+
+				<div class="shade" v-on:click="goDetail">
+					<p>{{item.title}}</p>
+					<p class="red">{{item.cycle}}</p>
+				</div>
+
+				<div class="info-wrap">
+					<div class="info-inner">
+						<i class="left"></i>
+						<div class="left">
+							<p>中奖用户：{{item.phoneNumber}}</p>
+							<p>中奖号码：{{item.winNumber}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -81,22 +102,27 @@
 </script>
 
 <style lang="scss" scoped>
-	$infoWidth		:	384px;
+	$infoWidth : 395px;
+
 	.prize-info {
 		margin-top: 20px;
 		position: relative;
 		cursor: pointer;
 
-		.swiper-container  {
+		.content  {
 			height: 350px;
 
 			.box {
 				position: relative;
 				height: 339px;
 				float: left;
-				margin-right: 5px;
+				margin-left: 7px;
 				border-radius: 8px;
 				overflow: hidden;
+
+				&:first-child {
+					margin-left: 0;
+				}
 
 				img {
 					width: $infoWidth;
@@ -109,7 +135,7 @@
 					position: absolute;
 					bottom: 0;
 					color: #fff;
-					background: url("../../assets/common-sprite.png") 0 -248px;
+					background: url("../../assets/red-bg.png");
 
 					.info-inner {
 						width: 272px;
