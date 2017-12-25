@@ -4,40 +4,50 @@
 			<img src="../../assets/login.png" alt="">
 			<div class="login-wrap">
 				<div class="title">
-					<p>账号登录</p>
+					<div class="title-wrap">
+						<div class="title-account" :class="{'active': !loginType}" v-on:click="changeType">
+							<p>账号登录</p>
+						</div>
+					</div>
+
+					<div class="title-wrap">
+						<div class="title-phone" :class="{'active': loginType}" v-on:click="changeType">
+							<p>手机号登录</p>
+						</div>
+					</div>
 				</div>
 
 				<div class="changeLogin clear">
-					<div class="icon-verify-box" v-on:click="changeType">
+				<!-- 	<div class="icon-verify-box" v-on:click="changeType">
 						<i class="icon-verify"></i>
 						<div class="trigon"></div>
 					</div>
 					<div class="tip">
 						<p v-show="!loginType">验证码登录在这里</p>
 						<p v-show="loginType">密码登录在这里</p>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="inner-wrap">
 					<div class="password-login" v-show="!loginType">
-						<p>账号</p>
-						<input  type="text"
-						        placeholder="无限娱乐账号可直接登录"
-						        v-model="account"
-						        v-on:blur="accountBlur"
-						        v-on:focus="inputFocus">
-						<p>密码</p>
-						<input  type="text"
-						        placeholder="无限娱乐账号可直接登录"
-						        v-on:blur="passwordBlur"
-						        v-on:focus="inputFocus"
-						        v-model="password">
+						<div class="input-wrap">
+							<i class="icon-account"></i>
+							<input  type="text"
+									placeholder="请输入账号/手机号"
+									v-model="account"
+									v-on:blur="accountBlur"
+									v-on:focus="inputFocus">
+						</div>
+				
 
-						<p class="p-forget">
-							<span v-on:click="redirectTo('/forget')">忘记密码?</span>
-						</p>
-
-						<p>验证</p>
+						<div class="input-wrap">
+							<i class="icon-lock"></i>
+							<input  type="text"
+									placeholder="请输入密码"
+									v-on:blur="passwordBlur"
+									v-on:focus="inputFocus"
+									v-model="password">
+						</div>
 
 						<div class="slide-block">
 							<drag-to-verify :isHideCanvas="isHideCanvas"
@@ -49,13 +59,15 @@
 					</div>
 
 					<div class="code-login" v-show="loginType">
-						<p>请输入手机号码</p>
-						<input  type="text"
-								v-on:blur="phoneBlur"
-								v-on:focus="inputFocus"
-								v-model="phone"
-						        placeholder="无限娱乐账号可直接登录">
-						<p>验证</p>
+						<div class="input-wrap">
+							<i class="icon-phone"></i>
+							<input  type="text"
+									v-on:blur="phoneBlur"
+									v-on:focus="inputFocus"
+									v-model="phone"
+									placeholder="无限娱乐账号可直接登录">
+						</div>
+			
 						<div class="slide-block">
 							<drag-to-verify :isHideCanvas="isHideCanvas"
 											v-on:showCanvas="showCanvas"
@@ -70,12 +82,13 @@
 					<div class="login-btn" v-on:click="goLogin">
 						<p>登录</p>
 					</div>
+					<p class="appendix">*无限娱乐账号可直接登录本站</p>
 
 					<div class="sharePlatform clear">
 						<label>选择快捷登录方式：</label>
+						<i class="qq"></i>
 						<i class="sina"></i>
 						<i class="wechat"></i>
-						<i class="qq"></i>
 					</div>
 				</div>
 			</div>
@@ -298,6 +311,31 @@
 				border-bottom: 1px solid #e1e1e1;
 				background: #f8f8f8;
 				font-weight: 600;
+				text-align: center;
+				cursor: pointer;
+
+				.title-wrap {
+					width: 50%;
+					float: left;
+
+					div {
+						height: 55px;
+						width: 96px;
+						margin-left: 50%;
+						transform: translate(-50%,0);
+						padding: 0 16px;
+						
+
+						&.active {
+							color: #d43328;
+							border-bottom: 2px solid #d43328;
+						}
+					}
+
+					.title-phone {
+						width: 115px;
+					}
+				}
 			}
 
 			.changeLogin {
@@ -353,6 +391,7 @@
 				font-size: 12px;
 
 				.password-login {
+
 					p {
 						margin: 12px 0;
 						font-weight: 600;
@@ -369,14 +408,43 @@
 						}
 					}
 
-					input {
-						box-sizing: border-box;
-						height: 33px;
-						line-height: 29px;
-						border: 1px solid #dddddd;
-						border-radius: 3px;
-						padding-left: 15px;
-						width: 100%;
+					.input-wrap {
+						position: relative;
+						margin-top: 24px;
+
+						i {
+							position: absolute;
+							display: inline-block;
+							background: url('../../assets/common-sprite.png');
+							left: 10px;
+							top: 6px;
+						}
+
+						.icon-account {
+							width: 18px;
+							height: 18px;
+							background-position: -162px -102px;
+						}
+						
+						.icon-lock {
+							width: 18px;
+							height: 21px;
+							background-position: -183px -102px;
+						}
+
+						input {
+							box-sizing: border-box;
+							height: 33px;
+							line-height: 29px;
+							border: 1px solid #dddddd;
+							border-radius: 3px;
+							padding-left: 45px;
+							width: 100%;
+						}
+					}
+
+					.slide-block {
+						margin-top: 22px;
 					}
 
 					.error-tip {
@@ -390,18 +458,41 @@
 						font-weight: 600;
 					}
 
-					input {
-						box-sizing: border-box;
-						height: 33px;
-						line-height: 29px;
-						border: 1px solid #dddddd;
-						border-radius: 3px;
-						padding-left: 15px;
-						width: 100%;
+					.input-wrap {
+						position: relative;
+						margin-top: 24px;
+
+						i {
+							position: absolute;
+							display: inline-block;
+							background: url('../../assets/common-sprite.png');
+							left: 10px;
+							top: 6px;
+						}
+
+						.icon-phone {
+							width: 16px;
+							height: 22px;
+							background-position: -206px -102px;
+						}
+
+						input {
+							box-sizing: border-box;
+							height: 33px;
+							line-height: 29px;
+							border: 1px solid #dddddd;
+							border-radius: 3px;
+							padding-left: 45px;
+							width: 100%;
+						}
+					}
+
+					.slide-block {
+						margin-top: 24px;
 					}
 
 					.code-input {
-						margin-top: 40px;
+						margin-top: 30px;
 					}
 				}
 
@@ -419,9 +510,14 @@
 					margin-top: 10px;
 				}
 
+				.appendix {
+					text-align: center;
+					margin-top: 10px;
+				}
+				
 				.sharePlatform {
 					text-align: left;
-					margin-top: 20px;
+					margin-top: 10px;
 					line-height: 32px;
 
 					label {
@@ -430,34 +526,29 @@
 						float: left;
 					}
 
-					.sina {
-						cursor: pointer;
-						display: inline-block;
-						width: 31px;
+
+                    i {
+                    	cursor: pointer;
+                    	display: inline-block;	
+						background: url("../../assets/common-sprite.png");
+						width: 28px;
 						height: 28px;
-						float: left;
-						margin-top: 2px;
-						background: url("../../assets/common-sprite.png") -43px -90px;
+						margin-left: 16px;
+						vertical-align: middle;
+
+                    }
+
+					.qq {
+						margin-left: -5px;
+						background-position: -157px -131px;
+					}
+
+					.sina {
+						background-position: -218px -132px;
 					}
 
 					.wechat {
-						cursor: pointer;
-						display: inline-block;
-						width: 30px;
-						height: 28px;
-						float: left;
-						margin: 2px 0 0 20px;
-						background: url("../../assets/common-sprite.png") -43px -58px;
-					}
-
-					.qq {
-						cursor: pointer;
-						display: inline-block;
-						width: 30px;
-						height: 31px;
-						float: left;
-						margin: 2px 0 0 20px;
-						background: url("../../assets/common-sprite.png") -43px -24px;
+						background-position: -187px -131px;
 					}
 				}
 			}

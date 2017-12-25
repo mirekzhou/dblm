@@ -25,8 +25,6 @@
 					<div class="clear"></div>
 				</div>
 			</div>
-
-			<div class="clear"></div>
 		</div>
 	</div>
 </template>
@@ -121,21 +119,31 @@ $topWidth : 19px;
 		margin: 0 auto;
 
 		.icon-wrap {
-			margin: 30px 10px 0 0;
+			height: 34px;
+			width: 195px;
+			background: #d53328;
+			border-top-right-radius: 20px;
+			border-bottom-right-radius: 20px;
+			margin-top: 30px;
 			float: left;
+			color: #fff;
+			line-height: 34px;
+			font-size: 14px;
 
 			.icon-camera {
 				display: inline-block;
-				width: 29px;
-				height: 20px;
-				background: url("../../assets/common-sprite.png") 0 -81px;
-				vertical-align: top;
+				width: 21px;
+				height: 15px;
+				background: url("../../assets/common-sprite.png") -112px -203px;
+				float: left;
+				margin: 10px 14px 0 14px;
 			}
+
 		}
 
 		.marquee-box {
 			float: right;
-			width: 1040px;
+			width: 1005px;
             height: 73px;
             overflow: hidden;
             position: relative;
@@ -158,7 +166,7 @@ $topWidth : 19px;
             			display: inline-block;
             			float: right;
             			margin-left: 35px;
-            			width: 300px;
+            			// width: 300px;
 
             			&:last-child {
             				margin-right: 0;

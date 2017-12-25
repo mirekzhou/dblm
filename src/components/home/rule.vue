@@ -2,8 +2,8 @@
 	<div class="rule">
 		<div class="rule-wrap">
 			<div class="title">
-				<i class="icon-book"></i>
-				<span>夺宝规则</span>
+		<!-- 		<i class="icon-book"></i>
+				<span>夺宝规则</span> -->
 			</div>
 
 			<div v-for ="val in rules" v-if="rules.length > 0">
@@ -107,16 +107,20 @@
 			}
 
 			.title {
-				color: #d63328;
+				background: url("../../assets/common-sprite.png") 0 -222px;
+				width: 238px;
+				height: 28px;
+				margin: 0 auto;
+				// color: #d63328;
 
-				.icon-book {
-					display: inline-block;
-					width: 22px;
-					height: 18px;
-					background: url("../../assets/common-sprite.png") 0 -39px;
-					vertical-align: top;
-					margin: 5px 5px 0 0;
-				}
+				// .icon-book {
+				// 	display: inline-block;
+				// 	width: 22px;
+				// 	height: 18px;
+				// 	background: url("../../assets/common-sprite.png") 0 -39px;
+				// 	vertical-align: top;
+				// 	margin: 5px 5px 0 0;
+				// }
 			}
 		}
 
