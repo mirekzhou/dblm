@@ -10,28 +10,26 @@
 
 		<my-footer></my-footer>
 
-		<share-dialog   v-show="showShareDialog"></share-dialog>
-		<address-dialog v-show="showAddressDialog"></address-dialog>
-		<win-alert></win-alert>
-		<alert v-show="showAlert"></alert>
-
-<!-- 		<suspension></suspension>
-		<breaking-news></breaking-news>
-		<notifier :show="showToast" :toastr="toastr"></notifier> -->
+		<share-dialog   v-if="showShareDialog"></share-dialog>
+		<address-dialog v-if="showAddressDialog"></address-dialog>
+		<help-dialog    v-if="showHelpDialog"></help-dialog>
+		<win-dialog     v-if="showWinDialog"></win-dialog>
+		<lose-dialog    v-if="showLoseDialog"></lose-dialog>
 	</div>
 </template>
 
 <script>
 	import { mapState }   from 'vuex';
 	import suspension     from './components/suspension';
-	import breakingNews   from './components/breakingNews';
-	import notifier       from 'cxlt-vue2-toastr/src/toastr/toastr';
-	import 'cxlt-vue2-toastr/dist/css/cxlt-vue2-toastr.css';
 	import header         from './components/header/header';
 	import footer         from './components/footer/footer';
+
 	import ShareDialog    from './components/common/ShareDialog';
 	import addressDialog  from './components/common/addressDialog';
-	import winAlert       from './components/common/winAlert';
+	import helpDialog     from './components/common/helpDialog';
+	import winDialog     from './components/common/winDialog';
+	import loseDialog     from './components/common/loseDialog';
+
 	import alert          from './plugins/alert';
 
 	export default {
@@ -39,20 +37,13 @@
 
 		data: function () {
 			return {
-				showToast: true,
-				toastr: {
-					title: '紧急通知',
-					message: '人民银行于北京时间2017-05-20 00:00 ~ 08:00进行系统升级，维护期间不支持办理出入款事务，造成不便请您谅解！',
-					closeButton: true,
-				    position: 'top right',
-				    showDuration: 2000,
-				    type: 'info',
-				    timeOut: 5000
-				}
 			}
 		},
 
 		mounted: function () {
+			this.$store.dispatch('showHelpDialog');    //弹出助攻对话框
+			//this.$store.dispatch('showWinDialog');       //弹出夺宝成功对话框
+			//this.$store.dispatch('showLoseDialog');    //弹出夺宝失败对话框
 		},
 
 		methods: {
@@ -69,6 +60,18 @@
 
 			showAddressDialog: function (state) {
 				return state.showAddressDialog;
+			},
+
+			showHelpDialog: function (state) {
+				return state.showHelpDialog;
+			},
+
+			showWinDialog: function (state) {
+				return state.showWinDialog;
+			},
+
+			showLoseDialog: function (state) {
+				return state.showLoseDialog;
 			}
 		}),
 
@@ -76,12 +79,13 @@
 			'my-header'     :  header,
 			'my-footer'     :  footer,
 			'suspension'    :  suspension,
-			'breaking-news' :  breakingNews,
-			'notifier'      :  notifier,
+
+			'alert'         :  alert,
 			'share-dialog'  :  ShareDialog,
 			'address-dialog':  addressDialog,
-			'alert'         :  alert,
-			'win-alert'     :  winAlert,
+			'help-dialog'   :  helpDialog,
+			'win-dialog'    :  winDialog,
+			'lose-dialog'   :  loseDialog
 		}
 	}
 </script>

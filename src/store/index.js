@@ -12,17 +12,17 @@ const state = {
 	userName               :   'Kris',
 	loginUserInfo          :   '',      //已登录用户信息
 
+	showAlert              :   false,
+	alertData              :   '',
+
 	showLoginDialog        :   false,
 	showRegisterDialog     :   false,
-	showAlert              :   false,
 
 	showShareDialog 	   :   false,
 	showAddressDialog      :   false,
-
-	showAlert              :   false,
-	alertData              :   '',
-	showWinAlert           :   false,
-	winAlertData           :   '',
+	showHelpDialog         :   false,
+	showWinDialog          :   false,
+	showLoseDialog         :   false
 };
 
 export default new Vuex.Store({

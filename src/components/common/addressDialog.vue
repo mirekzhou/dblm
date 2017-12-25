@@ -139,7 +139,6 @@
 			transform: translate(-50%,-50%);
 			background: #fff;
 			color: #8c8c8c;
-			z-index: 999;
 
 			.title {
 				font-size: 20px;

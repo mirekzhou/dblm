@@ -1,27 +1,25 @@
 <template>
 	<div class="bg">
 		<div class="share-dialog">
-			<div class="share-dialog-wrap">
-				<div class="head">
-					<span class="close" v-on:click="hideDialog">✕</span>
-				</div>
+			<div class="head">
+				<span class="close" v-on:click="hideDialog">✕</span>
+			</div>
 
-				<p>分享链接给好友，请好友帮您助攻，每获好友助攻一次您就可多获得一组幸运码，幸运码越多中奖概率越大哦</p>
+			<p>分享链接给好友，请好友帮您助攻，每获好友助攻一次您就可多获得一组幸运码，幸运码越多中奖概率越大哦</p>
 
-				<div class="sharePlatform">
-					<label>分享至</label>
-					<share :config="config"></share>
-				</div>
+			<div class="sharePlatform">
+				<label>分享至</label>
+				<share :config="config"></share>
+			</div>
 
-				<div class="copy">
-					<label >分享链接</label>
-					<input type="text" v-model="link">
-					<button v-clipboard:copy="link" v-clipboard:success="onCopy">复制</button>
+			<div class="copy">
+				<label >分享链接</label>
+				<input type="text" v-model="link">
+				<button v-clipboard:copy="link" v-clipboard:success="onCopy">复制</button>
+			</div>
 
-					<div class="tip"></div>
-				</div>
-
-				<div class="confirm" v-on:click="hideDialog">确定</div>
+			<div class="tip">
+				您可复制链接发送给好友或者手机扫描二维码后点击右上角“...”分享给好友
 			</div>
 		</div>
 	</div>
@@ -38,12 +36,10 @@
 	export default {
 		name: 'shareDialog',
 
-		props: [
-		],
-
 		data: function () {
 			return {
 				link: '',
+
 				config: {
 					disabled : ['google', 'facebook', 'twitter', 'douban', 'qzone', 'linkedin', 'diandian', 'tencent']
 				}
@@ -54,15 +50,16 @@
 			hideDialog: function () {
 				this.$store.dispatch('setShareDialogStatus', {status: false});
 			},
+
 			onCopy: function () {
-				// console.log('复制成功')
+				// alert('复制成功')
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	$labelWidth 	:	77px;
+	$labelWidth : 77px;
 
 	.bg {
 		width: 100%;
@@ -73,155 +70,82 @@
 		z-index: 999;
 
 		.share-dialog {
+			background: #FFF;
+			color: #333333;
 			width: 644px;
-			height: 373px;
+			height: 310px;
 			position: fixed;
 			left: 50%;
+			padding: 0 55px 0 55px;
 			top: 50%;
 			transform: translate(-50%,-50%);
-			background: #fff;
-			color: #8c8c8c;
-			z-index: 999;
 
-			.share-dialog-wrap {
-				width: 530px;
-				margin: 0 auto;
-				text-align: center;
+			.head {
+				font-size: 16px;
+				height: 40px;
+				position: relative;
+				width: 100%;
 
-				.head {
-					height: 50px;
-					position: relative;
-					width: 100%;
-
-					.close {
-						cursor: pointer;
-						position: absolute;
-						right: -45px;
-						top: 5px;
-						font-size: 20px;
-					}
-				}
-
-				p {
-					text-align: left;
-				}
-
-				.copy {
-					text-align: left;
-					line-height: 32px;
-					margin-top: 30px;
-
-					label {
-						display: inline-block;
-						width: $labelWidth;
-					}
-
-					input {
-						width: 380px;
-						height: 26px;
-						border:1px solid #e5e5e5;
-						box-sizing: border-box;
-					}
-
-					button {
-						cursor: pointer;
-						width: 62px;
-						height: 26px;
-					}
-				}
-
-				.sharePlatform {
-					text-align: left;
-					margin-top: 35px;
-					line-height: 32px;
-
-					label {
-						display: inline-block;
-						width: $labelWidth;
-						float: left;
-					}
-
-
-					.social-share {
-						display: inline-block;
-					}
-
-					// .sina {
-					// 	display: inline-block;
-					// 	width: 31px;
-					// 	height: 28px;
-					// 	float: left;
-					// 	margin-top: 2px;
-					// 	background: url("../../assets/common-sprite.png") -43px -90px;
-					// }
-
-					// .wechat {
-					// 	display: inline-block;
-					// 	width: 30px;
-					// 	height: 28px;
-					// 	float: left;
-					// 	margin: 2px 0 0 20px;
-					// 	background: url("../../assets/common-sprite.png") -43px -58px;
-					// }
-
-					// .qq {
-					// 	display: inline-block;
-					// 	width: 30px;
-					// 	height: 31px;
-					// 	float: left;
-					// 	margin: 2px 0 0 20px;
-					// 	background: url("../../assets/common-sprite.png") -43px -24px;
-					// }
-
-					span {
-						font-size: 14px;
-
-					}
-				}
-
-				.QRCode {
-					margin-top: 20px;
-					text-align: left;
-
-					label {
-						display: inline-block;
-						width: $labelWidth;
-						float: left;
-						margin-top: 23px;
-					}
-
-					img {
-						float: left;
-					}
-
-					.explain {
-						margin: 20px 0 0 18px;
-						float: left;
-
-						.redText {
-							color: #d84941;
-							text-decoration: underline;
-						}
-
-						span {
-							font-size: 14px;
-						}
-					}
-				}
-
-				.confirm {
-					width: 116px;
-					height: 36px;
-					line-height: 36px;
-					color: #fff;
-					margin: 25px auto 0;
-					background: #d53328;
-					border-radius: 3px;
+				.close {
 					cursor: pointer;
+					position: absolute;
+					right: -45px;
+					top: 5px;
+					font-size: 20px;
 				}
+			}
+
+			p {
+				text-align: left;
+			}
+
+			.sharePlatform {
+				font-size: 14px;
+				text-align: left;
+				margin-top: 30px;
+
+				label {
+					display: inline-block;
+					margin-left: 16px;
+					margin-right: 20px;
+				}
+
+				.social-share {
+					display: inline-block;
+				}
+			}
+
+			.copy {
+				text-align: left;
+				line-height: 32px;
+				margin-top: 30px;
+
+				label {
+					display: inline-block;
+					width: $labelWidth;
+				}
+
+				input {
+					width: 380px;
+					height: 26px;
+					border:1px solid #e5e5e5;
+					box-sizing: border-box;
+				}
+
+				button {
+					cursor: pointer;
+					width: 62px;
+					height: 26px;
+				}
+			}
+
+			.tip {
+				color: #666666;
+				font-size: 12px;
+				margin-top: 32px;
+				text-align: right;
+				padding-right: 25px;
 			}
 		}
 	}
-
-
 </style>
