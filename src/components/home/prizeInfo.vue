@@ -28,17 +28,20 @@
 			<div class="box" v-for="item in prizeInfoData">
 				<img :src="item.imgUrl" v-on:click="goDetail" />
 
-				<div class="shade" v-on:click="goDetail">
+		<!-- 		<div class="shade" v-on:click="goDetail">
 					<p>{{item.title}}</p>
 					<p class="red">{{item.cycle}}</p>
-				</div>
+				</div> -->
 
 				<div class="info-wrap">
-					<div class="info-inner">
-						<i class="left"></i>
+					<div class="info-inner clear">
+						<p>第<span>{{item.cycle}}</span>期</p>
+						<p>{{item.title}}</p>
 						<div class="left">
-							<p>中奖用户：{{item.phoneNumber}}</p>
-							<p>中奖号码：{{item.winNumber}}</p>
+							<i class="left"></i>
+
+							<span>中奖用户：{{item.phoneNumber}}</span>
+							<span>中奖号码：{{item.winNumber}}</span>
 						</div>
 					</div>
 				</div>
@@ -131,49 +134,62 @@
 
 				.info-wrap {
 					width: $infoWidth;
-					height: 90px;
+					height: 110px;
 					position: absolute;
 					bottom: 0;
 					color: #fff;
-					background: url("../../assets/red-bg.png");
+					background: url("../../assets/red-bg.png") no-repeat;
+					background-size: 100% 108px;
 
 					.info-inner {
-						width: 272px;
-						height: 54px;
-						margin: 23px 0px 0 50px;
+						text-align: center;
+						padding-top: 28px;
+						height: 110px;
+						font-size: 14px;
 
-						i {
-							display: inline-block;
-							width: 54px;
-							height: 54px;
-							border: 2px solid white;
-							border-radius: 50%;
-							background: url("../../assets/prize_info_header.png");
+
+						p {
+							span {
+								font-size: 13px;
+							}
 						}
 
-						div {
-							margin: 10px 0 0 30px;
+						.left {
+							i {
+								display: inline-block;
+								width: 54px;
+								height: 54px;
+								border: 2px solid white;
+								border-radius: 50%;
+								background: url("../../assets/prize_info_header.png");
+								margin: -20px 0 0 12px;
+							}
+
+							span {
+								float: left;
+								margin: 8px 0 0 13px;
+							}
 						}
 					}
 				}
 
-				.shade {
-					position: absolute;
-					width: 251px;
-					height: 81px;
-					background-color: rgba(0,0,0,0.2);
-					left: 50%;
-					top: 50%;
-					transform: translate(-50%,-50%);
-					text-align: center;
-					padding-top: 25px;
-					color: #fff;
+				// .shade {
+				// 	position: absolute;
+				// 	width: 251px;
+				// 	height: 81px;
+				// 	background-color: rgba(0,0,0,0.2);
+				// 	left: 50%;
+				// 	top: 50%;
+				// 	transform: translate(-50%,-50%);
+				// 	text-align: center;
+				// 	padding-top: 25px;
+				// 	color: #fff;
 
-					.red {
-						color: #d53328;
-						font-weight: bold;
-					}
-				}
+				// 	.red {
+				// 		color: #d53328;
+				// 		font-weight: bold;
+				// 	}
+				// }
 			}
 
 			.swiper-pagination {
