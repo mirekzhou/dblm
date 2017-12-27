@@ -5,13 +5,24 @@
                 <img :src="bigImgUrl">
             </div>
 
-            <swiper :options="swiperOption" class="small-images" ref="swiperLeft">
+<!--             <swiper :options="swiperOption" class="small-images" ref="swiperLeft">
                 <swiper-slide  class="img-item" v-for="item in productInfo.imgList" key="item">
                     <img :src="item.smallImgUrl" />
                 </swiper-slide>
 
                 <div class="swiper-pagination" slot="pagination"></div>
-            </swiper>
+            </swiper> -->
+
+            <div class="small-images">
+                <div    class="img-item" v-for="(item, index) in productInfo.imgList"
+                        v-bind:class="{'active': currentIndex == index}"
+                        v-on:click="smallImageClicked(index)"
+                        key="item">
+                    <img :src="item.smallImgUrl" />
+                </div>
+
+                <div class="clear"></div>
+            </div>
         </div>
 
         <div class="right-part">
@@ -47,29 +58,8 @@
         name: 'product',
 
         data: function () {
-            var that = this;
-
             return {
-                swiperOption: {
-                    centeredSlides: true,
-                    slidesPerView: 5,
-                    touchRatio: 0.2,
-                    slideToClickedSlide: true,
-                    direction: 'horizontal',
-                    notNextTick: true,
-                    nextButton:'.swiper-button-next',
-                    prevButton:'null',
-
-                    pagination: {
-                        el: '.swiper-pagination',
-                        clickable: true
-                    },
-
-                    onSlideChangeEnd: function (swiper) {
-                        that.bigImgUrl = that.imgList[swiper.realIndex].bigImgUrl;
-                    }
-                },
-
+                currentIndex: 0,
                 productInfo: '',
                 bigImgUrl: bigImg2
             }
@@ -87,6 +77,11 @@
         },
 
         methods: {
+            smallImageClicked: function (index) {
+                this.currentIndex = index;
+                this.bigImgUrl    = this.productInfo.imgList[index].bigImgUrl;
+            },
+
             getProductInfo: function () {
                 var that = this;
                 var opt = {
@@ -157,11 +152,19 @@
             float: left;
 
             .img-item {
+                float: left;
+                width: 80px;
+                overflow: hidden;
+
                 img {
                     cursor: pointer;
                     height: 80px;
                     width: 80px;
                 }
+            }
+
+            .active {
+                border:1px solid red;
             }
 
             .big-image {

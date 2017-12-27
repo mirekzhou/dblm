@@ -254,6 +254,10 @@
 							&:first-child {
 								margin-left: 0;
 							}
+
+							.text {
+								font-size: 12px;
+							}
 						}
 					}
 				}
