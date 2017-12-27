@@ -9,17 +9,17 @@
 
 					<ul>
 						<li>
-							<span class="icon-shield">免</span>
+							<span class="icon-shield mian"></span>
 							<span class="text">免费参与, 0元夺宝</span>
 						</li>
 
 						<li>
-							<span class="icon-shield">公</span>
+							<span class="icon-shield gong"></span>
 							<span class="text">开奖公开，中奖透明</span>
 						</li>
 
 						<li>
-							<span class="icon-shield">正</span>
+							<span class="icon-shield zheng"></span>
 							<span class="text">采购正品，品质夺宝</span>
 						</li>
 
@@ -244,11 +244,23 @@
 								color: #FFF;
 								cursor: pointer;
 								display: inline-block;
-								height: 36px;
-								line-height: 36px;
+								height: 28px;
+								line-height: 28px;
 								text-align: center;
 								vertical-align: middle;
 								width: 30px;
+							}
+
+							.mian {
+								background-position: -154px -161px;
+							}
+
+							.gong {
+								background-position: -186px -161px;
+							}
+
+							.zheng {
+								background-position: -218px -161px;
 							}
 
 							&:first-child {
